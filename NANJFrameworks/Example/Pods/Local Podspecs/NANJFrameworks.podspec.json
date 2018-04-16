@@ -1,0 +1,22 @@
+{
+  "name": "NANJFrameworks",
+  "version": "0.1.0",
+  "summary": "A short description of NANJFrameworks.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/AnhKu/NANJFrameworks",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "AnhKu": "vanlong10t1@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/AnhKu/NANJFrameworks.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "NANJFrameworks/Classes/**/*"
+}

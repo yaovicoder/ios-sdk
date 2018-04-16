@@ -1,0 +1,6 @@
+framework module NANJFrameworks {
+  umbrella header "NANJFrameworks-umbrella.h"
+
+  export *
+  module * { export * }
+}
