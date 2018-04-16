@@ -8,7 +8,15 @@
 import UIKit
 
 public protocol NANJWalletDelegate {
+    
+    /// Callback Transaction when send NANJ completed.
+    ///
+    /// - Parameter transaction: transaction success.
     func didSendNANJCompleted(transaction: NANJTransaction?)
+    
+    /// Callback list Transaction when get completed.
+    ///
+    /// - Parameter transactions: list Transaction.
     func didGetTransactionList(transactions: Array<NANJTransaction>?)
 }
 
@@ -93,35 +101,23 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     }
     
     
-    /// <#Description#>
+    /// Get URL Wallet on Etherscan
     ///
-    /// - Returns: <#return value description#>
+    /// - Returns: URL Ether
     public func getURLOnEtherscan() -> URL? {
         
         return nil
     }
     
     //MARK - NANJQRCodeDelegate, NANJNFCDelegate
-    
-    
-    /// <#Description#>
-    ///
-    /// - Parameter address: <#address description#>
     func didScanQRCode(address: String) {
         //Received address from QRCode
     }
     
-    
-    
-    /// <#Description#>
-    ///
-    /// - Parameter address: <#address description#>
     func didScanNFC(address: String) {
         //Received address from NFC
     }
     
-    
-    /// <#Description#>
     func didCloseScan() {
         
     }

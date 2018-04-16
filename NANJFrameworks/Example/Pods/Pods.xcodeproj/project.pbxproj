@@ -12,8 +12,8 @@
 		094973D2D2F1E3B2E772F93C8147C6B9 /* UIApplication+StrictKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0C43403E98583917CF2D62C515398A /* UIApplication+StrictKeyWindow.m */; };
 		0A1A3DC52B83AA8A153A008710FCBFFA /* NBSMockedApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D1E103702ABBD58F315C182A4866454 /* NBSMockedApplication.m */; };
 		0A2CA8B0DD7E300ABFCF1956E6B58248 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = 40BD6C92C04852276647CF58AD53276A /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C67B178208480F400C2054B /* NANJNFCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B172208480F200C2054B /* NANJNFCVC.swift */; };
-		0C67B179208480F400C2054B /* NANJQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B173208480F200C2054B /* NANJQRCodeVC.swift */; };
+		0C67B178208480F400C2054B /* NANJNFCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B172208480F200C2054B /* NANJNFCViewController.swift */; };
+		0C67B179208480F400C2054B /* NANJQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B173208480F200C2054B /* NANJQRCodeViewController.swift */; };
 		0C67B17A208480F400C2054B /* NANJTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B174208480F300C2054B /* NANJTransaction.swift */; };
 		0C67B17B208480F400C2054B /* NANJWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B175208480F300C2054B /* NANJWallet.swift */; };
 		0C67B17C208480F400C2054B /* NANJWalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67B176208480F300C2054B /* NANJWalletManager.swift */; };
@@ -234,8 +234,8 @@
 		09FFB8DE4A4FBBFAD4F83F78D3C76331 /* HaveValidDynamicTypeSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveValidDynamicTypeSnapshot.swift; path = DynamicType/HaveValidDynamicTypeSnapshot.swift; sourceTree = "<group>"; };
 		0AD77CD1FD4FCF047E861849B8A77C74 /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
 		0BDAF7997990F609B80722636041A758 /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
-		0C67B172208480F200C2054B /* NANJNFCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJNFCVC.swift; path = NANJFrameworks/Classes/NANJNFCVC.swift; sourceTree = "<group>"; };
-		0C67B173208480F200C2054B /* NANJQRCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJQRCodeVC.swift; path = NANJFrameworks/Classes/NANJQRCodeVC.swift; sourceTree = "<group>"; };
+		0C67B172208480F200C2054B /* NANJNFCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJNFCViewController.swift; path = NANJFrameworks/Classes/NANJNFCViewController.swift; sourceTree = "<group>"; };
+		0C67B173208480F200C2054B /* NANJQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJQRCodeViewController.swift; path = NANJFrameworks/Classes/NANJQRCodeViewController.swift; sourceTree = "<group>"; };
 		0C67B174208480F300C2054B /* NANJTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJTransaction.swift; path = NANJFrameworks/Classes/NANJTransaction.swift; sourceTree = "<group>"; };
 		0C67B175208480F300C2054B /* NANJWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJWallet.swift; path = NANJFrameworks/Classes/NANJWallet.swift; sourceTree = "<group>"; };
 		0C67B176208480F300C2054B /* NANJWalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NANJWalletManager.swift; path = NANJFrameworks/Classes/NANJWalletManager.swift; sourceTree = "<group>"; };
@@ -738,8 +738,8 @@
 				0C67B176208480F300C2054B /* NANJWalletManager.swift */,
 				0C67B175208480F300C2054B /* NANJWallet.swift */,
 				0C67B174208480F300C2054B /* NANJTransaction.swift */,
-				0C67B172208480F200C2054B /* NANJNFCVC.swift */,
-				0C67B173208480F200C2054B /* NANJQRCodeVC.swift */,
+				0C67B172208480F200C2054B /* NANJNFCViewController.swift */,
+				0C67B173208480F200C2054B /* NANJQRCodeViewController.swift */,
 				5EB595D81A6FE4E45378AEEB1EB10878 /* Support Files */,
 			);
 			name = NANJFrameworks;
@@ -1245,11 +1245,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4D7F4D57230A60E911D7CB4218CAA35 /* NANJFrameworks-dummy.m in Sources */,
-				0C67B178208480F400C2054B /* NANJNFCVC.swift in Sources */,
+				0C67B178208480F400C2054B /* NANJNFCViewController.swift in Sources */,
 				0C67B17B208480F400C2054B /* NANJWallet.swift in Sources */,
 				0C67B17C208480F400C2054B /* NANJWalletManager.swift in Sources */,
 				0C67B17A208480F400C2054B /* NANJTransaction.swift in Sources */,
-				0C67B179208480F400C2054B /* NANJQRCodeVC.swift in Sources */,
+				0C67B179208480F400C2054B /* NANJQRCodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

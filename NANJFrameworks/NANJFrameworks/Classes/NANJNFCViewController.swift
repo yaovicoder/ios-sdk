@@ -12,7 +12,7 @@ protocol NANJNFCDelegate {
     func didCloseScan();
 }
 
-class NANJNFCVC: UIViewController {
+class NANJNFCController: UIViewController {
     
     var delegate: NANJNFCDelegate?
 

@@ -12,7 +12,7 @@ protocol NANJQRCodeDelegate {
     func didCloseScan();
 }
 
-class NANJQRCodeVC: UIViewController {
+class NANJQRCodeViewController: UIViewController {
     
     var delegate: NANJQRCodeDelegate?
 
