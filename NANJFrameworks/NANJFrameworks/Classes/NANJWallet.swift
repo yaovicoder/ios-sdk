@@ -16,7 +16,7 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     
     public var delegate: NANJWalletDelegate?
     
-    public var addrres: String! = ""
+    public var address: String! = ""
     public var name: String?
     
     var amountNANJ: Double = 0.0
