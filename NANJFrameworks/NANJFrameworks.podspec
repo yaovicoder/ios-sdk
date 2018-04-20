@@ -28,9 +28,19 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/AnhKu/NANJFrameworks.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'NANJFrameworks/Classes/**/*'
+
+    s.subspec 'NANJSubSpec' do |nanj_sub_spec|
+        nanj_sub_spec.dependency 'BigInt', '~> 3.0'
+        nanj_sub_spec.dependency 'TrustCore', '~> 0.0.6'
+        nanj_sub_spec.dependency 'TrustKeystore', '~> 0.4.0'
+        nanj_sub_spec.dependency 'CryptoSwift'
+        nanj_sub_spec.dependency 'JSONRPCKit'
+        nanj_sub_spec.dependency 'KeychainSwift'
+    end
+    s.default_subspec = 'NANJSubSpec'
   
   # s.resource_bundles = {
   #   'NANJFrameworks' => ['NANJFrameworks/Assets/*.png']

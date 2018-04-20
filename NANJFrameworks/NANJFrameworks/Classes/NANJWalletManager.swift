@@ -57,6 +57,8 @@ public class NANJWalletManager: NSObject {
         //Return value with delegate
         //Ex
         self.delegate?.didCreateWallet(wallet: nil, error: nil)
+        let _ss = EtherKeystore.shared.wallets
+        print(_ss.count)
     }
     
     /// Import a wallet with private key and json string
