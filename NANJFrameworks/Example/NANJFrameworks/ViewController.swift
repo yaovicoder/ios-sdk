@@ -66,7 +66,7 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     }
     
     @IBAction func onClickImportWallet(_ sender: Any) {
-        
+        self.openImportOption()
     }
     
     @IBAction func onClickListWalllet(_ sender: Any) {
@@ -77,22 +77,22 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     //MARK: - NANJWalletManagerDelegate
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
         self.hideLoading()
-        if wallet != nil {
-            self.showMessage("Wallet create success!")
-            self.lblAddress.text = wallet?.address
-        } else {
-            self.showMessage("Wallet create fail.")
-        }
     }
     
     func didImportWallet(wallet: NANJWallet?, error: Error?) {
         print("didImportWallet")
+        self.hideLoading()
+        if let __wallet = wallet {
+            self.showMessage("Imported wallet: " + __wallet.address)
+        } else {
+            self.showMessage("Import wallet fail.")
+        }
     }
     
-    func didGetWalletList(wallets: Array<NANJWallet?>, error: Error?) {
-        print("didGetWalletList")
+    func didGetWalletList(wallets: [NANJWallet]?, error: Error?) {
+        
     }
-    
+
     func didGetWalletFromQRCode(wallet: NANJWallet?) {
         print("didGetWalletFromQRCode")
     }
@@ -110,6 +110,53 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         print("didGetTransactionList")
     }
     
+    //MARK: - Private method
+    fileprivate func openImportOption() {
+        let actionSheet: UIAlertController = UIAlertController(title: "Select import type", message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel")
+        }
+        actionSheet.addAction(cancel)
+        
+        let keystore = UIAlertAction(title: "JSON File", style: .default)
+        { _ in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "ImportJSONViewController")
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        actionSheet.addAction(keystore)
+        
+        let privateKey = UIAlertAction(title: "Private Key", style: .default)
+        { _ in
+            self.openImportPrivateKey()
+        }
+        actionSheet.addAction(privateKey)
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    fileprivate func openImportPrivateKey() {
+        let alert = UIAlertController(title: "Input private key", message: "", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if let __text = textField?.text {
+                if __text.count > 0 {
+                    self.showLoading()
+                    NANJWalletManager.shared.importWallet(privateKey: __text)
+                }
+            }
+        }))
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+
+        }
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
 

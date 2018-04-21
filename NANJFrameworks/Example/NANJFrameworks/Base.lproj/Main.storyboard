@@ -291,6 +291,70 @@
             </objects>
             <point key="canvasLocation" x="1713" y="-581"/>
         </scene>
+        <!--ImportJSON View Controller-->
+        <scene sceneID="mbF-Am-FrO">
+            <objects>
+                <viewController storyboardIdentifier="ImportJSONViewController" id="3BL-c1-kr7" customClass="ImportJSONViewController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dFJ-UR-Ys6"/>
+                        <viewControllerLayoutGuide type="bottom" id="lry-7J-ZJk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GzV-g4-aX7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cj6-2R-Awf">
+                                <rect key="frame" x="20" y="210" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Keystore" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9v-qr-jWP">
+                                <rect key="frame" x="20" y="50" width="335" height="140"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Zup-hr-Umy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1u-0P-R9k">
+                                <rect key="frame" x="127" y="290" width="120" height="44"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.60392156860000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rcc-br-oZI"/>
+                                    <constraint firstAttribute="width" constant="120" id="xhm-bC-bxH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Import">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickImportJSON:" destination="3BL-c1-kr7" eventType="touchUpInside" id="udm-2B-8kr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="d9v-qr-jWP" secondAttribute="trailing" constant="20" id="2Nn-YC-SAK"/>
+                            <constraint firstItem="p1u-0P-R9k" firstAttribute="top" secondItem="cj6-2R-Awf" secondAttribute="bottom" constant="50" id="Bn2-eL-oLE"/>
+                            <constraint firstAttribute="trailing" secondItem="cj6-2R-Awf" secondAttribute="trailing" constant="20" id="Ea7-7F-zn6"/>
+                            <constraint firstItem="cj6-2R-Awf" firstAttribute="top" secondItem="d9v-qr-jWP" secondAttribute="bottom" constant="20" id="GZm-jj-i0J"/>
+                            <constraint firstItem="d9v-qr-jWP" firstAttribute="leading" secondItem="GzV-g4-aX7" secondAttribute="leading" constant="20" id="JPM-Et-xZg"/>
+                            <constraint firstItem="d9v-qr-jWP" firstAttribute="top" secondItem="dFJ-UR-Ys6" secondAttribute="bottom" constant="30" id="LRr-yA-Kpd"/>
+                            <constraint firstItem="p1u-0P-R9k" firstAttribute="centerX" secondItem="GzV-g4-aX7" secondAttribute="centerX" id="cS9-GP-li0"/>
+                            <constraint firstItem="cj6-2R-Awf" firstAttribute="leading" secondItem="GzV-g4-aX7" secondAttribute="leading" constant="20" id="fFu-v7-yfx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="txfPassword" destination="cj6-2R-Awf" id="Bke-bg-bm9"/>
+                        <outlet property="txvJSON" destination="d9v-qr-jWP" id="27G-vR-HR9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BR0-gO-Fl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="122.78860569715144"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1AZ-ql-3Yy">
             <objects>
