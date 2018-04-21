@@ -24,15 +24,14 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     
     public var delegate: NANJWalletDelegate?
     
-    public var address: String! = ""
+    public var address: String = ""
     public var name: String?
     
     var amountNANJ: Double = 0.0
     var amountETH: Double = 0.0
-    var isEnable: Bool = false
     
-    private var privateKey: String! = ""
-    
+    //
+    fileprivate var etherWallet: Wallet?
     
     /// Send NAJI coins to other wallet
     ///
@@ -109,6 +108,11 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
         return nil
     }
     
+    public func enableWallet() {
+        EtherKeystore.shared.recentlyUsedWallet = self.etherWallet
+    }
+    
+    
     //MARK - NANJQRCodeDelegate, NANJNFCDelegate
     func didScanQRCode(address: String) {
         //Received address from QRCode
@@ -120,5 +124,10 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     
     func didCloseScan() {
         
+    }
+    
+    //MARK: -
+    func addEtherWallet(wallet: Wallet) {
+        self.etherWallet = wallet
     }
 }
