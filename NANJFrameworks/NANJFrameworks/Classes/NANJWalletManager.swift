@@ -53,8 +53,7 @@ public class NANJWalletManager: NSObject {
      - returns: Wallet by NANJWalletManagerDelegate.
      */
     public func createWallet(password: String) {
-        EtherKeystore.shared.createAccount(with: password) {[weak self] result in
-            guard let `self` = self else {return}
+        EtherKeystore.shared.createAccount(with: password) { result in
             if result.error != nil {
                 self.delegate?.didCreateWallet?(wallet: nil, error: nil)
             } else {
@@ -68,9 +67,26 @@ public class NANJWalletManager: NSObject {
     /// - Parameters:
     ///   - private: Private key of wallet.
     ///   - json: Keystore of wallet
-    public func importWallet(with private: String?, with json: NSDictionary) {
+    public func importWallet(privateKey key: String) {
         //Return value with delegate
-        
+        EtherKeystore.shared.importWallet(type: .privateKey(privateKey: key)) { result in
+            guard let error = result.error else {
+                self.delegate?.didImportWallet?(wallet: result.value?.toNANJWallet(), error: nil)
+                return
+            }
+            self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":error.errorDescription ?? "com.nanj.error.import"]))
+        }
+    }
+    
+    public func importWallet(keyStore key: String, password pass: String) {
+        //Return value with delegate
+        EtherKeystore.shared.importWallet(type: .keystore(string: key, password: pass)) { result in
+            guard let error = result.error else {
+                self.delegate?.didImportWallet?(wallet: result.value?.toNANJWallet(), error: nil)
+                return
+            }
+            self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":error.errorDescription ?? "com.nanj.error.import"]))
+        }
     }
     
     /// Remove wallet.
