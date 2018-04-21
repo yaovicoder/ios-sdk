@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'NANJFrameworks_Example' do
   pod 'NANJFrameworks', :path => '../'
+  pod 'MBProgressHUD'
 
   target 'NANJFrameworks_Tests' do
     inherit! :search_paths
