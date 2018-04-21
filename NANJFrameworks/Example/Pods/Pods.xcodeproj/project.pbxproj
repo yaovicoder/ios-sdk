@@ -34,7 +34,7 @@
 		0B0F35F2DFE400CB99B097DBD38EA4D3 /* ecdsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 0891A3D56D15FFD5916B10328839F13B /* ecdsa.c */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADF3276FCAF19338ABAE8027EA25BB /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CBFC411543B339100FA5C2B317A81 /* Floating Point Conversion.swift */; };
-		0CA40422208AB979006D6117 /* AccountExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40421208AB979006D6117 /* AccountExtentsion.swift */; };
+		0CA40422208AB979006D6117 /* EtherExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40421208AB979006D6117 /* EtherExtentsion.swift */; };
 		0CC201FB98112F8FA8B3519A7C470E8A /* ed25519.h in Headers */ = {isa = PBXBuildFile; fileRef = BF354A65D0A903BA331C2375DF81FEA0 /* ed25519.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		10D849DF130EDB35BB35FAB44655995A /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 49629F24135B6631A1BFA4125BBE87C5 /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		12E1748E0E783B1B4B5D390244A9F4AA /* hasher.c in Sources */ = {isa = PBXBuildFile; fileRef = 5AD764CFE3AB318B5156E623C65254B6 /* hasher.c */; };
@@ -762,7 +762,7 @@
 		0BC3CD6B0B5314F3ED4A493DC0EFC15C /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		0BC4E4B00F355A42DF56019C3A4DF6B6 /* ResultProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResultProtocol.swift; path = Result/ResultProtocol.swift; sourceTree = "<group>"; };
 		0C8A6F80BA51D15F8C0783CF5EF4727D /* RandomAccessCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessCryptor.swift; path = Sources/CryptoSwift/RandomAccessCryptor.swift; sourceTree = "<group>"; };
-		0CA40421208AB979006D6117 /* AccountExtentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountExtentsion.swift; sourceTree = "<group>"; };
+		0CA40421208AB979006D6117 /* EtherExtentsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherExtentsion.swift; sourceTree = "<group>"; };
 		0D2E1BDDF7C9B522ADF0AC12A174EE80 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D4F8D53BA4320D5EC1B917135B81068 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
 		0DB7AF8C55C0ABB960F6DDC755DB6CD2 /* SecureBytes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureBytes.swift; path = Sources/CryptoSwift/SecureBytes.swift; sourceTree = "<group>"; };
@@ -1639,7 +1639,7 @@
 			isa = PBXGroup;
 			children = (
 				5BBC0A67B9EF49347B793C5FFDBCFABB /* Dictionary.swift */,
-				0CA40421208AB979006D6117 /* AccountExtentsion.swift */,
+				0CA40421208AB979006D6117 /* EtherExtentsion.swift */,
 			);
 			name = Extensions;
 			path = NANJFrameworks/Classes/Extensions;
@@ -3156,7 +3156,7 @@
 				A3EA93F7A9211DFE1B1EAB2506171B14 /* PasswordGenerator.swift in Sources */,
 				FDC66D63074F95C292009D5B2567EF8F /* RPCServers.swift in Sources */,
 				DC2C166D9D7F128C95D33E636A79892C /* SignTransaction.swift in Sources */,
-				0CA40422208AB979006D6117 /* AccountExtentsion.swift in Sources */,
+				0CA40422208AB979006D6117 /* EtherExtentsion.swift in Sources */,
 				34108A3E0DD12A2148E603E18ACEDF2A /* TransactionSigning.swift in Sources */,
 				A6124A67479771625DDD8B5187584BDE /* Wallet.swift in Sources */,
 				30FA6D382D27E1DBA20476083AC031C1 /* WalletType.swift in Sources */,
