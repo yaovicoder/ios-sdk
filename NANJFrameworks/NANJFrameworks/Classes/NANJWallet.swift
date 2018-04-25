@@ -126,7 +126,7 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
         
     }
     
-    //MARK: -
+    //MARK: - Support method
     func addEtherWallet(wallet: Wallet) {
         self.etherWallet = wallet
     }

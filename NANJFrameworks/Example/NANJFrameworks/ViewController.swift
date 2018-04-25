@@ -77,6 +77,11 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     //MARK: - NANJWalletManagerDelegate
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
         self.hideLoading()
+        if let __wallet = wallet {
+            self.showMessage("Created wallet: " + __wallet.address)
+        } else {
+            self.showMessage("Created wallet fail.")
+        }
     }
     
     func didImportWallet(wallet: NANJWallet?, error: Error?) {
