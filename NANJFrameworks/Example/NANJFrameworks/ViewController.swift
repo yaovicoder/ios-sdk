@@ -46,6 +46,12 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     }
     
     @IBAction func onClickCopyPrivateKey(_ sender: Any) {
+        if let wallet = NANJWalletManager.shared.getCurrentWallet() {
+            self.showLoading()
+            let privateKey = NANJWalletManager.shared.exportPrivateKey(wallet: wallet)
+            self.shareActivity(str: privateKey ?? "")
+            self.hideLoading()
+        }
         
     }
     
@@ -61,8 +67,7 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     
     //MARK: - Action Wallet
     @IBAction func onClickCreateWallet(_ sender: Any) {
-        self.showLoading()
-        NANJWalletManager.shared.createWallet(password: "longlee")
+        self.openCreateWallet()
     }
     
     @IBAction func onClickImportWallet(_ sender: Any) {
@@ -140,6 +145,30 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    fileprivate func openCreateWallet() {
+        let alert = UIAlertController(title: "Input password", message: "", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if let __text = textField?.text {
+                if __text.count > 0 {
+                    self.showLoading()
+                    NANJWalletManager.shared.createWallet(password: __text)
+                }
+            }
+        }))
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            
+        }
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
     fileprivate func openImportPrivateKey() {
         let alert = UIAlertController(title: "Input private key", message: "", preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -161,6 +190,14 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         alert.addAction(cancel)
         
         self.present(alert, animated: true, completion: nil)
+    }
+
+    fileprivate func shareActivity(str: String) {
+        if str.count == 0 {
+            return
+        }
+        let activity: UIActivityViewController = UIActivityViewController(activityItems: [str], applicationActivities: nil)
+        self.present(activity, animated: true, completion: nil)
     }
 
 }

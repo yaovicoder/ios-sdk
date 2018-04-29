@@ -130,4 +130,8 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     func addEtherWallet(wallet: Wallet) {
         self.etherWallet = wallet
     }
+    
+    func getEtherWallet() -> Wallet? {
+        return self.etherWallet
+    }
 }

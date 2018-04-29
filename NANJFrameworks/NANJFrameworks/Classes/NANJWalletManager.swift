@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TrustKeystore
 
 @objc public protocol NANJWalletManagerDelegate {
     
@@ -62,11 +63,10 @@ public class NANJWalletManager: NSObject {
         }
     }
     
-    /// Import a wallet with private key and json string
+    /// Import a wallet with private key
     ///
     /// - Parameters:
-    ///   - private: Private key of wallet.
-    ///   - json: Keystore of wallet
+    ///   - privateKey: Private key of wallet.
     public func importWallet(privateKey key: String) {
         //Return value with delegate
         EtherKeystore.shared.importWallet(type: .privateKey(privateKey: key)) { result in
@@ -78,6 +78,11 @@ public class NANJWalletManager: NSObject {
         }
     }
     
+    /// Import a wallet with json string
+    ///
+    /// - Parameters:
+    ///   - keyStore: Keystore of wallet.
+    ///   - password: password of Keystore
     public func importWallet(keyStore key: String, password pass: String) {
         //Return value with delegate
         EtherKeystore.shared.importWallet(type: .keystore(string: key, password: pass)) { result in
@@ -96,6 +101,22 @@ public class NANJWalletManager: NSObject {
     public func removeWallet(wallet: NANJWallet) -> Bool {
         
         return false
+    }
+    
+    
+    public func exportPrivateKey(wallet: NANJWallet) -> String? {
+        guard let address = wallet.getEtherWallet()?.address else {
+            return nil
+        }
+        if let account = EtherKeystore.shared.getAccount(for: address) {
+            do {
+                let result = try EtherKeystore.shared.exportPrivateKey(account: account).dematerialize()
+                return result.hexString
+            } catch {
+                return nil
+            }
+        }
+        return nil
     }
     
     
