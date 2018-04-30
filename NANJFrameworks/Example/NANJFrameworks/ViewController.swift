@@ -38,21 +38,26 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     
     //MARK: - Action with current wallet
     @IBAction func onClickRemoveWallet(_ sender: Any) {
-        
+        if let __wallet: NANJWallet = NANJWalletManager.shared.getCurrentWallet() {
+            if NANJWalletManager.shared.removeWallet(wallet: __wallet) {
+                print("Remove wallet success")
+            } else {
+                print("Remove wallet failed.")
+            }
+        }
     }
     
     @IBAction func onClickExportKeystore(_ sender: Any) {
-        
+        if let __wallet: NANJWallet = NANJWalletManager.shared.getCurrentWallet() {
+            self.openExportKeystore(wallet: __wallet)
+        }
     }
     
     @IBAction func onClickCopyPrivateKey(_ sender: Any) {
         if let wallet = NANJWalletManager.shared.getCurrentWallet() {
             self.showLoading()
-            let privateKey = NANJWalletManager.shared.exportPrivateKey(wallet: wallet)
-            self.shareActivity(str: privateKey ?? "")
-            self.hideLoading()
+            NANJWalletManager.shared.exportPrivateKey(wallet: wallet)
         }
-        
     }
     
     @IBAction func onClickCopyAddress(_ sender: Any) {
@@ -95,14 +100,28 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         if let __wallet = wallet {
             self.showMessage("Imported wallet: " + __wallet.address)
         } else {
-            self.showMessage("Import wallet fail.")
+            self.showMessage( error?.localizedDescription ?? "Import wallet fail.")
         }
     }
     
-    func didGetWalletList(wallets: [NANJWallet]?, error: Error?) {
-        
+    func didExportPrivatekey(wallet: NANJWallet, privateKey: String?, error: Error?) {
+        self.hideLoading()
+        if let key = privateKey {
+            self.shareActivity(str: key)
+        } else {
+            self.showMessage("Export private key error")
+        }
     }
-
+    
+    func didExportKeystore(wallet: NANJWallet, keyStore: String?, error: Error?) {
+        self.hideLoading()
+        if let key = keyStore {
+            self.shareActivity(str: key)
+        } else {
+            self.showMessage("Export key store error")
+        }
+    }
+    
     func didGetWalletFromQRCode(wallet: NANJWallet?) {
         print("didGetWalletFromQRCode")
     }
@@ -186,6 +205,29 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
 
+        }
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func openExportKeystore(wallet: NANJWallet) {
+        let alert = UIAlertController(title: "Input password", message: "", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if let __text = textField?.text {
+                if __text.count > 0 {
+                    self.showLoading()
+                    NANJWalletManager.shared.exportKeystore(wallet: wallet, password: __text)
+                }
+            }
+        }))
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            
         }
         alert.addAction(cancel)
         

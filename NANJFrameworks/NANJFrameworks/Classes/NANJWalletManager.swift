@@ -24,6 +24,22 @@ import TrustKeystore
     ///   - error: Error during wallet import.
     @objc optional func didImportWallet(wallet: NANJWallet?, error: Error?)
     
+    /// Callback wallet when export completed.
+    ///
+    /// - Parameters:
+    ///   - wallet: Wallet export.
+    ///   - privateKey: Private key export from wallet.
+    ///   - error: Error during wallet import.
+    @objc optional func didExportPrivatekey(wallet: NANJWallet, privateKey: String?, error: Error?)
+
+    /// Callback wallet when export completed.
+    ///
+    /// - Parameters:
+    ///   - wallet: Wallet export.
+    ///   - keyStore: Private key export from wallet.
+    ///   - error: Error during wallet import.
+    @objc optional func didExportKeystore(wallet: NANJWallet, keyStore: String?, error: Error?)
+    
     /// Callback wallet list when get completed.
     ///
     /// - Parameters:
@@ -48,13 +64,17 @@ public class NANJWalletManager: NSObject {
     
     public var delegate: NANJWalletManagerDelegate?
     
+    fileprivate lazy var keystore: EtherKeystore = {
+        return EtherKeystore.shared
+    }()
+    
     /**
      Create new wallet.
      
      - returns: Wallet by NANJWalletManagerDelegate.
      */
     public func createWallet(password: String) {
-        EtherKeystore.shared.createAccount(with: password) { result in
+        self.keystore.createAccount(with: password) { result in
             if result.error != nil {
                 self.delegate?.didCreateWallet?(wallet: nil, error: nil)
             } else {
@@ -69,12 +89,13 @@ public class NANJWalletManager: NSObject {
     ///   - privateKey: Private key of wallet.
     public func importWallet(privateKey key: String) {
         //Return value with delegate
-        EtherKeystore.shared.importWallet(type: .privateKey(privateKey: key)) { result in
-            guard let error = result.error else {
-                self.delegate?.didImportWallet?(wallet: result.value?.toNANJWallet(), error: nil)
-                return
+        self.keystore.importWallet(type: .privateKey(privateKey: key)) { result in
+            if result.error != nil {
+                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.import"]))
+            } else {
+                let __wallet: NANJWallet? = result.value?.toNANJWallet()
+                self.delegate?.didImportWallet?(wallet: __wallet, error: nil)
             }
-            self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":error.errorDescription ?? "com.nanj.error.import"]))
         }
     }
     
@@ -99,24 +120,59 @@ public class NANJWalletManager: NSObject {
     /// - Parameter wallet: that you want to remove
     /// - Returns: if remove successful return true and opposite
     public func removeWallet(wallet: NANJWallet) -> Bool {
-        
+        if let __wallet = wallet.getEtherWallet() {
+            return self.keystore.delete(wallet: __wallet).error == nil
+        }
         return false
     }
     
     
-    public func exportPrivateKey(wallet: NANJWallet) -> String? {
+    public func exportPrivateKey(wallet: NANJWallet) {
+        let error = NSError(domain: "com.nanj.error.export", code: 1992, userInfo: ["description": "com.nanj.error.export"])
         guard let address = wallet.getEtherWallet()?.address else {
-            return nil
+            self.delegate?.didExportPrivatekey?(wallet: wallet, privateKey: nil, error: error)
+            return
         }
-        if let account = EtherKeystore.shared.getAccount(for: address) {
-            do {
-                let result = try EtherKeystore.shared.exportPrivateKey(account: account).dematerialize()
-                return result.hexString
-            } catch {
-                return nil
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let account = self.keystore.getAccount(for: address) {
+                do {
+                        let result = try self.keystore.exportPrivateKey(account: account).dematerialize()
+                        DispatchQueue.main.async {
+                            self.delegate?.didExportPrivatekey?(wallet: wallet, privateKey: result.hexString, error: nil)
+                        }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.delegate?.didExportPrivatekey?(wallet: wallet, privateKey: nil, error: error)
+                    }
+                }
             }
         }
-        return nil
+    }
+    
+    public func exportKeystore(wallet: NANJWallet, password: String) {
+        let error = NSError(domain: "com.nanj.error.export", code: 1992, userInfo: ["description": "com.nanj.error.export"])
+        guard let address = wallet.getEtherWallet()?.address else {
+            self.delegate?.didExportKeystore?(wallet: wallet, keyStore: nil, error: error)
+            return
+        }
+        if let account = self.keystore.getAccount(for: address) {
+            if let currentPassword = self.keystore.getPassword(for: account) {
+                self.keystore.export(account: account, password: currentPassword, newPassword: password) { result in
+                    if let __keystore = result.value {
+                        self.delegate?.didExportKeystore?(wallet: wallet, keyStore: __keystore, error: nil)
+                    } else {
+                        self.delegate?.didExportKeystore?(wallet: wallet, keyStore: nil, error: error)
+                    }                }
+            } else {
+                self.keystore.export(account: account, password: password, newPassword: password) { result in
+                    if let __keystore = result.value {
+                        self.delegate?.didExportKeystore?(wallet: wallet, keyStore: __keystore, error: nil)
+                    } else {
+                        self.delegate?.didExportKeystore?(wallet: wallet, keyStore: nil, error: error)
+                    }
+                }
+            }
+        }
     }
     
     
@@ -134,7 +190,7 @@ public class NANJWalletManager: NSObject {
     ///
     /// - Returns: return current NANJWallet
     public func getCurrentWallet() -> NANJWallet? {
-        if let wallet: Wallet = EtherKeystore.shared.recentlyUsedWallet {
+        if let wallet: Wallet = self.keystore.recentlyUsedWallet {
             return wallet.toNANJWallet()
         }
         return nil
@@ -144,7 +200,7 @@ public class NANJWalletManager: NSObject {
     /// After finish get wallets on async function
     /// It return list wallets in callback delegate.
     public func getWalletList() {
-        let walletList = EtherKeystore.shared.wallets.map { wallet -> NANJWallet in
+        let walletList = self.keystore.wallets.map { wallet -> NANJWallet in
             let nanjWallet: NANJWallet = NANJWallet()
             nanjWallet.address = wallet.address.eip55String
             nanjWallet.addEtherWallet(wallet: wallet)
