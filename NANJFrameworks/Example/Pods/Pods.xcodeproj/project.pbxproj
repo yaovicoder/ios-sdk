@@ -285,7 +285,7 @@
 		96D6343AB5B8E7E819B6079D8ABC6ED3 /* TrezorCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0FFBCDE3C7E63AAB5A6B54253BD175 /* TrezorCrypto.framework */; };
 		97E201D68B479C003F942AB7197AD996 /* DigestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1F1D1921597A8FF8BA453469F9E07C /* DigestType.swift */; };
 		988EED125395950177DC14AF9BC87D8D /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09AA801D2FB71A841059B6FBDFD569 /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		98914019358EEA3F4A41ED68AB23A1E0 /* NANJNFCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CEF45A4D8F9389F7520E284E785A3 /* NANJNFCViewController.swift */; };
+		98914019358EEA3F4A41ED68AB23A1E0 /* NANJNFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986CEF45A4D8F9389F7520E284E785A3 /* NANJNFC.swift */; };
 		9944A0994F3158630EB61BB40CD34CCF /* Pods-NANJFrameworks_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA1188D5BC9BD98B710E901D5229B95 /* Pods-NANJFrameworks_Example-dummy.m */; };
 		99ED13BA15822FD5AEE570B9002C37A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5262C0359C2A785CECCDFB6D3E2F072 /* UIKit.framework */; };
 		9AFAB71D972580FF8A1C680954DDF4AB /* Words and Bits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856BE04F3F681A484CF07EF09C06FF28 /* Words and Bits.swift */; };
@@ -735,10 +735,10 @@
 
 /* Begin PBXFileReference section */
 		0034DC383DE2739AAA1E16E70C5B8862 /* BatchedCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BatchedCollection.swift; path = Sources/CryptoSwift/BatchedCollection.swift; sourceTree = "<group>"; };
-		005CF29EDAC9BEE24FC125B7054D7BC5 /* bip39.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bip39.c; path = "trezor-crypto/bip39.c"; sourceTree = "<group>"; };
+		005CF29EDAC9BEE24FC125B7054D7BC5 /* bip39.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bip39.c; path = "trezor-crypto/bip39.c"; sourceTree = "<group>"; };
 		00EF27DB033852C044A951C6F8E247DE /* XCTestObservationCenter+CurrentTestCaseTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XCTestObservationCenter+CurrentTestCaseTracker.h"; sourceTree = "<group>"; };
 		019E11D82A0A6D1DBBEB9691BFBEADBB /* aesopt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aesopt.h; path = "trezor-crypto/aes/aesopt.h"; sourceTree = "<group>"; };
-		0236959331E0675096D88E03BA0B6402 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SipHash.modulemap; sourceTree = "<group>"; };
+		0236959331E0675096D88E03BA0B6402 /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SipHash.modulemap; sourceTree = "<group>"; };
 		02474F35C676A04781852F514E1731D8 /* SHA3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA3.swift; path = Sources/CryptoSwift/SHA3.swift; sourceTree = "<group>"; };
 		026556D1FB25DCA2BED2C13AA4197D57 /* BigInt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BigInt.xcconfig; sourceTree = "<group>"; };
 		029A866312EAC4567D013564A3217BBA /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Result/Result.swift; sourceTree = "<group>"; };
@@ -749,16 +749,16 @@
 		064174FE35D6AE32C4EF0C763976E83C /* PBKDF2.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PBKDF2.swift; path = Sources/CryptoSwift/PKCS/PBKDF2.swift; sourceTree = "<group>"; };
 		06827D43AF9BABF053DEEB0CC0147BBE /* script.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = script.h; path = "trezor-crypto/script.h"; sourceTree = "<group>"; };
 		06BC2E60680F1A13C0779AC6E6B80F6F /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
-		076044682D3CB5D1F5EE5D6C4E020C3B /* TrustCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrustCore.framework; path = TrustCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		076044682D3CB5D1F5EE5D6C4E020C3B /* TrustCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F2041EB587FC6B658C521CC9D73C1A /* CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBC.swift; path = Sources/CryptoSwift/BlockMode/CBC.swift; sourceTree = "<group>"; };
-		0891A3D56D15FFD5916B10328839F13B /* ecdsa.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ecdsa.c; path = "trezor-crypto/ecdsa.c"; sourceTree = "<group>"; };
+		0891A3D56D15FFD5916B10328839F13B /* ecdsa.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ecdsa.c; path = "trezor-crypto/ecdsa.c"; sourceTree = "<group>"; };
 		09C7AFA88463A173F321BE5774273C83 /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
 		0A11FB21314BE4D6175FF2D0725EC5B4 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		0A1E7965D1E3AFB928A2A5CE4C6EBDB3 /* ECB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ECB.swift; path = Sources/CryptoSwift/BlockMode/ECB.swift; sourceTree = "<group>"; };
 		0A8375836E3F02208143A84BFBEEF977 /* Data Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data Conversion.swift"; path = "sources/Data Conversion.swift"; sourceTree = "<group>"; };
 		0A842D1B99D06EFBDB6D27499402198D /* ABIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ABIError.swift; path = Sources/Solidity/ABIError.swift; sourceTree = "<group>"; };
-		0ACD45ACA27AA1C5E1D1F44E3934CC86 /* Pods_NANJFrameworks_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NANJFrameworks_Example.framework; path = "Pods-NANJFrameworks_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B1FE81CE39155E47C3E51C32A77DA31 /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aescrypt.c; path = "trezor-crypto/aes/aescrypt.c"; sourceTree = "<group>"; };
+		0ACD45ACA27AA1C5E1D1F44E3934CC86 /* Pods_NANJFrameworks_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NANJFrameworks_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B1FE81CE39155E47C3E51C32A77DA31 /* aescrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aescrypt.c; path = "trezor-crypto/aes/aescrypt.c"; sourceTree = "<group>"; };
 		0BC3CD6B0B5314F3ED4A493DC0EFC15C /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		0BC4E4B00F355A42DF56019C3A4DF6B6 /* ResultProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResultProtocol.swift; path = Result/ResultProtocol.swift; sourceTree = "<group>"; };
 		0C8A6F80BA51D15F8C0783CF5EF4727D /* RandomAccessCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessCryptor.swift; path = Sources/CryptoSwift/RandomAccessCryptor.swift; sourceTree = "<group>"; };
@@ -766,7 +766,7 @@
 		0DB7AF8C55C0ABB960F6DDC755DB6CD2 /* SecureBytes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureBytes.swift; path = Sources/CryptoSwift/SecureBytes.swift; sourceTree = "<group>"; };
 		0E0FD69FE18F834BB292442273130CE1 /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
 		0E92F0F9C694F882C1ECC05D5E243982 /* CwlCatchException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchException.m; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchExceptionSupport/CwlCatchException.m; sourceTree = "<group>"; };
-		0E99D179DFA30DC78EF9EB061DF39F94 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.c; path = "trezor-crypto/secp256k1.c"; sourceTree = "<group>"; };
+		0E99D179DFA30DC78EF9EB061DF39F94 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = secp256k1.c; path = "trezor-crypto/secp256k1.c"; sourceTree = "<group>"; };
 		0ED7B693E5A6621D137DE4390661BA56 /* Result-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Result-dummy.m"; sourceTree = "<group>"; };
 		0F3D43F81047E675AD4BFF598283472F /* KeychainSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainSwift-umbrella.h"; sourceTree = "<group>"; };
 		106AB5E1F6BEFAC59EFDC438354CCA9D /* SuiteHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SuiteHooks.swift; path = Sources/Quick/Hooks/SuiteHooks.swift; sourceTree = "<group>"; };
@@ -775,10 +775,10 @@
 		11330112845DB4964F323182A3E6DEE5 /* KeyStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyStore.swift; path = Sources/KeyStore.swift; sourceTree = "<group>"; };
 		11EBCB0E97F637869C7FE922BC578FDE /* PKCS7Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS7Padding.swift; path = Sources/CryptoSwift/PKCS/PKCS7Padding.swift; sourceTree = "<group>"; };
 		125915815985652DF1BC2F885E974269 /* CryptoSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-prefix.pch"; sourceTree = "<group>"; };
-		125B96DE2F17FD2E55F40ED5EFF1A2DD /* modm-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "modm-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/modm-donna-32bit.c"; sourceTree = "<group>"; };
+		125B96DE2F17FD2E55F40ED5EFF1A2DD /* modm-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "modm-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/modm-donna-32bit.c"; sourceTree = "<group>"; };
 		12A6E70E519CF31D2674CD79169D6CA8 /* EtherExtentsion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EtherExtentsion.swift; sourceTree = "<group>"; };
 		13B08274B95037E197DB45EAB04FF6DC /* aes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aes.h; path = "trezor-crypto/aes/aes.h"; sourceTree = "<group>"; };
-		13DA64E4AD0EC23767B7E6E37217F028 /* ed25519-sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-sha3.c"; path = "trezor-crypto/ed25519-donna/ed25519-sha3.c"; sourceTree = "<group>"; };
+		13DA64E4AD0EC23767B7E6E37217F028 /* ed25519-sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-sha3.c"; path = "trezor-crypto/ed25519-donna/ed25519-sha3.c"; sourceTree = "<group>"; };
 		14605879002D4FBA98440A135D9E38D6 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
 		15CB25D560B4E4662731D59CBFB898C2 /* Wallet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Wallet.swift; path = Sources/Wallet/Wallet.swift; sourceTree = "<group>"; };
 		15EF4A3FE582092F1BC394419AC79A14 /* ChaCha20+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ChaCha20+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/ChaCha20+Foundation.swift"; sourceTree = "<group>"; };
@@ -787,8 +787,8 @@
 		168BB4496376E653D7144D08523A2172 /* Comparable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Comparable.swift; path = sources/Comparable.swift; sourceTree = "<group>"; };
 		16B46DC2DDAFDC36FE0FA0802D816241 /* Nimble-Snapshots-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-Snapshots-dummy.m"; sourceTree = "<group>"; };
 		17A027133900866E32DCE5D560314CDA /* ecrypt-machine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ecrypt-machine.h"; path = "trezor-crypto/chacha20poly1305/ecrypt-machine.h"; sourceTree = "<group>"; };
-		182ED03738780D38987D387A18DE550E /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble_Snapshots.framework; path = "Nimble-Snapshots.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1914B852E758294323C44F31A56A590A /* curves.c */ = {isa = PBXFileReference; includeInIndex = 1; name = curves.c; path = "trezor-crypto/curves.c"; sourceTree = "<group>"; };
+		182ED03738780D38987D387A18DE550E /* Nimble_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1914B852E758294323C44F31A56A590A /* curves.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = curves.c; path = "trezor-crypto/curves.c"; sourceTree = "<group>"; };
 		1AC1B339D50EBAA37A58255B8D141B06 /* NBSMockedApplication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBSMockedApplication.m; path = DynamicType/NBSMockedApplication.m; sourceTree = "<group>"; };
 		1C11D952C6121508313A761B8177E701 /* segwit_addr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = segwit_addr.h; path = "trezor-crypto/segwit_addr.h"; sourceTree = "<group>"; };
 		1C964D0B84C199A43C2EC065AA853BC0 /* TrustKeystore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TrustKeystore.xcconfig; sourceTree = "<group>"; };
@@ -806,9 +806,9 @@
 		23B31ED67B30C0B9156A7420642AC978 /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		25A663492048AC4DE3B7211364F36B87 /* ecrypt-portable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ecrypt-portable.h"; path = "trezor-crypto/chacha20poly1305/ecrypt-portable.h"; sourceTree = "<group>"; };
 		25C028ACC7103F823BB85025BCF9448F /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
-		262C7165AF51726815D31A67803D4E34 /* Nimble-Snapshots.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Nimble-Snapshots.modulemap"; sourceTree = "<group>"; };
+		262C7165AF51726815D31A67803D4E34 /* Nimble-Snapshots.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Nimble-Snapshots.modulemap"; sourceTree = "<group>"; };
 		270BD5C382054CD89594B0C899C42E70 /* blake2s.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blake2s.h; path = "trezor-crypto/blake2s.h"; sourceTree = "<group>"; };
-		2718DD3198D4D6A090D0708DCD183A77 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Quick.modulemap; sourceTree = "<group>"; };
+		2718DD3198D4D6A090D0708DCD183A77 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Quick.modulemap; sourceTree = "<group>"; };
 		27FF28F31A7F297917CCB75D4EBA5884 /* Strideable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Strideable.swift; path = sources/Strideable.swift; sourceTree = "<group>"; };
 		280BF769824EB729C6CCE0F5853448FD /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		283E58484149A16DF5A0D8EF8CF7A6C0 /* CryptoSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-umbrella.h"; sourceTree = "<group>"; };
@@ -819,7 +819,7 @@
 		2A9BDEC988B8474379E156FFD51B9604 /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
 		2A9D1E5C42075BD1D5139DCD117FCDD2 /* EthTypedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EthTypedData.swift; sourceTree = "<group>"; };
 		2A9FA6D0DB8CA490FCB5B48A2F71CAB6 /* Pods-NANJFrameworks_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NANJFrameworks_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		2C905CD2B408F9FFDDA2D2F2A13C142E /* chacha_merged.c */ = {isa = PBXFileReference; includeInIndex = 1; name = chacha_merged.c; path = "trezor-crypto/chacha20poly1305/chacha_merged.c"; sourceTree = "<group>"; };
+		2C905CD2B408F9FFDDA2D2F2A13C142E /* chacha_merged.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = chacha_merged.c; path = "trezor-crypto/chacha20poly1305/chacha_merged.c"; sourceTree = "<group>"; };
 		2D2E7F4F7B2E1F7295920C8FC328218E /* ed25519-donna-basepoint-table.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-basepoint-table.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.h"; sourceTree = "<group>"; };
 		2EF5721B3EDC9DF36251B4A0CDFB0C6C /* BigInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = sources/BigInt.swift; sourceTree = "<group>"; };
 		2FC97CF5391BACA8FEA0839CA24DCF08 /* base58.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = base58.h; path = "trezor-crypto/base58.h"; sourceTree = "<group>"; };
@@ -841,14 +841,14 @@
 		373327ABF5CB30522E3CB6580046C4A2 /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
 		38084F5F77CCE64E3F7A91DFC6687A98 /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		3859D6F88BBC526206D88AAF5DE7917E /* ExpectationMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpectationMessage.swift; path = Sources/Nimble/ExpectationMessage.swift; sourceTree = "<group>"; };
-		38BB53271D07B5292A933FDFE63B277A /* Pods-NANJFrameworks_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NANJFrameworks_Tests.modulemap"; sourceTree = "<group>"; };
+		38BB53271D07B5292A933FDFE63B277A /* Pods-NANJFrameworks_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NANJFrameworks_Tests.modulemap"; sourceTree = "<group>"; };
 		38EF696338BFBD237CF5A218902CD074 /* TrustCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrustCore-prefix.pch"; sourceTree = "<group>"; };
 		38FCE79C63C70235CEC00E4D56223048 /* ed25519-donna.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna.h"; sourceTree = "<group>"; };
 		392F2DA8187FB2167D466243EF5BA242 /* nist256p1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nist256p1.h; path = "trezor-crypto/nist256p1.h"; sourceTree = "<group>"; };
 		39B23D763D826C3C73C147B461EB7780 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		3A403B312D4E33DF578738020484978F /* Mnemonic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mnemonic.swift; path = Sources/Wallet/Mnemonic.swift; sourceTree = "<group>"; };
 		3A5D8197DBB7CF7302907562DC8F4C94 /* NANJFrameworks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NANJFrameworks.xcconfig; sourceTree = "<group>"; };
-		3AA7657366F5FECD9F4B7C392CA834BF /* script.c */ = {isa = PBXFileReference; includeInIndex = 1; name = script.c; path = "trezor-crypto/script.c"; sourceTree = "<group>"; };
+		3AA7657366F5FECD9F4B7C392CA834BF /* script.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = script.c; path = "trezor-crypto/script.c"; sourceTree = "<group>"; };
 		3AD1BEFFE07AEF8E28B3EFB40A4759B5 /* EtherKeystore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EtherKeystore.swift; sourceTree = "<group>"; };
 		3AE54DFE25D31669CEC3C1A9B30BB182 /* BlockModeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeOptions.swift; path = Sources/CryptoSwift/BlockMode/BlockModeOptions.swift; sourceTree = "<group>"; };
 		3B8CE8340DF22218B9366F1C788CF5FE /* SipHash-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SipHash-dummy.m"; sourceTree = "<group>"; };
@@ -869,15 +869,15 @@
 		46003EC96C580D0291561CB1FC641B53 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
 		463A1F8F881A04AE7AB3240BDBF9A5B8 /* BlockMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockMode.swift; path = Sources/CryptoSwift/BlockMode/BlockMode.swift; sourceTree = "<group>"; };
 		465CBFC411543B339100FA5C2B317A81 /* Floating Point Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Floating Point Conversion.swift"; path = "sources/Floating Point Conversion.swift"; sourceTree = "<group>"; };
-		466362B230B9252FEF554647EDF3F4FF /* sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha3.c; path = "trezor-crypto/sha3.c"; sourceTree = "<group>"; };
+		466362B230B9252FEF554647EDF3F4FF /* sha3.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha3.c; path = "trezor-crypto/sha3.c"; sourceTree = "<group>"; };
 		477D063DE877559EBA132D160F47F6B4 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		47AC62B9F722079325A04D64CC54A713 /* DynamicSizeSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicSizeSnapshot.swift; path = DynamicSize/DynamicSizeSnapshot.swift; sourceTree = "<group>"; };
 		4867DF690DB78AD77A0A629F413CC207 /* NANJQRCodeViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NANJQRCodeViewController.swift; path = NANJFrameworks/Classes/NANJQRCodeViewController.swift; sourceTree = "<group>"; };
 		4870E402EE5BE0F23EF0DBFC2B30D731 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		49629F24135B6631A1BFA4125BBE87C5 /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
 		49AAD4D35F3E59A39C88A9FCA1B06C5D /* JSONRPCError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONRPCError.swift; path = Sources/JSONRPCKit/JSONRPCError.swift; sourceTree = "<group>"; };
-		49B4F943D64B2B37B7CA598A45B72678 /* address.c */ = {isa = PBXFileReference; includeInIndex = 1; name = address.c; path = "trezor-crypto/address.c"; sourceTree = "<group>"; };
-		49FBF81A3DB3E03052876ECF4E6A7ABD /* memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; name = memzero.c; path = "trezor-crypto/memzero.c"; sourceTree = "<group>"; };
+		49B4F943D64B2B37B7CA598A45B72678 /* address.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = address.c; path = "trezor-crypto/address.c"; sourceTree = "<group>"; };
+		49FBF81A3DB3E03052876ECF4E6A7ABD /* memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = memzero.c; path = "trezor-crypto/memzero.c"; sourceTree = "<group>"; };
 		4AC07ED73B6C41421862AF43829977BD /* PBKDF1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PBKDF1.swift; path = Sources/CryptoSwift/PKCS/PBKDF1.swift; sourceTree = "<group>"; };
 		4BE6125D6934AAC1853B2D869F50251A /* UInt32+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+Extension.swift"; path = "Sources/CryptoSwift/UInt32+Extension.swift"; sourceTree = "<group>"; };
 		4C9A4F5816E947B6EF0CB9898A88C922 /* XCTestSuite+QuickTestSuiteBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestSuite+QuickTestSuiteBuilder.m"; path = "Sources/QuickObjectiveC/XCTestSuite+QuickTestSuiteBuilder.m"; sourceTree = "<group>"; };
@@ -885,12 +885,12 @@
 		4DD106D826B72F1B74697B3E432A8C14 /* KeychainSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainSwift-dummy.m"; sourceTree = "<group>"; };
 		4E0F0FF43A170B75073753A1A710F63C /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
 		4E1885AF4602B3813889B7F54EC74775 /* NBSMockedApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBSMockedApplication.h; path = DynamicType/NBSMockedApplication.h; sourceTree = "<group>"; };
-		4E4BD91F2DD1E8EAE48E2C43F0D52A8E /* TrustCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TrustCore.modulemap; sourceTree = "<group>"; };
-		4EAEF793C69E53C6D5F1F066A5B54D48 /* Pods_NANJFrameworks_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NANJFrameworks_Tests.framework; path = "Pods-NANJFrameworks_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E4BD91F2DD1E8EAE48E2C43F0D52A8E /* TrustCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TrustCore.modulemap; sourceTree = "<group>"; };
+		4EAEF793C69E53C6D5F1F066A5B54D48 /* Pods_NANJFrameworks_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NANJFrameworks_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3B008987AC33E6D28559C347CB71F0 /* SHA1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA1.swift; path = Sources/CryptoSwift/SHA1.swift; sourceTree = "<group>"; };
 		4FFF5C56B45BB95B2AB6D18C1CDA1BDB /* BigInt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-prefix.pch"; sourceTree = "<group>"; };
 		5048BFA32E0F96F60F65E43C9A330216 /* ScryptParams.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScryptParams.swift; path = Sources/ScryptParams.swift; sourceTree = "<group>"; };
-		517EC782C85FBF115FD481BDF8E8534F /* BigInt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BigInt.modulemap; sourceTree = "<group>"; };
+		517EC782C85FBF115FD481BDF8E8534F /* BigInt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BigInt.modulemap; sourceTree = "<group>"; };
 		5260D8CF42DD8EABD33E485089D959FF /* Nimble-Snapshots-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-Snapshots-prefix.pch"; sourceTree = "<group>"; };
 		526A6CB704DDEE9A0BB235475CC1D074 /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
 		52CEEEB0903C00E0135B30CDCFC3C23A /* NoPadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NoPadding.swift; path = Sources/CryptoSwift/NoPadding.swift; sourceTree = "<group>"; };
@@ -899,11 +899,11 @@
 		5462047FCB42F5521465F6E18998EB30 /* GCD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GCD.swift; path = sources/GCD.swift; sourceTree = "<group>"; };
 		551D6E5BF44A548D90B4186060CFB1D5 /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
 		559D5A1EE74BF36D9899157CBF500579 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
-		55B8E0E3C62698435DDD43FEBFD3D994 /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aestab.c; path = "trezor-crypto/aes/aestab.c"; sourceTree = "<group>"; };
-		55D9214132645F4DB5841CA7C4C38162 /* nem.c */ = {isa = PBXFileReference; includeInIndex = 1; name = nem.c; path = "trezor-crypto/nem.c"; sourceTree = "<group>"; };
-		5684F84BC9EB117191A6307197D8C6C3 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		55B8E0E3C62698435DDD43FEBFD3D994 /* aestab.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aestab.c; path = "trezor-crypto/aes/aestab.c"; sourceTree = "<group>"; };
+		55D9214132645F4DB5841CA7C4C38162 /* nem.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = nem.c; path = "trezor-crypto/nem.c"; sourceTree = "<group>"; };
+		5684F84BC9EB117191A6307197D8C6C3 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
 		585627538DBF8627E7DC014FC149E2DE /* MnemonicWords.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MnemonicWords.swift; path = Sources/Wallet/MnemonicWords.swift; sourceTree = "<group>"; };
-		58EDBB04BE45F1DD0613C8EAFE7252E1 /* pbkdf2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = pbkdf2.c; path = "trezor-crypto/pbkdf2.c"; sourceTree = "<group>"; };
+		58EDBB04BE45F1DD0613C8EAFE7252E1 /* pbkdf2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = pbkdf2.c; path = "trezor-crypto/pbkdf2.c"; sourceTree = "<group>"; };
 		597C3523349E36F3BECA28C26B1C1F9B /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
 		59912926056E247CD61CF71F7D526D94 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59AD57EBDAAA5D8EF852CB19CC58CA73 /* Pods-NANJFrameworks_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NANJFrameworks_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -912,7 +912,7 @@
 		5A9368FBB8DEB9940D04BF17347E67D4 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		5A9D8F9BA483D3FBE5BF4AAC976191CA /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
 		5AA1188D5BC9BD98B710E901D5229B95 /* Pods-NANJFrameworks_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NANJFrameworks_Example-dummy.m"; sourceTree = "<group>"; };
-		5AD764CFE3AB318B5156E623C65254B6 /* hasher.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hasher.c; path = "trezor-crypto/hasher.c"; sourceTree = "<group>"; };
+		5AD764CFE3AB318B5156E623C65254B6 /* hasher.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hasher.c; path = "trezor-crypto/hasher.c"; sourceTree = "<group>"; };
 		5AD9738C12F553317642007B8C73D113 /* Array+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Array+Foundation.swift"; sourceTree = "<group>"; };
 		5AE27D97DDBBE3D980527304920E9343 /* Result.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Result.xcconfig; sourceTree = "<group>"; };
 		5AF18DBCC756A6021714D1C14238DD0A /* UIImage+Compare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Compare.h"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.h"; sourceTree = "<group>"; };
@@ -928,9 +928,9 @@
 		5FA098BDD361165B29C9129A4986433B /* NSString+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSString+C99ExtendedIdentifier.swift"; path = "Sources/Quick/NSString+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
 		5FACE6BEEF6E7E4794E21C4BD4DCC5B7 /* bip39_english.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip39_english.h; path = "trezor-crypto/bip39_english.h"; sourceTree = "<group>"; };
 		5FE93FFFAF12402D8EC7D7999D3EFCF0 /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h; sourceTree = "<group>"; };
-		60190A42D1C3DB9548BC6C294351C8C9 /* curve25519-donna-helpers.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-helpers.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-helpers.c"; sourceTree = "<group>"; };
-		60C2229396BE03F10B36807EB0312E8F /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; name = hmac.c; path = "trezor-crypto/hmac.c"; sourceTree = "<group>"; };
-		6223343BC089D6321E9AB7557129CA0D /* secp256k1.table */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.table; path = "trezor-crypto/secp256k1.table"; sourceTree = "<group>"; };
+		60190A42D1C3DB9548BC6C294351C8C9 /* curve25519-donna-helpers.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-helpers.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-helpers.c"; sourceTree = "<group>"; };
+		60C2229396BE03F10B36807EB0312E8F /* hmac.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = hmac.c; path = "trezor-crypto/hmac.c"; sourceTree = "<group>"; };
+		6223343BC089D6321E9AB7557129CA0D /* secp256k1.table */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = secp256k1.table; path = "trezor-crypto/secp256k1.table"; sourceTree = "<group>"; };
 		625E10608576241A887658D9BDB2CE5C /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
 		62B35A9DD1A29E8A11FACE02353EE99D /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
 		62BF3B5B8647B141F70A03544B04F4E3 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -943,8 +943,8 @@
 		65B56113A09A91B83B2CE9B991725112 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
 		65EB76602800BD42C2F8A038636249E2 /* Pods-NANJFrameworks_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NANJFrameworks_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6712749B7568FB8B39EAE1658A379120 /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
-		67E285D47C14EF6572483579FC880FD9 /* Result.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Result.modulemap; sourceTree = "<group>"; };
-		68FCAAF43FA57291F57ABD0BB3632EBE /* ed25519.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ed25519.c; path = "trezor-crypto/ed25519-donna/ed25519.c"; sourceTree = "<group>"; };
+		67E285D47C14EF6572483579FC880FD9 /* Result.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Result.modulemap; sourceTree = "<group>"; };
+		68FCAAF43FA57291F57ABD0BB3632EBE /* ed25519.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ed25519.c; path = "trezor-crypto/ed25519-donna/ed25519.c"; sourceTree = "<group>"; };
 		69620BA65B4B1825476D25F98392021D /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		69815245C50DA4824870AB97A87A8CA6 /* CurrentTestCaseTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CurrentTestCaseTracker.swift; sourceTree = "<group>"; };
 		69ECCF07C4EC52A40E709D459A73E764 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "trezor-crypto/hmac.h"; sourceTree = "<group>"; };
@@ -954,15 +954,15 @@
 		6D826806629B64683492601E5EF1E2EB /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
 		6E8C08984E448A356BC3EE1E3EE11179 /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		6EAF1BC0D810A97A2EBE02BA75C9528E /* MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MD5.swift; path = Sources/CryptoSwift/MD5.swift; sourceTree = "<group>"; };
-		6EECB61F16B7003E42640ECFC421AD8F /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
-		6F23321ADDD32DC90EB20AE6957E5293 /* JSONRPCKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JSONRPCKit.modulemap; sourceTree = "<group>"; };
+		6EECB61F16B7003E42640ECFC421AD8F /* CryptoSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CryptoSwift.modulemap; sourceTree = "<group>"; };
+		6F23321ADDD32DC90EB20AE6957E5293 /* JSONRPCKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JSONRPCKit.modulemap; sourceTree = "<group>"; };
 		6F3990D15E5D71C41CFFE1FF63A8D53F /* Int+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+Extension.swift"; path = "Sources/CryptoSwift/Int+Extension.swift"; sourceTree = "<group>"; };
-		6F3F14BCD921CA823D2C91506BD7606D /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3F14BCD921CA823D2C91506BD7606D /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD03F405C3203FEB5696182DDBFBDDF /* Pods-NANJFrameworks_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NANJFrameworks_Example-resources.sh"; sourceTree = "<group>"; };
 		703D5C333571EE5F0A2B3E29FB71BB15 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/NimbleObjectiveC/DSL.h; sourceTree = "<group>"; };
 		7086801310C74D0DF31ABF4360EBAA06 /* AEAD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AEAD.swift; path = Sources/CryptoSwift/AEAD/AEAD.swift; sourceTree = "<group>"; };
 		7150796658EA35AF65D3C4DD265BDC84 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickSpecBase/include/QuickSpecBase.h; sourceTree = "<group>"; };
-		716F9EF812D65710A91BD5DCFA7B1FEE /* Pods-NANJFrameworks_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NANJFrameworks_Example.modulemap"; sourceTree = "<group>"; };
+		716F9EF812D65710A91BD5DCFA7B1FEE /* Pods-NANJFrameworks_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NANJFrameworks_Example.modulemap"; sourceTree = "<group>"; };
 		7198E40B24746F47AD29BF01ADFDBAF5 /* memzero.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = memzero.h; path = "trezor-crypto/memzero.h"; sourceTree = "<group>"; };
 		72816F48CE2E573548E5DF8680171EE5 /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
 		72A3F5DE99F36F4C06330FFD567EC8AC /* bip32.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip32.h; path = "trezor-crypto/bip32.h"; sourceTree = "<group>"; };
@@ -974,7 +974,7 @@
 		7820D07D051BC8F091869FCA6D00A761 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B0B3D3B0107E18907BA9C020D2C3AD /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
 		78C4BAC81BC1E73221EAF5B335AB86D4 /* ecdsa.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecdsa.h; path = "trezor-crypto/ecdsa.h"; sourceTree = "<group>"; };
-		78E8D20F7ED1EC3B03E853C40369B7B7 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78E8D20F7ED1EC3B03E853C40369B7B7 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78FF9BA8A700026ABEE6A75FFF0A36F1 /* Integer Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Integer Conversion.swift"; path = "sources/Integer Conversion.swift"; sourceTree = "<group>"; };
 		79DDDE8D92E6F7BB329E1636F40800B3 /* Poly1305.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Poly1305.swift; path = Sources/CryptoSwift/Poly1305.swift; sourceTree = "<group>"; };
 		7AD05190E6EC5DE29E59BBB59E59D2BC /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
@@ -992,23 +992,23 @@
 		804348803180D0F053D6A4A0D886635D /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		8162EA000680D559AF5AEC3211D32189 /* Id.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Id.swift; path = Sources/JSONRPCKit/Id.swift; sourceTree = "<group>"; };
 		8184FD9BE38427C69C51B0C095F716FF /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
-		81965F87695F392D03516100C1E64F6F /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		81965F87695F392D03516100C1E64F6F /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
 		81BBEE8F3ABD40DE3F0D1B3E8A35ADBA /* NANJWalletManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NANJWalletManager.swift; path = NANJFrameworks/Classes/NANJWalletManager.swift; sourceTree = "<group>"; };
 		82CA3275F20213003F92035275CEACD2 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		83EB7005804E3917D46C6F9F21D109C2 /* Generics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generics.swift; path = Sources/CryptoSwift/Generics.swift; sourceTree = "<group>"; };
 		840E79FD082ADC8C7F37AA467180518C /* TrustKeystore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrustKeystore-prefix.pch"; sourceTree = "<group>"; };
 		840F87C8EE1A79C0DAAB0292DBD82B42 /* bip39.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bip39.h; path = "trezor-crypto/bip39.h"; sourceTree = "<group>"; };
 		8462749DB2A93E222B863DC66F7DAFEB /* TrustCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TrustCore.h; path = Sources/TrustCore.h; sourceTree = "<group>"; };
-		851CE96F3AD4EEF985CCD1D7565FD3BA /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
+		851CE96F3AD4EEF985CCD1D7565FD3BA /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		856BE04F3F681A484CF07EF09C06FF28 /* Words and Bits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Words and Bits.swift"; path = "sources/Words and Bits.swift"; sourceTree = "<group>"; };
 		85F39608E1A9995190B880A14068E16D /* FBSnapshotTestCase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCase.h; path = FBSnapshotTestCase/FBSnapshotTestCase.h; sourceTree = "<group>"; };
-		877811F2FB5F99AA093C3D575681A490 /* aes_modes.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aes_modes.c; path = "trezor-crypto/aes/aes_modes.c"; sourceTree = "<group>"; };
+		877811F2FB5F99AA093C3D575681A490 /* aes_modes.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aes_modes.c; path = "trezor-crypto/aes/aes_modes.c"; sourceTree = "<group>"; };
 		88A16D5FE106B1521AF1C48780426AD2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88FBA6685046918B80BF20C17E236286 /* BigUInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BigUInt.swift; path = sources/BigUInt.swift; sourceTree = "<group>"; };
 		8932583CAA7132F0AD4401A4401BD213 /* PasswordGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		89AF7118E7B5613561C0A48582AB2C66 /* World+DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "World+DSL.swift"; path = "Sources/Quick/DSL/World+DSL.swift"; sourceTree = "<group>"; };
 		89DC32775166F522D655BD4667E89F2F /* JSONRPCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONRPCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89DC66945BEDE5BF95ADA0D15DAA6F5F /* chacha20poly1305.c */ = {isa = PBXFileReference; includeInIndex = 1; name = chacha20poly1305.c; path = "trezor-crypto/chacha20poly1305/chacha20poly1305.c"; sourceTree = "<group>"; };
+		89DC66945BEDE5BF95ADA0D15DAA6F5F /* chacha20poly1305.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = chacha20poly1305.c; path = "trezor-crypto/chacha20poly1305/chacha20poly1305.c"; sourceTree = "<group>"; };
 		8A7DA6F1CDD8232E9B134E857F985070 /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		8AD30EFB17802351F29BB28E60812E9F /* JSONRPCKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JSONRPCKit.xcconfig; sourceTree = "<group>"; };
 		8B09AA801D2FB71A841059B6FBDFD569 /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
@@ -1020,35 +1020,35 @@
 		9133D25613012D932EB6ABBD87E1101B /* TrustCore-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrustCore-umbrella.h"; sourceTree = "<group>"; };
 		937A6518C72D443FA6A28B5A87BDE0D0 /* Batch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Batch.swift; path = Sources/JSONRPCKit/Batch.swift; sourceTree = "<group>"; };
 		938BD35A8ED5606B3550F5885E7F3949 /* Authenticator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Authenticator.swift; path = Sources/CryptoSwift/Authenticator.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94D48A8D4CF8CCA2CF267212806B6DC5 /* NANJFrameworks.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = NANJFrameworks.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94D48A8D4CF8CCA2CF267212806B6DC5 /* NANJFrameworks.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = NANJFrameworks.modulemap; sourceTree = "<group>"; };
 		9511D8C0ADA5CEF5C4617324509AB591 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
-		9616027FB410638F238776A63DE87A1B /* nist256p1.table */ = {isa = PBXFileReference; includeInIndex = 1; name = nist256p1.table; path = "trezor-crypto/nist256p1.table"; sourceTree = "<group>"; };
+		9616027FB410638F238776A63DE87A1B /* nist256p1.table */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = nist256p1.table; path = "trezor-crypto/nist256p1.table"; sourceTree = "<group>"; };
 		9692AAAC90B4D8F50B2A5BCA2E3791EB /* ChaCha20.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChaCha20.swift; path = Sources/CryptoSwift/ChaCha20.swift; sourceTree = "<group>"; };
-		96D4B0EA4586142B13330021ADE239A7 /* ed25519-donna-32bit-tables.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-32bit-tables.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c"; sourceTree = "<group>"; };
+		96D4B0EA4586142B13330021ADE239A7 /* ed25519-donna-32bit-tables.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-32bit-tables.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c"; sourceTree = "<group>"; };
 		9717EC1F292941C59FA65C44BDC6B04F /* JSONRPCKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JSONRPCKit-dummy.m"; sourceTree = "<group>"; };
-		986CEF45A4D8F9389F7520E284E785A3 /* NANJNFCViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NANJNFCViewController.swift; path = NANJFrameworks/Classes/NANJNFCViewController.swift; sourceTree = "<group>"; };
-		99CCCDAE49086DA8765E53FA4AFF9EA9 /* base32.c */ = {isa = PBXFileReference; includeInIndex = 1; name = base32.c; path = "trezor-crypto/base32.c"; sourceTree = "<group>"; };
+		986CEF45A4D8F9389F7520E284E785A3 /* NANJNFC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NANJNFC.swift; path = NANJFrameworks/Classes/NANJNFC.swift; sourceTree = "<group>"; };
+		99CCCDAE49086DA8765E53FA4AFF9EA9 /* base32.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base32.c; path = "trezor-crypto/base32.c"; sourceTree = "<group>"; };
 		9A75691912BA4ED3C5FE10ACC662F0A2 /* Pods-NANJFrameworks_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NANJFrameworks_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9B0F405940A342C2191110AA9AA0D43C /* Pods-NANJFrameworks_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NANJFrameworks_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		9B2B528BBDA160E5FD2ECD0A8E4E8668 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		9B986C67A0742B59C2CEFA320D336301 /* sha3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha3.h; path = "trezor-crypto/sha3.h"; sourceTree = "<group>"; };
 		9C892E841C24AAA1B315350A971D6DFD /* RandomUInt64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomUInt64.swift; path = SipHash/RandomUInt64.swift; sourceTree = "<group>"; };
 		9D45F754CAEE98224EF97BABEEDF875A /* Scrypt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scrypt.swift; path = Sources/Scrypt.swift; sourceTree = "<group>"; };
-		9D658D299ED8FE35EB62FE55D9E59B90 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D658D299ED8FE35EB62FE55D9E59B90 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA36240C4FB2DF3C43149D00229C0FB /* rfc7539.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rfc7539.h; path = "trezor-crypto/chacha20poly1305/rfc7539.h"; sourceTree = "<group>"; };
 		9DBAC781B6794C36DD59FA2F3CAC3785 /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		9DD61454906F2577BA3E72025714FA5A /* PrettySyntax.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrettySyntax.swift; sourceTree = "<group>"; };
 		9DE135718999B29758D0E7DC2F5527BB /* NANJFrameworks-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NANJFrameworks-umbrella.h"; sourceTree = "<group>"; };
 		9E3CC6C41336F241239A6804A5DDD608 /* UInt16+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt16+Extension.swift"; path = "Sources/CryptoSwift/UInt16+Extension.swift"; sourceTree = "<group>"; };
-		9FFA67335754E624936510593D6A054B /* ripemd160.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ripemd160.c; path = "trezor-crypto/ripemd160.c"; sourceTree = "<group>"; };
+		9FFA67335754E624936510593D6A054B /* ripemd160.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ripemd160.c; path = "trezor-crypto/ripemd160.c"; sourceTree = "<group>"; };
 		A15A932EC6F568371F000908BD1FCD77 /* KeychainSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainSwift.xcconfig; sourceTree = "<group>"; };
 		A23A544A2C02A5A77F7B64E90567D98D /* Blowfish.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Blowfish.swift; path = Sources/CryptoSwift/Blowfish.swift; sourceTree = "<group>"; };
-		A26B0FC432F9934A8D8477AB07944CAF /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SipHash.framework; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26B0FC432F9934A8D8477AB07944CAF /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E9ECA750AC8F231A33D9C49D88E43A /* Exponentiation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Exponentiation.swift; path = sources/Exponentiation.swift; sourceTree = "<group>"; };
 		A4B6BE1C9F17EA9B5CD300169FDD697C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		A550284A47EB0EE181C9DAC9F1A58C96 /* WalletType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WalletType.swift; sourceTree = "<group>"; };
-		A5FBD7A17E3B0D41130520BB2A5FCBAB /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainSwift.framework; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FBD7A17E3B0D41130520BB2A5FCBAB /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A645D0DBDE770FB2D4A03D4265E5B55E /* SwiftSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftSupport.swift; path = FBSnapshotTestCase/SwiftSupport.swift; sourceTree = "<group>"; };
 		A655C24AB5DAC13999E47FB6632E68D3 /* Rabbit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rabbit.swift; path = Sources/CryptoSwift/Rabbit.swift; sourceTree = "<group>"; };
 		A77AF39CFF6F265766B6D45BC00E7235 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1062,36 +1062,36 @@
 		A91E9A2ED25F53A17336A3DB258BAEE3 /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "Sources/CryptoSwift/String+Extension.swift"; sourceTree = "<group>"; };
 		A9D2D45C097A973D22678CE1992AF007 /* DerivationPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DerivationPath.swift; path = Sources/Wallet/DerivationPath.swift; sourceTree = "<group>"; };
 		AAA20A2F537C825EF9D9F0BD1691F0E9 /* TrezorCrypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TrezorCrypto.h; sourceTree = "<group>"; };
-		AB6F256F496DFB1148B73F6F55349E28 /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aeskey.c; path = "trezor-crypto/aes/aeskey.c"; sourceTree = "<group>"; };
+		AB6F256F496DFB1148B73F6F55349E28 /* aeskey.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = aeskey.c; path = "trezor-crypto/aes/aeskey.c"; sourceTree = "<group>"; };
 		ABA3A295370F98BDE243267AAC6F9FD6 /* Pods-NANJFrameworks_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NANJFrameworks_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AC531245E3F5B0B3D287DDA7A970978C /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/CryptoSwift/Utils.swift; sourceTree = "<group>"; };
 		ACC7415D0850B49B9337C60E65AC3204 /* CryptoSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CryptoSwift-dummy.m"; sourceTree = "<group>"; };
 		AD2B9766834D231F50704C9AD421A018 /* Hashable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hashable.swift; path = sources/Hashable.swift; sourceTree = "<group>"; };
 		AD36EC167966A39D765C5ED3B79E33E6 /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
 		AD8087792B43D091D183C39BC5A4AD79 /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE87B0762E4F2B436C9FBE291D513660 /* poly1305-donna.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "poly1305-donna.c"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.c"; sourceTree = "<group>"; };
+		AE87B0762E4F2B436C9FBE291D513660 /* poly1305-donna.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "poly1305-donna.c"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.c"; sourceTree = "<group>"; };
 		AFDACF3CBA2A6C3E0BFC5B85C096F08B /* Nimble-Snapshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Nimble-Snapshots.xcconfig"; sourceTree = "<group>"; };
 		B061C0F0CD3C6776322AFE06658C0F5B /* AES.Cryptors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES.Cryptors.swift; path = Sources/CryptoSwift/AES.Cryptors.swift; sourceTree = "<group>"; };
 		B09E1BB9EB97FF38C832B89AA424055F /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		B0E2EC32676CD095CAFF117216080376 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
-		B2ACFAD292B5AD9721546406F452E141 /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NANJFrameworks.framework; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2BDA47FED7B6FF1E96C46C526A91285 /* bignum.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bignum.c; path = "trezor-crypto/bignum.c"; sourceTree = "<group>"; };
+		B2ACFAD292B5AD9721546406F452E141 /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2BDA47FED7B6FF1E96C46C526A91285 /* bignum.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bignum.c; path = "trezor-crypto/bignum.c"; sourceTree = "<group>"; };
 		B344593385A322C9DEBAA8E01D888743 /* ed25519-donna-impl-base.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-impl-base.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.h"; sourceTree = "<group>"; };
 		B40D61ED5EEA45330307F3ADBE1DA26E /* ImportType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImportType.swift; sourceTree = "<group>"; };
-		B498E657072353248CC3DD8473640CB6 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
+		B498E657072353248CC3DD8473640CB6 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
 		B4A70ACFBAB6B7E04DECB0EE8759F2B7 /* SipHash-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SipHash-umbrella.h"; sourceTree = "<group>"; };
 		B584EB3C4CC3DF9FF914BC7B193D999B /* PCBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PCBC.swift; path = Sources/CryptoSwift/BlockMode/PCBC.swift; sourceTree = "<group>"; };
 		B6612CCA7170E4E970E1948052EF1AF6 /* ed25519-sha3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-sha3.h"; path = "trezor-crypto/ed25519-donna/ed25519-sha3.h"; sourceTree = "<group>"; };
 		B667F2F8665A662EB1F07038263C063A /* ZeroPadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZeroPadding.swift; path = Sources/CryptoSwift/ZeroPadding.swift; sourceTree = "<group>"; };
 		B69AE2A14A055037AB24F01B72EB7261 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = "trezor-crypto/aes/aestab.h"; sourceTree = "<group>"; };
 		B7ADD81E89EC0EA4244B32F5A51D2F58 /* MatchError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchError.swift; path = Sources/Nimble/Matchers/MatchError.swift; sourceTree = "<group>"; };
-		B7C046FA73C1C35C439738AF2C000430 /* TrezorCrypto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TrezorCrypto.modulemap; sourceTree = "<group>"; };
+		B7C046FA73C1C35C439738AF2C000430 /* TrezorCrypto.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TrezorCrypto.modulemap; sourceTree = "<group>"; };
 		B7F1B46C660D7EE3C6BA2F9F14CD4D97 /* ABIValue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ABIValue.swift; path = Sources/Solidity/ABIValue.swift; sourceTree = "<group>"; };
 		B80D2A2622B9ABCDF88614D392F1FB98 /* brg_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = brg_types.h; path = "trezor-crypto/aes/brg_types.h"; sourceTree = "<group>"; };
 		B8118E5F91AF1E27CF6D04D1A553AF5B /* Updatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Updatable.swift; path = Sources/CryptoSwift/Updatable.swift; sourceTree = "<group>"; };
 		B93816860E06021B83B460260CA14963 /* Random.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Random.swift; path = sources/Random.swift; sourceTree = "<group>"; };
-		B967B20EAB85EEFC07162131B3929B25 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9D53788EDF83D628F219E20A31EED18 /* rfc7539.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rfc7539.c; path = "trezor-crypto/chacha20poly1305/rfc7539.c"; sourceTree = "<group>"; };
+		B967B20EAB85EEFC07162131B3929B25 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9D53788EDF83D628F219E20A31EED18 /* rfc7539.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rfc7539.c; path = "trezor-crypto/chacha20poly1305/rfc7539.c"; sourceTree = "<group>"; };
 		BA053E18FFA03DC9CE12DAEBD96732EF /* TrustCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA16886D76BBA9D819F53896A46C1DBF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5BD25D4D288E3342DCF65DD000D0CF /* HaveValidSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HaveValidSnapshot.swift; sourceTree = "<group>"; };
@@ -1102,7 +1102,7 @@
 		BBF994BC579F8A35B0FBC52BB8D32316 /* Nimble-Snapshots-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-Snapshots-umbrella.h"; sourceTree = "<group>"; };
 		BC54A2F3A9D2B43E1769A7526E373248 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		BC6527AFCBA14C8251CFF1AF86541EA3 /* Function.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Function.swift; path = Sources/Solidity/Function.swift; sourceTree = "<group>"; };
-		BC6A4104676DD43E1F7D68FDF8564994 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6A4104676DD43E1F7D68FDF8564994 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA3B1412A7F1DF6144FA8CB9DB3684C /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		BD5BA03EBFAEDE17F811D78809F8085B /* AES+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AES+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/AES+Foundation.swift"; sourceTree = "<group>"; };
 		BD6B358A2A4C825CDFC882BAF55EF3FE /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -1111,11 +1111,11 @@
 		BFDF495AD9EC8EF9A1A70BFB78204801 /* pbkdf2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pbkdf2.h; path = "trezor-crypto/pbkdf2.h"; sourceTree = "<group>"; };
 		C02FC2AEE73320BEE282E72164265EA8 /* ABIEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ABIEncoder.swift; path = Sources/Solidity/ABIEncoder.swift; sourceTree = "<group>"; };
 		C07724357C379245265B42D5A294D6F1 /* ed25519-donna-32bit-tables.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-donna-32bit-tables.h"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.h"; sourceTree = "<group>"; };
-		C0C97F56C2C6EB2777F7502541ABC431 /* TrezorCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrezorCrypto.framework; path = TrezorCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C143963D412BA45282A8879CA2CB4D63 /* nist256p1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = nist256p1.c; path = "trezor-crypto/nist256p1.c"; sourceTree = "<group>"; };
+		C0C97F56C2C6EB2777F7502541ABC431 /* TrezorCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrezorCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C143963D412BA45282A8879CA2CB4D63 /* nist256p1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = nist256p1.c; path = "trezor-crypto/nist256p1.c"; sourceTree = "<group>"; };
 		C1C149B74D2FCC62913E3F7868188E97 /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
 		C21804C32702E4CC872EE42FC0CD62E9 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
-		C227F9FE59F6AC9F46FF5E787EEA4FCC /* rc4.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rc4.c; path = "trezor-crypto/rc4.c"; sourceTree = "<group>"; };
+		C227F9FE59F6AC9F46FF5E787EEA4FCC /* rc4.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rc4.c; path = "trezor-crypto/rc4.c"; sourceTree = "<group>"; };
 		C2324005FFDA6AF36FB6C3338F860C1E /* blake2_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blake2_common.h; path = "trezor-crypto/blake2_common.h"; sourceTree = "<group>"; };
 		C26DD3FD54FB29D76A44E9D60B102ACB /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
 		C28251494F26B694A1483744DF5FECAC /* Cipher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cipher.swift; path = Sources/CryptoSwift/Cipher.swift; sourceTree = "<group>"; };
@@ -1125,7 +1125,7 @@
 		C467514B0436EF0104A4483224A4F046 /* TrustKeystore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustKeystore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5262C0359C2A785CECCDFB6D3E2F072 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C6351A8F1192519FE308855BB5CE176F /* IdGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IdGenerator.swift; path = Sources/JSONRPCKit/IdGenerator.swift; sourceTree = "<group>"; };
-		C70B69B912F107E67FA77298C58CF167 /* blake256.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake256.c; path = "trezor-crypto/blake256.c"; sourceTree = "<group>"; };
+		C70B69B912F107E67FA77298C58CF167 /* blake256.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake256.c; path = "trezor-crypto/blake256.c"; sourceTree = "<group>"; };
 		C74E8EC80C3589DA769D7C6C8499216B /* TegKeychainConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TegKeychainConstants.swift; path = Sources/TegKeychainConstants.swift; sourceTree = "<group>"; };
 		C7CF290B75DE1E8B2BD8E0B027767BEF /* SipHashable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SipHashable.swift; path = SipHash/SipHashable.swift; sourceTree = "<group>"; };
 		C853B518130908024BD8FB795E634F1B /* Square Root.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Square Root.swift"; path = "sources/Square Root.swift"; sourceTree = "<group>"; };
@@ -1133,19 +1133,19 @@
 		C950BF151F1981142CA366877CA0BFB1 /* ed25519-hash-custom-sha3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-hash-custom-sha3.h"; path = "trezor-crypto/ed25519-donna/ed25519-hash-custom-sha3.h"; sourceTree = "<group>"; };
 		CA45DB97345A887E4B3E92206A34B3E3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA50BAB9B98F1F5C40ABCE0E53E67FB8 /* Addition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Addition.swift; path = sources/Addition.swift; sourceTree = "<group>"; };
-		CA558A3D2FFB32E1369895214106E5EE /* ed25519-keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-keccak.c"; path = "trezor-crypto/ed25519-donna/ed25519-keccak.c"; sourceTree = "<group>"; };
+		CA558A3D2FFB32E1369895214106E5EE /* ed25519-keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-keccak.c"; path = "trezor-crypto/ed25519-donna/ed25519-keccak.c"; sourceTree = "<group>"; };
 		CB4011C8D454EE747B84F00DCE058088 /* NANJFrameworks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NANJFrameworks-prefix.pch"; sourceTree = "<group>"; };
 		CB6DA4C432D1D369EF9B63874466BA24 /* BigInt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-umbrella.h"; sourceTree = "<group>"; };
 		CBBD5841A740F5A2D707C0F0A0CA0BD6 /* PrettyDynamicTypeSyntax.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrettyDynamicTypeSyntax.swift; path = DynamicType/PrettyDynamicTypeSyntax.swift; sourceTree = "<group>"; };
 		CC9669C4D487B7BF4C0655B2DEEA1805 /* Quick.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.xcconfig; sourceTree = "<group>"; };
 		CCAA6F5C592C104285435B62A9FD017A /* Digest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Digest.swift; path = Sources/CryptoSwift/Digest.swift; sourceTree = "<group>"; };
-		CD5380A7F833A3EFE762918E15B7F081 /* ed25519-donna-basepoint-table.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-basepoint-table.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c"; sourceTree = "<group>"; };
+		CD5380A7F833A3EFE762918E15B7F081 /* ed25519-donna-basepoint-table.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-basepoint-table.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c"; sourceTree = "<group>"; };
 		CDD419E17D2214562D5D36030D89FDD3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE071A91596113D38426057A893E8421 /* KeyStoreError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyStoreError.swift; sourceTree = "<group>"; };
 		CE07B06727EF4062FE4E367FA0EC1FA7 /* Collection+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Collection+Extension.swift"; path = "Sources/CryptoSwift/Collection+Extension.swift"; sourceTree = "<group>"; };
 		CE80C58C15CFE7DF1541766CB0EB7448 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		CEB2C627658B95CDA8713CF0FECD6A93 /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
-		D027FB767FA71F8FD3DCF2842A7DE06A /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BigInt.framework; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D027FB767FA71F8FD3DCF2842A7DE06A /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1DABF63D5120A4025625366CED60F22 /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		D1DE4E3A0399A06EB65A9D91E119D5DE /* poly1305-donna.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "poly1305-donna.h"; path = "trezor-crypto/chacha20poly1305/poly1305-donna.h"; sourceTree = "<group>"; };
 		D262D4268962DCA1F6B9245FB9C90408 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
@@ -1154,9 +1154,9 @@
 		D4C4355197FBF4D45BE8A3B719C37A96 /* Bit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bit.swift; path = Sources/CryptoSwift/Bit.swift; sourceTree = "<group>"; };
 		D53A87393F9BD4B59982291BD8C6E71A /* Subtraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Subtraction.swift; path = sources/Subtraction.swift; sourceTree = "<group>"; };
 		D6029BA9765033A04B49338EBB73A05E /* AEADChaCha20Poly1305.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AEADChaCha20Poly1305.swift; path = Sources/CryptoSwift/AEAD/AEADChaCha20Poly1305.swift; sourceTree = "<group>"; };
-		D63C4A32BBE4043A15A59294221BBBE0 /* curve25519-donna-scalarmult-base.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-scalarmult-base.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c"; sourceTree = "<group>"; };
+		D63C4A32BBE4043A15A59294221BBBE0 /* curve25519-donna-scalarmult-base.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-scalarmult-base.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c"; sourceTree = "<group>"; };
 		D6BD03F03C890CB705FF79C60F793025 /* RLP.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RLP.swift; path = Sources/RLP.swift; sourceTree = "<group>"; };
-		D6C7B6007DDEE452F6F36D72E0FC6BF9 /* segwit_addr.c */ = {isa = PBXFileReference; includeInIndex = 1; name = segwit_addr.c; path = "trezor-crypto/segwit_addr.c"; sourceTree = "<group>"; };
+		D6C7B6007DDEE452F6F36D72E0FC6BF9 /* segwit_addr.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = segwit_addr.c; path = "trezor-crypto/segwit_addr.c"; sourceTree = "<group>"; };
 		D6D68B8E8A8BA53CA95DB836743E2231 /* AES.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES.swift; path = Sources/CryptoSwift/AES.swift; sourceTree = "<group>"; };
 		D738FF35A793199850A182BAAF1272D6 /* address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = address.h; path = "trezor-crypto/address.h"; sourceTree = "<group>"; };
 		D744773923FD1B00034153E2287B4A18 /* Cryptors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cryptors.swift; path = Sources/CryptoSwift/Cryptors.swift; sourceTree = "<group>"; };
@@ -1175,7 +1175,7 @@
 		DC19E581A26ABBE056B1137231088ACD /* HMAC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HMAC.swift; path = Sources/CryptoSwift/HMAC.swift; sourceTree = "<group>"; };
 		DC89112643033EA23A08CB92AB387DBC /* Behavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Behavior.swift; path = Sources/Quick/Behavior.swift; sourceTree = "<group>"; };
 		DCB06BDEC59D782F66F9ABD846C7207D /* Pods-NANJFrameworks_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NANJFrameworks_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		DD5677FC1310B052E0BCE427C9B775EA /* rand.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rand.c; path = "trezor-crypto/rand.c"; sourceTree = "<group>"; };
+		DD5677FC1310B052E0BCE427C9B775EA /* rand.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = rand.c; path = "trezor-crypto/rand.c"; sourceTree = "<group>"; };
 		DDF534ECE8ECC02BFD5D2430DB5AD35E /* KeystoreKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeystoreKey.swift; path = Sources/KeystoreKey.swift; sourceTree = "<group>"; };
 		DE1FF43F6E2052172C5AC285BE7387ED /* Predicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Sources/Nimble/Matchers/Predicate.swift; sourceTree = "<group>"; };
 		DE594EC47B035D088AE337D550F4FDB4 /* rand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rand.h; path = "trezor-crypto/rand.h"; sourceTree = "<group>"; };
@@ -1189,9 +1189,9 @@
 		E039A6A5E0F34E67D790DECEF60A3063 /* SipHash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SipHash.xcconfig; sourceTree = "<group>"; };
 		E07E6E378C2F3DC7EF905065EB6839F2 /* ed25519-hash-custom-keccak.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ed25519-hash-custom-keccak.h"; path = "trezor-crypto/ed25519-donna/ed25519-hash-custom-keccak.h"; sourceTree = "<group>"; };
 		E096DDEDB9903A3F6ED97B3448108AEB /* HDKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HDKey.swift; path = Sources/Wallet/HDKey.swift; sourceTree = "<group>"; };
-		E0AF034DDF047FDFA797CC7115B001F1 /* blake2s.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake2s.c; path = "trezor-crypto/blake2s.c"; sourceTree = "<group>"; };
+		E0AF034DDF047FDFA797CC7115B001F1 /* blake2s.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake2s.c; path = "trezor-crypto/blake2s.c"; sourceTree = "<group>"; };
 		E0CB81D82DB059AB480053E6A9603B8F /* Result-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Result-umbrella.h"; sourceTree = "<group>"; };
-		E17974A269C42D318BF5106871D4E802 /* TrustKeystore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TrustKeystore.framework; path = TrustKeystore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17974A269C42D318BF5106871D4E802 /* TrustKeystore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrustKeystore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A1A1C25EAA060C35F5757DF51DB4ED /* secp256k1.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = secp256k1.h; path = "trezor-crypto/secp256k1.h"; sourceTree = "<group>"; };
 		E1CE9D8F069244CEC5282A009A89251F /* FBSnapshotTestCase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FBSnapshotTestCase.xcconfig; sourceTree = "<group>"; };
 		E244293E44DB0D25AA5860F1F73D8998 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
@@ -1201,21 +1201,21 @@
 		E312507F7D1613131AF9405ACDF1FAD0 /* Blowfish+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Blowfish+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Blowfish+Foundation.swift"; sourceTree = "<group>"; };
 		E34EA7000F7B21568C2079EE01E23473 /* options.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = options.h; path = "trezor-crypto/options.h"; sourceTree = "<group>"; };
 		E4F9541FD9724637531D0B8971FF8175 /* EthereumCrypto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EthereumCrypto.m; path = Sources/EthereumCrypto.m; sourceTree = "<group>"; };
-		E5651302B417F931014C7298FA3ACE05 /* ed25519-donna-impl-base.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "ed25519-donna-impl-base.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c"; sourceTree = "<group>"; };
+		E5651302B417F931014C7298FA3ACE05 /* ed25519-donna-impl-base.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-impl-base.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c"; sourceTree = "<group>"; };
 		E56569A78F2088F25D611830074A8ADD /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
 		E5681532094AD1300A091E6E7C37B8A6 /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
-		E686EA2F89FD15DBC2E7EB2B7467873A /* blake2b.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blake2b.c; path = "trezor-crypto/blake2b.c"; sourceTree = "<group>"; };
+		E686EA2F89FD15DBC2E7EB2B7467873A /* blake2b.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blake2b.c; path = "trezor-crypto/blake2b.c"; sourceTree = "<group>"; };
 		E690238F466F0E8583C97093CB91B50E /* rfc6979.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = rfc6979.h; path = "trezor-crypto/rfc6979.h"; sourceTree = "<group>"; };
 		E6ECC1E8A1A7D280C08000FA1DCF407D /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
 		E711230F7705FE112D4761A63FAE6BD1 /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
-		E77CDA36C9CC13750D7A9B726738B973 /* TrustKeystore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TrustKeystore.modulemap; sourceTree = "<group>"; };
+		E77CDA36C9CC13750D7A9B726738B973 /* TrustKeystore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TrustKeystore.modulemap; sourceTree = "<group>"; };
 		E790B773A3A7FEAE28306B7D93BDA3CE /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		E7A857F67D48C399F4C9F1B02B3E3CF7 /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		E7B145F5882CD615C711A9F1BB2F62F8 /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		E7C6B1850D583C3D4B38CD8073129C56 /* TrustCore-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TrustCore-dummy.m"; sourceTree = "<group>"; };
 		E7FCBF676D6D10D97E7014D2DEABC19D /* ecrypt-sync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ecrypt-sync.h"; path = "trezor-crypto/chacha20poly1305/ecrypt-sync.h"; sourceTree = "<group>"; };
 		E8B64B84B8537B56E4D912D81F1674E9 /* Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Sources/Address.swift; sourceTree = "<group>"; };
-		EA2DB36E2AB85F735BC993DE582C9C09 /* JSONRPCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JSONRPCKit.framework; path = JSONRPCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA2DB36E2AB85F735BC993DE582C9C09 /* JSONRPCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONRPCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA36012D30F794BC5FE862C92EE14306 /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		EA97D83D4C1CEB7349CA7F78AD2EE42A /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickSpecBase/QuickSpecBase.m; sourceTree = "<group>"; };
 		EB6DC3F1E476C45E3AE9A1A24A6E8BC7 /* Pods-NANJFrameworks_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NANJFrameworks_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -1224,7 +1224,7 @@
 		ECF9D48570CAF88062CA0C420558F282 /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		ED80F2FC468DAFCCD821147A7B689932 /* bignum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bignum.h; path = "trezor-crypto/bignum.h"; sourceTree = "<group>"; };
 		ED882F36FD6CF1022F7B12EBF4028262 /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
-		EEC51779C64542377550386C1E94BB2A /* curve25519-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "curve25519-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-32bit.c"; sourceTree = "<group>"; };
+		EEC51779C64542377550386C1E94BB2A /* curve25519-donna-32bit.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "curve25519-donna-32bit.c"; path = "trezor-crypto/ed25519-donna/curve25519-donna-32bit.c"; sourceTree = "<group>"; };
 		EF6D1DA67D6DF1159D4157D04235F279 /* Shifts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Shifts.swift; path = sources/Shifts.swift; sourceTree = "<group>"; };
 		EFAC5C0BD358038D3F1BABE246AB3971 /* Pods-NANJFrameworks_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NANJFrameworks_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		EFDAB29B0425859DDEE49E7A66AB2DAB /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
@@ -1236,17 +1236,17 @@
 		F35329ED0E11789B30D1F1E47B820694 /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		F3D99329B37EBEE8FD7FC8F47FAFCDC2 /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
 		F401CE67EB73A888E8507B482297115B /* Division.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Division.swift; path = sources/Division.swift; sourceTree = "<group>"; };
-		F445EB1B3AB0E572B816AA42A5A4419A /* bip32.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bip32.c; path = "trezor-crypto/bip32.c"; sourceTree = "<group>"; };
+		F445EB1B3AB0E572B816AA42A5A4419A /* bip32.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bip32.c; path = "trezor-crypto/bip32.c"; sourceTree = "<group>"; };
 		F5E48C2DF351D3F5DAE1609DD2CB945B /* ripemd160.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ripemd160.h; path = "trezor-crypto/ripemd160.h"; sourceTree = "<group>"; };
 		F6288C3FF28FB022BB35D4B3BF49300B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		F7166852298B18AE3E559DC7D8E3ECBC /* KeychainSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KeychainSwift.modulemap; sourceTree = "<group>"; };
+		F7166852298B18AE3E559DC7D8E3ECBC /* KeychainSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KeychainSwift.modulemap; sourceTree = "<group>"; };
 		F7727DD5E67901B176A5DB0D6050D9B4 /* QuickSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpec.h; path = Sources/QuickObjectiveC/QuickSpec.h; sourceTree = "<group>"; };
 		F794D22CE1F60E51058BEDB56068F496 /* nem_serialize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nem_serialize.h; path = "trezor-crypto/nem_serialize.h"; sourceTree = "<group>"; };
 		F7A87F2EFED0BB05C4E2587B5B9F79E9 /* KeychainSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwift.swift; path = Sources/KeychainSwift.swift; sourceTree = "<group>"; };
 		F7D65822DCDB1B4014C11DE60363DF03 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
 		F81AE0CCC09D2BB3146A9BD3BE17E027 /* poly1305-donna-32.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "poly1305-donna-32.h"; path = "trezor-crypto/chacha20poly1305/poly1305-donna-32.h"; sourceTree = "<group>"; };
 		F81AE34C26E5CC149E48A6DB31E0175F /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
-		F831E612612E674682F3E4FC7F821C41 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Nimble.modulemap; sourceTree = "<group>"; };
+		F831E612612E674682F3E4FC7F821C41 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Nimble.modulemap; sourceTree = "<group>"; };
 		F88D5631E52C0641E4859A051CC0C546 /* JSONRPCKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JSONRPCKit-umbrella.h"; sourceTree = "<group>"; };
 		F8CD4073426540EDF926B84138D6A673 /* RandomBytesSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomBytesSequence.swift; path = Sources/CryptoSwift/RandomBytesSequence.swift; sourceTree = "<group>"; };
 		F92F5AD8124183B8A49B24F913B5C54C /* World.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = World.h; path = Sources/QuickObjectiveC/World.h; sourceTree = "<group>"; };
@@ -1263,9 +1263,9 @@
 		FD8506CBA72F306B0D8CC586DEEEE97A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD94AD2339EAEC14C01C8C8E3A4B828F /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
 		FEAB09ED27C7D97D918883068A06646F /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/QuickObjectiveC/DSL/QCKDSL.m; sourceTree = "<group>"; };
-		FEEC2A68E375639956C4337CD8345A02 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Result.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEEC2A68E375639956C4337CD8345A02 /* Result.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF31538AB79A9DAB317A76125789D57F /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
-		FFA0AA7AFC8C9CA9E36A536D840ECB00 /* base58.c */ = {isa = PBXFileReference; includeInIndex = 1; name = base58.c; path = "trezor-crypto/base58.c"; sourceTree = "<group>"; };
+		FFA0AA7AFC8C9CA9E36A536D840ECB00 /* base58.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = base58.c; path = "trezor-crypto/base58.c"; sourceTree = "<group>"; };
 		FFECB2D75C96A5703419A562E8792723 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1479,7 +1479,6 @@
 				856BE04F3F681A484CF07EF09C06FF28 /* Words and Bits.swift */,
 				173262915222C4127A4A8D72F982D91B /* Support Files */,
 			);
-			name = BigInt;
 			path = BigInt;
 			sourceTree = "<group>";
 		};
@@ -1553,7 +1552,6 @@
 				BD6B358A2A4C825CDFC882BAF55EF3FE /* MBProgressHUD.m */,
 				CF4610D2DEC7DA88289CF14E2092F8D8 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1601,7 +1599,6 @@
 				D83E511565DD12CEE92A3AA5B89BDA9F /* SipHasher.swift */,
 				E2B622127C2C4F062C18EE364378FBCC /* Support Files */,
 			);
-			name = SipHash;
 			path = SipHash;
 			sourceTree = "<group>";
 		};
@@ -1619,7 +1616,6 @@
 				5D93A015A671E45103C227C4E91200E0 /* Request.swift */,
 				266342812B8055597A02644E93038190 /* Support Files */,
 			);
-			name = JSONRPCKit;
 			path = JSONRPCKit;
 			sourceTree = "<group>";
 		};
@@ -1665,7 +1661,6 @@
 				C74E8EC80C3589DA769D7C6C8499216B /* TegKeychainConstants.swift */,
 				6BD00C0092F5438751A7B7E3FD7ED81B /* Support Files */,
 			);
-			name = KeychainSwift;
 			path = KeychainSwift;
 			sourceTree = "<group>";
 		};
@@ -1777,7 +1772,6 @@
 				DEDD45448F91E1A2AC71384811BFDF8A /* EthereumUnit.swift */,
 				F1811D64F4E9C18A1DC0CCAA1783D535 /* SignTransaction.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -1832,7 +1826,6 @@
 				4C9A4F5816E947B6EF0CB9898A88C922 /* XCTestSuite+QuickTestSuiteBuilder.m */,
 				8378BC50ACF1903C16C8162CC7DB96F3 /* Support Files */,
 			);
-			name = Quick;
 			path = Quick;
 			sourceTree = "<group>";
 		};
@@ -1865,7 +1858,6 @@
 				0BC4E4B00F355A42DF56019C3A4DF6B6 /* ResultProtocol.swift */,
 				51648B62DB75D60A3A09A2CA1160F49B /* Support Files */,
 			);
-			name = Result;
 			path = Result;
 			sourceTree = "<group>";
 		};
@@ -1961,7 +1953,6 @@
 				213AC7D032BF0C905E13B9B550C81CAF /* XCTestObservationCenter+Register.m */,
 				37E86E237ABC1E19AE7F3B99C0D93757 /* Support Files */,
 			);
-			name = Nimble;
 			path = Nimble;
 			sourceTree = "<group>";
 		};
@@ -1983,7 +1974,6 @@
 				8462749DB2A93E222B863DC66F7DAFEB /* TrustCore.h */,
 				01A9EA5AB61A3D79094A92207C086D93 /* Support Files */,
 			);
-			name = TrustCore;
 			path = TrustCore;
 			sourceTree = "<group>";
 		};
@@ -1993,7 +1983,6 @@
 				EA4203BD4681580C3FBD89D7A1047B42 /* Core */,
 				B7B60E238B572EED386F1F463E72EF54 /* Support Files */,
 			);
-			name = "Nimble-Snapshots";
 			path = "Nimble-Snapshots";
 			sourceTree = "<group>";
 		};
@@ -2007,7 +1996,6 @@
 				2A9D1E5C42075BD1D5139DCD117FCDD2 /* EthTypedData.swift */,
 				A550284A47EB0EE181C9DAC9F1A58C96 /* WalletType.swift */,
 			);
-			name = Types;
 			path = Types;
 			sourceTree = "<group>";
 		};
@@ -2029,7 +2017,6 @@
 				15CB25D560B4E4662731D59CBFB898C2 /* Wallet.swift */,
 				5FCD9D33C68EB9A400F2014A49000D03 /* Support Files */,
 			);
-			name = TrustKeystore;
 			path = TrustKeystore;
 			sourceTree = "<group>";
 		};
@@ -2086,7 +2073,7 @@
 		DF3B20E57899A669A356C50B1F7B3115 /* NANJFrameworks */ = {
 			isa = PBXGroup;
 			children = (
-				986CEF45A4D8F9389F7520E284E785A3 /* NANJNFCViewController.swift */,
+				986CEF45A4D8F9389F7520E284E785A3 /* NANJNFC.swift */,
 				4867DF690DB78AD77A0A629F413CC207 /* NANJQRCodeViewController.swift */,
 				A7DD747927A1AA192535AC4222EC092B /* NANJTransaction.swift */,
 				6BA0FD3F3B95AAA2156F3A606A20AAF8 /* NANJWallet.swift */,
@@ -2120,7 +2107,6 @@
 				780213D3F496D8E262E659818443137A /* Support Files */,
 				960CF99D45191164AD66A479A25BD836 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -2213,7 +2199,6 @@
 				B667F2F8665A662EB1F07038263C063A /* ZeroPadding.swift */,
 				19D87D0083C6C6964FB6B2901B5A7F64 /* Support Files */,
 			);
-			name = CryptoSwift;
 			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
@@ -2350,7 +2335,6 @@
 				AAA20A2F537C825EF9D9F0BD1691F0E9 /* TrezorCrypto.h */,
 				2C7DCF8B80FB5356FFE653C4F51CEA1A /* Support Files */,
 			);
-			name = TrezorCrypto;
 			path = TrezorCrypto;
 			sourceTree = "<group>";
 		};
@@ -3183,7 +3167,7 @@
 				D2CE18899DDE78DE08D00A159282BF4B /* Keystore.swift in Sources */,
 				9DF08F8A3710B83A5CD7FAA25AA56BB9 /* KeyStoreError.swift in Sources */,
 				F6743F8BE96E8964E043DAA1FABE7D9A /* NANJFrameworks-dummy.m in Sources */,
-				98914019358EEA3F4A41ED68AB23A1E0 /* NANJNFCViewController.swift in Sources */,
+				98914019358EEA3F4A41ED68AB23A1E0 /* NANJNFC.swift in Sources */,
 				4AEB98948DE3FEB813970A361A746B85 /* NANJQRCodeViewController.swift in Sources */,
 				FBF93CFFB47C93813B8C9975B2401E16 /* NANJTransaction.swift in Sources */,
 				F05A09086947B5BC7490B8711D10B32D /* NANJWallet.swift in Sources */,
@@ -4121,6 +4105,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Target\\ Support\\ Files/NANJFrameworks",
+				);
 				GCC_PREFIX_HEADER = "Target Support Files/NANJFrameworks/NANJFrameworks-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NANJFrameworks/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -4773,6 +4761,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Target\\ Support\\ Files/NANJFrameworks",
+				);
 				GCC_PREFIX_HEADER = "Target Support Files/NANJFrameworks/NANJFrameworks-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NANJFrameworks/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

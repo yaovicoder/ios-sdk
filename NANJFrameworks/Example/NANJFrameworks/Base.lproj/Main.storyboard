@@ -200,6 +200,20 @@
                                     <action selector="onClickCreateWallet:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ngk-p2-PUM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyJ-De-C7M">
+                                <rect key="frame" x="77" y="529" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.60392156860000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="5Hn-co-apn"/>
+                                    <constraint firstAttribute="height" constant="40" id="eIQ-7p-3Ld"/>
+                                </constraints>
+                                <state key="normal" title="Send NANJ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickSendNANJ:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o8a-7v-mCV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -208,12 +222,14 @@
                             <constraint firstItem="Q6Z-ER-RgZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6cM-lF-P8Q"/>
                             <constraint firstItem="D3Y-UW-f8e" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="6o0-3n-Ou1"/>
                             <constraint firstItem="Q6Z-ER-RgZ" firstAttribute="top" secondItem="FTO-gI-URI" secondAttribute="bottom" constant="15" id="8pu-Ww-8bR"/>
+                            <constraint firstItem="eyJ-De-C7M" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9ZE-Pu-OCH"/>
                             <constraint firstItem="FTO-gI-URI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="HLI-Ix-Rpz"/>
                             <constraint firstAttribute="trailing" secondItem="FTO-gI-URI" secondAttribute="trailing" constant="10" id="Nmg-tF-oyY"/>
                             <constraint firstItem="ZqR-Iz-WjD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="T8x-Z0-TPj"/>
                             <constraint firstItem="FTO-gI-URI" firstAttribute="top" secondItem="ZqR-Iz-WjD" secondAttribute="bottom" constant="20" id="c79-Xw-jxp"/>
                             <constraint firstItem="7Sj-Iq-lSp" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="eFn-tz-Krl"/>
                             <constraint firstAttribute="trailing" secondItem="ZqR-Iz-WjD" secondAttribute="trailing" constant="20" id="fBh-re-WWu"/>
+                            <constraint firstItem="eyJ-De-C7M" firstAttribute="top" secondItem="7Sj-Iq-lSp" secondAttribute="bottom" constant="10" id="jGc-XP-wG9"/>
                             <constraint firstItem="ZqR-Iz-WjD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="w2x-iV-kSr"/>
                         </constraints>
                     </view>
@@ -354,6 +370,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BR0-gO-Fl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="122.78860569715144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BKf-Cq-CjL">
+            <objects>
+                <viewController id="s3x-WZ-ibc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ky4-9D-ILx"/>
+                        <viewControllerLayoutGuide type="bottom" id="z3V-A0-5Ah"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IKp-lD-9Qv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzW-x7-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1713" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1AZ-ql-3Yy">

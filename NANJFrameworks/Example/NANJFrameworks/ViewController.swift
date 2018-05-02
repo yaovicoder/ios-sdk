@@ -83,6 +83,10 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
         //Push to WalletListController
     }
     
+    @IBAction func onClickSendNANJ(_ sender: Any) {
+        NANJWalletManager.shared.scanAddressFromNFC()
+
+    }
     
     //MARK: - NANJWalletManagerDelegate
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
