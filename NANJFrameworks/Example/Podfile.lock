@@ -1,4 +1,6 @@
 PODS:
+  - APIKit (3.2.1):
+    - Result (~> 3.0)
   - BigInt (3.0.1):
     - SipHash (~> 1.2)
   - CryptoSwift (0.9.0)
@@ -14,6 +16,7 @@ PODS:
   - NANJFrameworks (0.1.0):
     - NANJFrameworks/NANJSubSpec (= 0.1.0)
   - NANJFrameworks/NANJSubSpec (0.1.0):
+    - APIKit
     - BigInt (~> 3.0)
     - CryptoSwift
     - JSONRPCKit
@@ -52,13 +55,14 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
+  APIKit: a39ff72ac44efc15513fd1b98800f63c525be61b
   BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
   CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   JSONRPCKit: 50e0dc5e7f873e87f81562feb8836b7d1974da6d
   KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  NANJFrameworks: 217976438f1903abe5021da1cae5d167b0bb61e7
+  NANJFrameworks: a9573cae46dfd8bc76c594527c5452fcef7b1f20
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08

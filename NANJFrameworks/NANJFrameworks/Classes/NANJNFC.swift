@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreNFC
-import VYNFCKit
 
 @objc protocol NANJNFCDelegate {
     @objc optional func didScanNFC(address: String) -> Void;

@@ -39,6 +39,7 @@ TODO: Add long description of the pod here.
         nanj_sub_spec.dependency 'CryptoSwift'
         nanj_sub_spec.dependency 'JSONRPCKit'
         nanj_sub_spec.dependency 'KeychainSwift'
+        nanj_sub_spec.dependency 'APIKit'
     end
     s.default_subspec = 'NANJSubSpec'
   
