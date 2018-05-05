@@ -14,6 +14,8 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
     
+    fileprivate var currentWallet: NANJWallet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewWallet.layer.cornerRadius = 6
@@ -84,8 +86,10 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
     }
     
     @IBAction func onClickSendNANJ(_ sender: Any) {
-        NANJWalletManager.shared.scanAddressFromNFC()
-
+//        NANJWalletManager.shared.scanAddressFromNFC()
+        self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
+        //0x225358f337d33F9959fAa106800Ac865Eee7d994
+        self.currentWallet?.sendNANJ(toAddress: "0x22d9f789111e6d467c42607b72f165feffff8b83", amount: "0.8686")
     }
     
     //MARK: - NANJWalletManagerDelegate

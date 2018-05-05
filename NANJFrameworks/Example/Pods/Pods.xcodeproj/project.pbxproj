@@ -38,6 +38,21 @@
 		0CC049B3209D332C005AE3BE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049B2209D332C005AE3BE /* Data.swift */; };
 		0CC049B5209D335B005AE3BE /* EtherNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049B4209D335B005AE3BE /* EtherNumberFormatter.swift */; };
 		0CC049B7209D338E005AE3BE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049B6209D338E005AE3BE /* String.swift */; };
+		0CC049B9209D4091005AE3BE /* SendTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049B8209D4090005AE3BE /* SendTransactionCoordinator.swift */; };
+		0CC049BD209D417D005AE3BE /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049BC209D417C005AE3BE /* Session.swift */; };
+		0CC049BF209D418C005AE3BE /* ChainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049BE209D418C005AE3BE /* ChainState.swift */; };
+		0CC049C4209D5D8A005AE3BE /* GetTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C0209D5D89005AE3BE /* GetTransactionRequest.swift */; };
+		0CC049C5209D5D8A005AE3BE /* BlockNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C1209D5D8A005AE3BE /* BlockNumber.swift */; };
+		0CC049C6209D5D8A005AE3BE /* GetTransactionCountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C2209D5D8A005AE3BE /* GetTransactionCountRequest.swift */; };
+		0CC049C7209D5D8A005AE3BE /* SendRawTransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C3209D5D8A005AE3BE /* SendRawTransactionRequest.swift */; };
+		0CC049CA209D5D95005AE3BE /* GasPriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C8209D5D94005AE3BE /* GasPriceRequest.swift */; };
+		0CC049CB209D5D95005AE3BE /* EstimateGasRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049C9209D5D95005AE3BE /* EstimateGasRequest.swift */; };
+		0CC049CD209D5DFD005AE3BE /* PendingTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049CC209D5DFC005AE3BE /* PendingTransaction.swift */; };
+		0CC049CF209D5E18005AE3BE /* SendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049CE209D5E18005AE3BE /* SendTransaction.swift */; };
+		0CC049D1209D5E98005AE3BE /* ConfirmType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049D0209D5E98005AE3BE /* ConfirmType.swift */; };
+		0CC049D5209D7BA9005AE3BE /* NANJConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049D4209D7BA9005AE3BE /* NANJConfig.swift */; };
+		0CC049D7209D8CA3005AE3BE /* SentTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049D6209D8CA3005AE3BE /* SentTransaction.swift */; };
+		0CC049D9209D9C83005AE3BE /* GasLimitConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC049D8209D9C83005AE3BE /* GasLimitConfiguration.swift */; };
 		0DFD157726CFFE3919C46D05AE6B574C /* TrezorCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ED3CE84BBCA505E3C226E5D94C861D /* TrezorCrypto.framework */; };
 		0E9039B9E9A7C32DD7B05A8EEA040104 /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C304C411CFECEBE595F38A00438C69 /* SipHash.framework */; };
 		0EE66374B65FDE12C1C20BB53A7AA5A5 /* pbkdf2.c in Sources */ = {isa = PBXBuildFile; fileRef = 445E232CF488749BB5144EA58DB7BC84 /* pbkdf2.c */; };
@@ -825,6 +840,21 @@
 		0CC049B2209D332C005AE3BE /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0CC049B4209D335B005AE3BE /* EtherNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EtherNumberFormatter.swift; sourceTree = "<group>"; };
 		0CC049B6209D338E005AE3BE /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0CC049B8209D4090005AE3BE /* SendTransactionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTransactionCoordinator.swift; sourceTree = "<group>"; };
+		0CC049BC209D417C005AE3BE /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		0CC049BE209D418C005AE3BE /* ChainState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainState.swift; sourceTree = "<group>"; };
+		0CC049C0209D5D89005AE3BE /* GetTransactionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTransactionRequest.swift; sourceTree = "<group>"; };
+		0CC049C1209D5D8A005AE3BE /* BlockNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockNumber.swift; sourceTree = "<group>"; };
+		0CC049C2209D5D8A005AE3BE /* GetTransactionCountRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTransactionCountRequest.swift; sourceTree = "<group>"; };
+		0CC049C3209D5D8A005AE3BE /* SendRawTransactionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendRawTransactionRequest.swift; sourceTree = "<group>"; };
+		0CC049C8209D5D94005AE3BE /* GasPriceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GasPriceRequest.swift; sourceTree = "<group>"; };
+		0CC049C9209D5D95005AE3BE /* EstimateGasRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimateGasRequest.swift; sourceTree = "<group>"; };
+		0CC049CC209D5DFC005AE3BE /* PendingTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingTransaction.swift; sourceTree = "<group>"; };
+		0CC049CE209D5E18005AE3BE /* SendTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTransaction.swift; sourceTree = "<group>"; };
+		0CC049D0209D5E98005AE3BE /* ConfirmType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmType.swift; sourceTree = "<group>"; };
+		0CC049D4209D7BA9005AE3BE /* NANJConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJConfig.swift; path = NANJFrameworks/Classes/NANJConfig.swift; sourceTree = "<group>"; };
+		0CC049D6209D8CA3005AE3BE /* SentTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentTransaction.swift; sourceTree = "<group>"; };
+		0CC049D8209D9C83005AE3BE /* GasLimitConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GasLimitConfiguration.swift; sourceTree = "<group>"; };
 		0D28CA089C73AD1425892430212FF245 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D30CB827F207BB3C931912F7BED9166 /* aestab.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = aestab.h; path = "trezor-crypto/aes/aestab.h"; sourceTree = "<group>"; };
 		0E157828F148E96A7EBF1A5B10A01FC1 /* ed25519-donna-32bit-tables.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = "ed25519-donna-32bit-tables.c"; path = "trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c"; sourceTree = "<group>"; };
@@ -1555,6 +1585,8 @@
 				0CC049B0209D32BB005AE3BE /* BalanceProtocol.swift */,
 				7AD3E1569042478D2A4DC3A30515B004 /* EthereumUnit.swift */,
 				7F9DE27ADB96020D35D6D9ED889A4DD1 /* SignTransaction.swift */,
+				0CC049CC209D5DFC005AE3BE /* PendingTransaction.swift */,
+				0CC049CE209D5E18005AE3BE /* SendTransaction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1576,6 +1608,9 @@
 				F99F0556D36841F560D9FB8930C72ACA /* PasswordGenerator.swift */,
 				AF7E478A4DD04F3EA72DF5F9D5A0D274 /* RPCServers.swift */,
 				C3F5299D7F3C81A12333478703C27E48 /* TokensBalanceService.swift */,
+				0CC049BC209D417C005AE3BE /* Session.swift */,
+				0CC049BE209D418C005AE3BE /* ChainState.swift */,
+				0CC049B8209D4090005AE3BE /* SendTransactionCoordinator.swift */,
 				4A0B023275BAF4F54D0A5C247DA1A249 /* TransactionSigning.swift */,
 				C4612FC5931F3C179A5D725042A2C0D9 /* Wallet.swift */,
 			);
@@ -1598,7 +1633,13 @@
 			isa = PBXGroup;
 			children = (
 				0CC049AC209D328B005AE3BE /* BalanceRequest.swift */,
+				0CC049C1209D5D8A005AE3BE /* BlockNumber.swift */,
+				0CC049C2209D5D8A005AE3BE /* GetTransactionCountRequest.swift */,
+				0CC049C0209D5D89005AE3BE /* GetTransactionRequest.swift */,
+				0CC049C3209D5D8A005AE3BE /* SendRawTransactionRequest.swift */,
 				0CC049AA209D3275005AE3BE /* CallRequest.swift */,
+				0CC049C9209D5D95005AE3BE /* EstimateGasRequest.swift */,
+				0CC049C8209D5D94005AE3BE /* GasPriceRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -2322,6 +2363,7 @@
 				5E0B8BCC1F9E153A97932F7B1F338493 /* NANJTransaction.swift */,
 				A6E9275F4B1F0D3DCDB72054C233CE81 /* NANJWallet.swift */,
 				A1D2DEDA372F954C96B5916BD9B3BD50 /* NANJWalletManager.swift */,
+				0CC049D4209D7BA9005AE3BE /* NANJConfig.swift */,
 				085508C3C1E03751C6C308186FAB815E /* EtherSupport */,
 				3ACA193B4DA0C2CA01F92C24C4C25E8A /* Extensions */,
 				BBAA35075B1359E488B75E397E28CDB7 /* Support Files */,
@@ -2529,6 +2571,9 @@
 				D966B15F808B66D1F22B507B6E767E0B /* CurrencyRate.swift */,
 				A5B7CCA680BBA9567000C0528DD56A1D /* EthTypedData.swift */,
 				AEFAF7025A55BFD687EE54F313152622 /* WalletType.swift */,
+				0CC049D0209D5E98005AE3BE /* ConfirmType.swift */,
+				0CC049D6209D8CA3005AE3BE /* SentTransaction.swift */,
+				0CC049D8209D9C83005AE3BE /* GasLimitConfiguration.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -3207,8 +3252,11 @@
 			files = (
 				CD96D4DD6402E5DFC712B34EC934D4F9 /* CastError.swift in Sources */,
 				0CC049AB209D3275005AE3BE /* CallRequest.swift in Sources */,
+				0CC049CD209D5DFD005AE3BE /* PendingTransaction.swift in Sources */,
 				30DD4592678336FE894F36C400733EE0 /* Config.swift in Sources */,
+				0CC049D1209D5E98005AE3BE /* ConfirmType.swift in Sources */,
 				3F6D21100D23465478C9ACB72795CECA /* Constants.swift in Sources */,
+				0CC049D9209D9C83005AE3BE /* GasLimitConfiguration.swift in Sources */,
 				0CC049B3209D332C005AE3BE /* Data.swift in Sources */,
 				9998D4C753E720F43A815EFB20503844 /* CryptoAddressValidator.swift in Sources */,
 				5D423C173C2203DB0FACDF5B7CE58BE1 /* Currency.swift in Sources */,
@@ -3220,26 +3268,38 @@
 				0CC049B5209D335B005AE3BE /* EtherNumberFormatter.swift in Sources */,
 				0CC049AF209D32B0005AE3BE /* Balance.swift in Sources */,
 				57EBFA061C26DAE3E23FBB299741B091 /* EtherExtentsion.swift in Sources */,
+				0CC049CF209D5E18005AE3BE /* SendTransaction.swift in Sources */,
+				0CC049CB209D5D95005AE3BE /* EstimateGasRequest.swift in Sources */,
 				D25FB719AECD7D65AFFEEF30176ABC51 /* EtherKeystore.swift in Sources */,
+				0CC049C5209D5D8A005AE3BE /* BlockNumber.swift in Sources */,
 				9BA6CEBFA42F4EA4CA3281C969F5756A /* EtherServiceRequest.swift in Sources */,
 				A9F93F78899DAA8DF79B8410F0D2690B /* EthTypedData.swift in Sources */,
 				78DEB490BC198E5CB5168B47346DB75B /* ImportType.swift in Sources */,
 				9D0B8472F312AF8D4DF42EF08DF1F2C9 /* Keystore.swift in Sources */,
 				8E4BA7EE8B1FD20F5902992ABE839ECE /* KeyStoreError.swift in Sources */,
+				0CC049CA209D5D95005AE3BE /* GasPriceRequest.swift in Sources */,
+				0CC049D5209D7BA9005AE3BE /* NANJConfig.swift in Sources */,
+				0CC049C6209D5D8A005AE3BE /* GetTransactionCountRequest.swift in Sources */,
+				0CC049C4209D5D8A005AE3BE /* GetTransactionRequest.swift in Sources */,
 				7C07B0BEDEDDAD61B74BEACC493DCD84 /* NANJFrameworks-dummy.m in Sources */,
 				225EC6EBB50344301B6619C69CD763E3 /* NANJNFC.swift in Sources */,
 				AD5BEA697C20257685F2C6185038C52A /* NANJQRCodeViewController.swift in Sources */,
 				83E5DD91341085ED222E58165373F199 /* NANJTransaction.swift in Sources */,
 				C080E877F5D2BBA12BA6AB681A87C64A /* NANJWallet.swift in Sources */,
 				2DE7C5D7234B7C92B13C0BA95869AC04 /* NANJWalletManager.swift in Sources */,
+				0CC049BF209D418C005AE3BE /* ChainState.swift in Sources */,
 				DB9247A9C87200A3E0013DF1D2387A11 /* PasswordGenerator.swift in Sources */,
+				0CC049BD209D417D005AE3BE /* Session.swift in Sources */,
 				B1C44FD763D5CB1E530C7ADE1C298B52 /* RPCServers.swift in Sources */,
 				C0F30F7C46F486C72DC2F5F61F9B17E4 /* SignTransaction.swift in Sources */,
 				1F7EA37B5A5BE8CD09E48E47F41D9112 /* TokensBalanceService.swift in Sources */,
 				477022F5DC2F75720465E5633EAA65D3 /* TransactionSigning.swift in Sources */,
 				0CC049B7209D338E005AE3BE /* String.swift in Sources */,
 				9853D89CA3DBF9921EFC2B2857B67D68 /* Wallet.swift in Sources */,
+				0CC049B9209D4091005AE3BE /* SendTransactionCoordinator.swift in Sources */,
 				7C2511EEDFD3114D13C79B7DD53F97B5 /* WalletType.swift in Sources */,
+				0CC049C7209D5D8A005AE3BE /* SendRawTransactionRequest.swift in Sources */,
+				0CC049D7209D8CA3005AE3BE /* SentTransaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

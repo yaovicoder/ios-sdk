@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import TrustCore
+import TrustKeystore
+import BigInt
+import JSONRPCKit
+import APIKit
 
 public protocol NANJWalletDelegate {
     
@@ -38,10 +43,10 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     /// - Parameters:
     ///   - address: wallet target
     ///   - amouth: the number of coin you want to transfer
-    public func sendNANJ(with address: String, amouth: Double) {
-        //return by delegate
-        
-    }
+//    public func sendNANJ(with address: String, amouth: Double) {
+//        //return by delegate
+//
+//    }
     
     
     /// Send NAJI coins to other wallet that you just scaned QR code
@@ -65,6 +70,84 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
         
     }
     
+    public func sendNANJ(toAddress: String, amount: String) {
+        //Step 1: Create UnconfirmTransaction
+        //Step 2: Change unconfirm to TransactionConfirm
+        //Step 3: Sign transaction
+        //Step 4: Use Send signTransaction
+        
+        //Data Tranfer
+        guard let address = Address(string: toAddress.trimmed) else {
+            print("Address error")
+            return
+        }
+        guard let value = EtherNumberFormatter.full.number(from: amount, decimals: NANJContract.decimals) else {
+            print("Amount error")
+            return
+        }
+        let sendEncoded = ERC20Encoder.encodeTransfer(to: address, tokens: value.magnitude)
+        
+//        let configuration = TransactionConfiguration(
+//            gasPrice: self.calculatedGasPrice,
+//            gasLimit: GasLimitConfiguration.tokenTransfer,
+//            data: encoded,
+//            nonce: self.configuration.nonce
+//        )
+        
+        //Sign Transaction
+        guard let currentAddress = self.etherWallet?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
+            print("Current account not found")
+            return
+        }
+        
+        let valueZero: BigInt = {
+            return 0
+        }()
+        
+        let valueNonce: BigInt = {return 30}()
+        let valueGasPrice: BigInt = {return 3000000000}()
+        
+        let addressToken: Address? = {
+            return Address(string: NANJContract.contract)
+        }()
+        let signTransaction = SignTransaction(
+            value: valueZero,
+            account: currentAccount,
+            to: addressToken,
+            nonce: valueNonce,
+            data: sendEncoded,
+            gasPrice: GasLimitConfiguration.max,
+            gasLimit: GasLimitConfiguration.tokenTransfer,
+            chainID: NANJConfig.rpcServer.chainID
+        )
+        //Sign and Send Transaction
+        let signedTransaction = EtherKeystore.shared.signTransaction(signTransaction)
+        switch signedTransaction {
+        case .success(let data):
+            do {
+                let request = EtherServiceRequest(batch: BatchFactory().create(SendRawTransactionRequest(signedTransaction: data.hexEncoded)))
+                Session.send(request) { result in
+                    switch result {
+                    case .success:
+                        print(data.sha3(.keccak256).hexEncoded)
+                        break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        print(result.error ?? "Error")
+                        break
+                    }
+                }
+            }
+            break
+        case .failure(let error):
+            print("sign transaction error")
+            print(error.errorDescription ?? "Error")
+            break
+        default:
+            break
+        }
+        
+    }
     
     /// Get your NAJI amount
     ///
