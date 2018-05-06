@@ -64,8 +64,6 @@ public class NANJWalletManager: NSObject {
     
     public var delegate: NANJWalletManagerDelegate?
     
-    fileprivate var nfcScan: NANJNFC?
-    
     fileprivate lazy var keystore: EtherKeystore = {
         return EtherKeystore.shared
     }()
@@ -228,19 +226,6 @@ public class NANJWalletManager: NSObject {
 
     }
     
-    public func scanAddressFromNFC() {
-        if #available(iOS 11.0, *) {
-            if self.nfcScan == nil {
-                self.nfcScan = NANJNFC()
-                self.nfcScan?.delegate = self
-            }
-            self.nfcScan?.startScan()
-        } else {
-            //iOS not support
-            print("iOS not support NFC")
-        }
-    }
-    
     public func scanAddressFromQRCode() {
         
     }
@@ -249,16 +234,3 @@ public class NANJWalletManager: NSObject {
         return CryptoAddressValidator.isValidAddress(address)
     }
 }
-
-extension NANJWalletManager: NANJNFCDelegate {
-    func didScanNFC(address: String) {
-        print(address)
-        //        self.nfcScan = nil
-    }
-    
-    func didCloseScan() {
-        self.nfcScan = nil
-        print("Did close scan")
-    }
-}
-
