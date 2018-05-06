@@ -10,6 +10,10 @@ import UIKit
 
 class SendNANJViewController: BaseViewController {
 
+    @IBOutlet weak var txfAddress: UITextField!
+    
+    @IBOutlet weak var txfAmount: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +25,16 @@ class SendNANJViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onClickQRCode(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func onClickNFC(_ sender: Any) {
+        
+    }
+    
+    @IBAction func onClickSendNANJ(_ sender: Any) {
+        
+    }
+    
+    
 }

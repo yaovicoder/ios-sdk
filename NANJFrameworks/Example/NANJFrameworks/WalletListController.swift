@@ -20,6 +20,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.tableFooterView = UIView()
         NANJWalletManager.shared.delegate = self
         
         self.loadWallets()
@@ -121,7 +122,75 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         self.present(alert, animated: true, completion: nil)
     }
     
-    //NANJManagerDelegate
+    fileprivate func openMoreWallet(wallet: NANJWallet) {
+        let actionSheet: UIAlertController = UIAlertController(title: "Address", message: wallet.address, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        }
+        actionSheet.addAction(cancel)
+        
+        let copy = UIAlertAction(title: "Copy address", style: .default)
+        { _ in
+            let pasteBoard = UIPasteboard.general
+            pasteBoard.string = wallet.address
+            self.showMessage("Copied: " + wallet.address)
+        }
+        actionSheet.addAction(copy)
+        
+        let keyStore = UIAlertAction(title: "Export Keystore", style: .default)
+        { _ in
+            self.openExportKeystore(wallet: wallet)
+        }
+        actionSheet.addAction(keyStore)
+        
+        let privateKey = UIAlertAction(title: "Export private key", style: .default)
+        { _ in
+            self.showLoading()
+            NANJWalletManager.shared.exportPrivateKey(wallet: wallet)
+        }
+        actionSheet.addAction(privateKey)
+        
+//        let remove = UIAlertAction(title: "Remove wallet", style: .destructive)
+//        { _ in
+//
+//        }
+//        actionSheet.addAction(remove)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    fileprivate func openExportKeystore(wallet: NANJWallet) {
+        let alert = UIAlertController(title: "Input password", message: "", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if let __text = textField?.text {
+                if __text.count > 0 {
+                    self.showLoading()
+                    NANJWalletManager.shared.exportKeystore(wallet: wallet, password: __text)
+                }
+            }
+        }))
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            
+        }
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func shareActivity(str: String) {
+        if str.count == 0 {
+            return
+        }
+        let activity: UIActivityViewController = UIActivityViewController(activityItems: [str], applicationActivities: nil)
+        self.present(activity, animated: true, completion: nil)
+    }
+    
+    //MARK: - NANJManagerDelegate
     func didGetWalletList(wallets: [NANJWallet]?, error: Error?) {
         self.hideLoading()
         guard let __wallets = wallets else {
@@ -152,6 +221,25 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func didExportPrivatekey(wallet: NANJWallet, privateKey: String?, error: Error?) {
+        self.hideLoading()
+        if let key = privateKey {
+            self.shareActivity(str: key)
+        } else {
+            self.showMessage("Export private key error")
+        }
+    }
+    
+    func didExportKeystore(wallet: NANJWallet, keyStore: String?, error: Error?) {
+        self.hideLoading()
+        if let key = keyStore {
+            self.shareActivity(str: key)
+        } else {
+            self.showMessage("Export key store error")
+        }
+    }
+    
+    
     //MARK: - Table
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -164,7 +252,11 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: WalletListCell = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as! WalletListCell
         let wallet: NANJWallet = self.wallets[indexPath.row]
-        cell.lblAddress.text = wallet.address
+        cell.wallet = wallet
+        cell.complete = {[weak self] wallet in
+            guard let `self` = self else { return }
+            self.openMoreWallet(wallet: wallet)
+        }
         return cell
     }
 
