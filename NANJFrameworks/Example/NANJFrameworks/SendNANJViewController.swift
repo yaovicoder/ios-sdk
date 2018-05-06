@@ -38,6 +38,9 @@ class SendNANJViewController: BaseViewController {
     
     @IBAction func onClickQRCode(_ sender: Any) {
         //Open QRCode
+        let qrCode = NANJQRCodeViewController()
+        qrCode.delegate = self
+        self.present(qrCode, animated: true, completion: nil)
     }
     
     @IBAction func onClickNFC(_ sender: Any) {
@@ -79,7 +82,7 @@ class SendNANJViewController: BaseViewController {
     
 }
 
-extension SendNANJViewController: NANJNFCDelegate {
+extension SendNANJViewController: NANJNFCDelegate, NANJQRCodeDelegate {
     func didScanNFC(address: String?) {
         DispatchQueue.main.async {
             if let __address = address {
@@ -88,6 +91,10 @@ extension SendNANJViewController: NANJNFCDelegate {
                 print("Address invalid")
             }
         }
+    }
+    
+    func didScanQRCode(address: String) {
+        self.txfAddress.text = address
     }
     
     func didCloseScan() {
