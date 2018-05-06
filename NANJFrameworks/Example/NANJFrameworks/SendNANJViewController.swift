@@ -16,10 +16,16 @@ class SendNANJViewController: BaseViewController {
     @IBOutlet weak var txfAmount: UITextField!
     
     fileprivate var nfc: NANJNFC?
+    fileprivate var currentWallet: NANJWallet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
+        self.currentWallet?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +59,8 @@ class SendNANJViewController: BaseViewController {
         if !self.validateInput() {
             return
         }
-        
+        self.showLoading()
+        self.currentWallet?.sendNANJ(toAddress: self.txfAddress.text!, amount: self.txfAmount.text!)
     }
     
     
@@ -85,6 +92,17 @@ extension SendNANJViewController: NANJNFCDelegate {
     
     func didCloseScan() {
         self.nfc = nil
+    }
+}
+
+extension SendNANJViewController: NANJWalletDelegate {
+    func didSendNANJCompleted(transaction: NANJTransaction?) {
+        self.hideLoading()
+        if transaction != nil {
+            self.showMessage("Send NANJ success.")
+        } else {
+            self.showMessage("Send NANJ failed.")
+        }
     }
 }
 

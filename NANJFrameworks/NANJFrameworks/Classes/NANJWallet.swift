@@ -68,10 +68,12 @@ public class NANJWallet: NSObject {
         //Data Tranfer
         guard let address = Address(string: address.trimmed) else {
             print("Address error")
+            self.delegate?.didSendNANJCompleted?(transaction: nil)
             return
         }
         guard let value = EtherNumberFormatter.full.number(from: amount, decimals: NANJContract.decimals) else {
             print("Amount error")
+            self.delegate?.didSendNANJCompleted?(transaction: nil)
             return
         }
         let sendEncoded = ERC20Encoder.encodeTransfer(to: address, tokens: value.magnitude)
@@ -79,6 +81,7 @@ public class NANJWallet: NSObject {
         //Sign Transaction
         guard let currentAddress = self.etherWallet?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
             print("Current account not found")
+            self.delegate?.didSendNANJCompleted?(transaction: nil)
             return
         }
         
@@ -118,8 +121,10 @@ public class NANJWallet: NSObject {
                                 switch result {
                                 case .success:
                                     print(data.sha3(.keccak256).hexEncoded)
+                                    self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction())
                                     break
                                 case .failure(let error):
+                                    self.delegate?.didSendNANJCompleted?(transaction: nil)
                                     print(error.localizedDescription)
                                     print(result.error ?? "Error")
                                     break
@@ -128,6 +133,7 @@ public class NANJWallet: NSObject {
                         }
                         break
                     case .failure(let error):
+                        self.delegate?.didSendNANJCompleted?(transaction: nil)
                         print("sign transaction error")
                         print(error.errorDescription ?? "Error")
                         break
@@ -135,6 +141,7 @@ public class NANJWallet: NSObject {
                 }
                 break
             case .failure(let error):
+                self.delegate?.didSendNANJCompleted?(transaction: nil)
                 print("Get Nonce error")
                 print(error)
                 break
