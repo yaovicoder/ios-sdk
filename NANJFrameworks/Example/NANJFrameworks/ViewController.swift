@@ -9,7 +9,7 @@
 import UIKit
 import NANJFrameworks
 
-class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletDelegate {
+class ViewController: BaseViewController, NANJWalletManagerDelegate {
     @IBOutlet weak var viewWallet: UIView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!

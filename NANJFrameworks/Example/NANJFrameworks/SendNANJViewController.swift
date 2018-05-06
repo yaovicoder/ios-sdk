@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NANJFrameworks
 
 class SendNANJViewController: BaseViewController {
 
@@ -26,15 +27,36 @@ class SendNANJViewController: BaseViewController {
     }
     
     @IBAction func onClickQRCode(_ sender: Any) {
+        //Open QRCode
     }
     
     @IBAction func onClickNFC(_ sender: Any) {
+        //Open NFC
         
     }
     
     @IBAction func onClickSendNANJ(_ sender: Any) {
+        //Send NANJ
+        if !self.validateInput() {
+            return
+        }
+        
+        
         
     }
     
+    
+    fileprivate func validateInput() -> Bool {
+        if self.txfAmount.text?.length == 0 || self.txfAddress.text?.length == 0 {
+            self.showMessage("Please input data.")
+            return false
+        }
+        if !NANJWalletManager.shared.isValidAddress(address: self.txfAddress.text){
+            //Valid Ether address
+            self.showMessage("Invalid address")
+            return false
+        }
+        return true
+    }
     
 }

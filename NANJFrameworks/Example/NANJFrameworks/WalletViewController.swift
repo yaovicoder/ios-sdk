@@ -46,7 +46,7 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate {
     }
     
     fileprivate func loadBalance() {
-        
+        NANJWalletManager.shared.getCurrentWallet()?.getAmountNANJ()
     }
     
 }
