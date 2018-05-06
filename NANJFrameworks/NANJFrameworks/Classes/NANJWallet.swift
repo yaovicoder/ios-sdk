@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TrustCore
 
 public protocol NANJWalletDelegate {
     
@@ -18,9 +19,25 @@ public protocol NANJWalletDelegate {
     ///
     /// - Parameter transactions: list Transaction.
     func didGetTransactionList(transactions: Array<NANJTransaction>?)
+    
+    /// Callback amount NANJ of wallet.
+    ///
+    /// - Parameters:
+    ///    - wallet: wallet get amount.
+    ///    - amount: current amount of NANJ
+    ///    - error: error when get not complete.
+    func didGetAmountNANJ(wallet: NANJWallet, amount: Double, error: Error?)
+    
+    /// Callback amount ETH of wallet.
+    ///
+    /// - Parameters:
+    ///    - wallet: wallet get amount.
+    ///    - amount: current amount of ETH
+    ///    - error: error when get not complete.
+    func didGetAmountETH(wallet: NANJWallet, amount: Double, error: Error?)
 }
 
-public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
+public class NANJWallet: NSObject {
     
     public var delegate: NANJWalletDelegate?
     
@@ -37,48 +54,35 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     ///
     /// - Parameters:
     ///   - address: wallet target
-    ///   - amouth: the number of coin you want to transfer
-    public func sendNANJ(with address: String, amouth: Double) {
+    ///   - amount: the number of coin you want to transfer
+    public func sendNANJ(with address: String, amount: Double) {
         //return by delegate
         
     }
-    
-    
-    /// Send NAJI coins to other wallet that you just scaned QR code
-    ///
-    /// - Parameters:
-    ///   - amouth: the number of coin you want to transfer
-    ///   - controller: your view controller
-    public func sendNANJWithQRCode(amouth: Double, fromController controller: UIViewController) {
-        //return by delegate
-        
-    }
-    
-    
-    /// Send NAJI coins to other wallet that you connected by NFC method
-    ///
-    /// - Parameters:
-    ///   - amouth: the number of coin you want to transfer
-    ///   - controller: your view controller
-    public func sendNANJWithNFC(amouth: Double, fromController controller: UIViewController) {
-        //return by delegate
-        
-    }
-    
     
     /// Get your NAJI amount
     ///
-    /// - Returns: your NAJI coins
-    public func getAmountNANJ() -> Double {
-        return self.amountNANJ
+    public func getAmountNANJ() {
+        let contract: Address? = Address(string: NANJContract.address)
+        guard let address = self.etherWallet?.address, let __contract = contract else { return }
+        TokensBalanceService().getBalance(for: address, contract: __contract) {result in
+            //guard let `self` = self else {return}
+            //self.delegate?.didGetAmountNANJ(wallet: self, amount: 0.0, error: result.error)
+            print(result.value ?? "")
+            print("Get NANJ value complete")
+        }
     }
     
     
     /// Get your ETH amount
     ///
-    /// - Returns: your ETH coins
-    public func getAmountETH() -> Double {
-        return self.amountETH
+    public func getAmountETH() {
+        guard let address = self.etherWallet?.address else { return }
+        TokensBalanceService().getEthBalance(for: address) { result in
+            print(result.value ?? "")
+            print("Get ETH value complete")
+        }
+
     }
     
     
@@ -110,20 +114,6 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
     
     public func enableWallet() {
         EtherKeystore.shared.recentlyUsedWallet = self.etherWallet
-    }
-    
-    
-    //MARK - NANJQRCodeDelegate, NANJNFCDelegate
-    func didScanQRCode(address: String) {
-        //Received address from QRCode
-    }
-    
-    func didScanNFC(address: String) {
-        //Received address from NFC
-    }
-    
-    func didCloseScan() {
-        
     }
     
     //MARK: - Support method

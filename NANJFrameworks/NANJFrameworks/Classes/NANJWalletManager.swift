@@ -244,6 +244,10 @@ public class NANJWalletManager: NSObject {
     public func scanAddressFromQRCode() {
         
     }
+    
+    public func isValidAddress(address: String?) -> Bool {
+        return CryptoAddressValidator.isValidAddress(address)
+    }
 }
 
 extension NANJWalletManager: NANJNFCDelegate {
