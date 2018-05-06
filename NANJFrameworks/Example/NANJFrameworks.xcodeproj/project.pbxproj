@@ -31,6 +31,9 @@
 		0CC226AA209EE17100B55D55 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22697209EE17100B55D55 /* UIImageViewExtensions.swift */; };
 		0CC226AB209EE17100B55D55 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22698209EE17100B55D55 /* UIViewControllerExtensions.swift */; };
 		0CC226AC209EE17100B55D55 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22699209EE17100B55D55 /* UIViewExtensions.swift */; };
+		0CC226AE209EF71500B55D55 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC226AD209EF71500B55D55 /* TransactionViewController.swift */; };
+		0CC226B0209EF72C00B55D55 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC226AF209EF72C00B55D55 /* WalletViewController.swift */; };
+		0CC226B2209F02C400B55D55 /* SendNANJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC226B1209F02C400B55D55 /* SendNANJViewController.swift */; };
 		36BD4843AFB7A663DF078BF0 /* Pods_NANJFrameworks_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817CEDEB117173B292B63120 /* Pods_NANJFrameworks_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -78,6 +81,9 @@
 		0CC22697209EE17100B55D55 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		0CC22698209EE17100B55D55 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		0CC22699209EE17100B55D55 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		0CC226AD209EF71500B55D55 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		0CC226AF209EF72C00B55D55 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		0CC226B1209F02C400B55D55 /* SendNANJViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendNANJViewController.swift; sourceTree = "<group>"; };
 		1D4ACF835D95F6A8DF85FE46 /* Pods-NANJFrameworks_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Example/Pods-NANJFrameworks_Example.release.xcconfig"; sourceTree = "<group>"; };
 		23FC84B71C195CAD2A673DB0 /* Pods-NANJFrameworks_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Tests/Pods-NANJFrameworks_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		37B1B5E184A589D562BFE5E0 /* Pods-NANJFrameworks_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Example/Pods-NANJFrameworks_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,7 +189,10 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				0CA40425208AC916006D6117 /* BaseViewController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				0CC226AF209EF72C00B55D55 /* WalletViewController.swift */,
+				0CC226AD209EF71500B55D55 /* TransactionViewController.swift */,
 				0CA40423208AC776006D6117 /* WalletListController.swift */,
+				0CC226B1209F02C400B55D55 /* SendNANJViewController.swift */,
 				0CA4042A208AFBEE006D6117 /* ImportJSONViewController.swift */,
 				0CC22684209EE0BE00B55D55 /* PasswordViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -303,7 +312,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = NANJ;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -468,6 +477,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/NANJFrameworks/NANJFrameworks.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustCore/TrustCore.framework",
@@ -483,6 +493,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NANJFrameworks.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustCore.framework",
@@ -504,10 +515,12 @@
 				0CC2269D209EE17100B55D55 /* DataExtensions.swift in Sources */,
 				0CC2269F209EE17100B55D55 /* DictionaryExtensions.swift in Sources */,
 				0CC2269C209EE17100B55D55 /* CharacterExtensions.swift in Sources */,
+				0CC226AE209EF71500B55D55 /* TransactionViewController.swift in Sources */,
 				0CC226A4209EE17100B55D55 /* SwifterSwift.swift in Sources */,
 				0CC226A6209EE17100B55D55 /* UIButtonExtensions.swift in Sources */,
 				0CA40429208ACE34006D6117 /* WalletListCell.swift in Sources */,
 				0CC226A9209EE17100B55D55 /* UIImageExtensions.swift in Sources */,
+				0CC226B0209EF72C00B55D55 /* WalletViewController.swift in Sources */,
 				0CA40426208AC916006D6117 /* BaseViewController.swift in Sources */,
 				0CC226A1209EE17100B55D55 /* LocaleExtensions.swift in Sources */,
 				0CC226AA209EE17100B55D55 /* UIImageViewExtensions.swift in Sources */,
@@ -519,6 +532,7 @@
 				0CC226AC209EE17100B55D55 /* UIViewExtensions.swift in Sources */,
 				0CC226A0209EE17100B55D55 /* FontExtention.swift in Sources */,
 				0CC226AB209EE17100B55D55 /* UIViewControllerExtensions.swift in Sources */,
+				0CC226B2209F02C400B55D55 /* SendNANJViewController.swift in Sources */,
 				0CA40424208AC776006D6117 /* WalletListController.swift in Sources */,
 				0CC22685209EE0BE00B55D55 /* PasswordViewController.swift in Sources */,
 				0CC226A8209EE17100B55D55 /* UIColorExtensions.swift in Sources */,
