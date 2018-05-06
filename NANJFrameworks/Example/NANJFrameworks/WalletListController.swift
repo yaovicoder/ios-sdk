@@ -150,11 +150,17 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         }
         actionSheet.addAction(privateKey)
         
-//        let remove = UIAlertAction(title: "Remove wallet", style: .destructive)
-//        { _ in
-//
-//        }
-//        actionSheet.addAction(remove)
+        let remove = UIAlertAction(title: "Remove wallet", style: .destructive)
+        { _ in
+            self.showLoading()
+            if NANJWalletManager.shared.removeWallet(wallet: wallet) {
+                self.loadWallets()
+            } else {
+                self.showMessage("Remove wallet failed.")
+            }
+            self.hideLoading()
+        }
+        actionSheet.addAction(remove)
         
         self.present(actionSheet, animated: true, completion: nil)
     }
