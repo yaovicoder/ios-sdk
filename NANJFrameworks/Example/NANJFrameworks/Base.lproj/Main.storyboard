@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AFP-8r-rtN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="32m-PU-6QY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -233,7 +233,9 @@
                             <constraint firstItem="ZqR-Iz-WjD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="w2x-iV-kSr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NANJ Example" id="D2L-s9-3yc"/>
+                    <navigationItem key="navigationItem" title="NANJ Example" id="D2L-s9-3yc">
+                        <barButtonItem key="backBarButtonItem" title="    " id="KFZ-4e-muI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="lblAddress" destination="fsF-ee-18E" id="Gz3-HY-gtL"/>
                         <outlet property="lblName" destination="aDn-hY-Mnw" id="mFF-ki-kvV"/>
@@ -244,10 +246,10 @@
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="-580.65967016491754"/>
         </scene>
-        <!--Wallet List Controller-->
+        <!--Wallet List-->
         <scene sceneID="fWG-CV-SVB">
             <objects>
-                <viewController id="Ps6-lF-ZpK" customClass="WalletListController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Wallet List" id="Ps6-lF-ZpK" customClass="WalletListController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pUO-NM-0MG"/>
                         <viewControllerLayoutGuide type="bottom" id="ZHg-vX-q2r"/>
@@ -388,6 +390,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzW-x7-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1713" y="123"/>
+        </scene>
+        <!--NANJ Password-->
+        <scene sceneID="2is-Sv-qfw">
+            <objects>
+                <viewController title="NANJ Password" id="32m-PU-6QY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UFB-FN-RaL"/>
+                        <viewControllerLayoutGuide type="bottom" id="E0H-4T-W8Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jys-e5-w32">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NANJ COIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-Ye-ZSC">
+                                <rect key="frame" x="30" y="100" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rtL-ah-TEV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.36470588240000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dh0-21-AoS">
+                                <rect key="frame" x="60" y="200" width="255" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baZ-Mq-wAI">
+                                <rect key="frame" x="110" y="279" width="155" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g2a-Ye-ZSC" firstAttribute="top" secondItem="UFB-FN-RaL" secondAttribute="bottom" constant="80" id="80a-nf-HNw"/>
+                            <constraint firstAttribute="trailing" secondItem="g2a-Ye-ZSC" secondAttribute="trailing" constant="30" id="V7C-8E-bHS"/>
+                            <constraint firstItem="dh0-21-AoS" firstAttribute="top" secondItem="g2a-Ye-ZSC" secondAttribute="bottom" constant="60" id="b3Y-dm-oeX"/>
+                            <constraint firstItem="g2a-Ye-ZSC" firstAttribute="leading" secondItem="jys-e5-w32" secondAttribute="leading" constant="30" id="cfX-ao-2w3"/>
+                            <constraint firstItem="dh0-21-AoS" firstAttribute="leading" secondItem="jys-e5-w32" secondAttribute="leading" constant="60" id="eZa-rB-C7m"/>
+                            <constraint firstAttribute="trailing" secondItem="dh0-21-AoS" secondAttribute="trailing" constant="60" id="krx-94-SQO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uK2-vw-zCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224.80000000000001" y="122.78860569715144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1AZ-ql-3Yy">
