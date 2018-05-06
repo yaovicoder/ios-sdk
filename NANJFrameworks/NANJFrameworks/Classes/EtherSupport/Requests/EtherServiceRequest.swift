@@ -18,7 +18,7 @@ struct EtherServiceRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
 
     var baseURL: URL {
         let config = Config()
-        return RPCServer.init(chainID: RPCServer.rinkeby.chainID).rpcURL//config.server.rpcURL
+        return config.server.rpcURL
     }
 
     var method: HTTPMethod {

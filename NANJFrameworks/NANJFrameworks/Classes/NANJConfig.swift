@@ -3,7 +3,6 @@
 //  NANJFrameworks
 //
 //  Created by Long Lee on 5/6/18.
-//
 
 import Foundation
 
