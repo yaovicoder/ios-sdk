@@ -104,49 +104,62 @@ public class NANJWallet: NSObject, NANJQRCodeDelegate, NANJNFCDelegate {
             return 0
         }()
         
-        let valueNonce: BigInt = {return 30}()
-        let valueGasPrice: BigInt = {return 3000000000}()
-        
         let addressToken: Address? = {
             return Address(string: NANJContract.contract)
         }()
-        let signTransaction = SignTransaction(
-            value: valueZero,
-            account: currentAccount,
-            to: addressToken,
-            nonce: valueNonce,
-            data: sendEncoded,
-            gasPrice: GasLimitConfiguration.max,
-            gasLimit: GasLimitConfiguration.tokenTransfer,
-            chainID: NANJConfig.rpcServer.chainID
-        )
-        //Sign and Send Transaction
-        let signedTransaction = EtherKeystore.shared.signTransaction(signTransaction)
-        switch signedTransaction {
-        case .success(let data):
-            do {
-                let request = EtherServiceRequest(batch: BatchFactory().create(SendRawTransactionRequest(signedTransaction: data.hexEncoded)))
-                Session.send(request) { result in
-                    switch result {
-                    case .success:
-                        print(data.sha3(.keccak256).hexEncoded)
+        let requestNonce = EtherServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(
+            address: currentAddress.eip55String,
+            state: "latest"
+        )))
+        Session.send(requestNonce) { result in
+            switch result {
+            case .success(let count):
+                do {
+//                    let nonce = count - 1
+                    print(BigInt(count))
+                    let signTransaction = SignTransaction(
+                        value: valueZero,
+                        account: currentAccount,
+                        to: addressToken,
+                        nonce: BigInt(count),
+                        data: sendEncoded,
+                        gasPrice: max(NANJWalletManager.shared.chainState.gasPrice ?? GasPriceConfiguration.default, GasPriceConfiguration.min),
+                        gasLimit: GasLimitConfiguration.tokenTransfer,
+                        chainID: NANJConfig.rpcServer.chainID
+                    )
+                    //Sign and Send Transaction
+                    let signedTransaction = EtherKeystore.shared.signTransaction(signTransaction)
+                    switch signedTransaction {
+                    case .success(let data):
+                        do {
+                            let request =
+                                EtherServiceRequest(batch: BatchFactory().create(SendRawTransactionRequest(signedTransaction: data.hexEncoded)))
+                            Session.send(request) { result in
+                                switch result {
+                                case .success:
+                                    print(data.sha3(.keccak256).hexEncoded)
+                                    break
+                                case .failure(let error):
+                                    print(error.localizedDescription)
+                                    print(result.error ?? "Error")
+                                    break
+                                }
+                            }
+                        }
                         break
                     case .failure(let error):
-                        print(error.localizedDescription)
-                        print(result.error ?? "Error")
+                        print("sign transaction error")
+                        print(error.errorDescription ?? "Error")
                         break
                     }
                 }
+                break
+            case .failure(let error):
+                print("Get Nonce error")
+                print(error)
+                break
             }
-            break
-        case .failure(let error):
-            print("sign transaction error")
-            print(error.errorDescription ?? "Error")
-            break
-        default:
-            break
         }
-        
     }
     
     /// Get your NAJI amount

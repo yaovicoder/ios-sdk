@@ -70,6 +70,18 @@ public class NANJWalletManager: NSObject {
         return EtherKeystore.shared
     }()
     
+    fileprivate var config: Config = Config()
+    var chainState: ChainState!
+    
+    public func startConfig() {
+        //Setup RPC Server
+        config.chainID = NANJConfig.rpcServer.chainID
+        
+        //Start Chain state
+        self.chainState = ChainState(config: self.config)
+        self.chainState.start()
+    }
+    
     /**
      Create new wallet.
      

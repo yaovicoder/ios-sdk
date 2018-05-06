@@ -28,6 +28,7 @@
 		0A8C832935BD15263394BDBB8C5F48B7 /* curve25519-donna-32bit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AE7EE9250286A37111FD0931CC811CA /* curve25519-donna-32bit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AAF12A623C833D00A1B39CB70D13BED /* MnemonicWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ACF531195F37E5237A30EE7051B059 /* MnemonicWords.swift */; };
 		0B0572B9007726D14DEB1D44B4C786E8 /* StringDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CA08B2522FAA0E6665387369BFBCA /* StringDataParser.swift */; };
+		0C5492C6209EB8DC007245EC /* GasPriceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5492C5209EB8DC007245EC /* GasPriceConfiguration.swift */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5866C38027B8EA0FA02FC1A211EAAE8 /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313101173806C58933AECA04F3055A3B /* Floating Point Conversion.swift */; };
 		0CA28F96A5BBFD9EBFE9C5856386E988 /* nist256p1.table in Sources */ = {isa = PBXBuildFile; fileRef = 34822B787BD912A5E4F4D9B5C2E22888 /* nist256p1.table */; };
@@ -833,6 +834,7 @@
 		0AD8D5C5C9F911190DF7063A0A572713 /* hmac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hmac.h; path = "trezor-crypto/hmac.h"; sourceTree = "<group>"; };
 		0B00BDA262D86ACC46FE166F0984C8A1 /* TrustCore-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TrustCore-prefix.pch"; sourceTree = "<group>"; };
 		0B75FED30ABE0783B925741480D0DCF0 /* AEAD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AEAD.swift; path = Sources/CryptoSwift/AEAD/AEAD.swift; sourceTree = "<group>"; };
+		0C5492C5209EB8DC007245EC /* GasPriceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GasPriceConfiguration.swift; sourceTree = "<group>"; };
 		0CC049AA209D3275005AE3BE /* CallRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallRequest.swift; sourceTree = "<group>"; };
 		0CC049AC209D328B005AE3BE /* BalanceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceRequest.swift; sourceTree = "<group>"; };
 		0CC049AE209D32B0005AE3BE /* Balance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
@@ -2574,6 +2576,7 @@
 				0CC049D0209D5E98005AE3BE /* ConfirmType.swift */,
 				0CC049D6209D8CA3005AE3BE /* SentTransaction.swift */,
 				0CC049D8209D9C83005AE3BE /* GasLimitConfiguration.swift */,
+				0C5492C5209EB8DC007245EC /* GasPriceConfiguration.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -3274,6 +3277,7 @@
 				0CC049C5209D5D8A005AE3BE /* BlockNumber.swift in Sources */,
 				9BA6CEBFA42F4EA4CA3281C969F5756A /* EtherServiceRequest.swift in Sources */,
 				A9F93F78899DAA8DF79B8410F0D2690B /* EthTypedData.swift in Sources */,
+				0C5492C6209EB8DC007245EC /* GasPriceConfiguration.swift in Sources */,
 				78DEB490BC198E5CB5168B47346DB75B /* ImportType.swift in Sources */,
 				9D0B8472F312AF8D4DF42EF08DF1F2C9 /* Keystore.swift in Sources */,
 				8E4BA7EE8B1FD20F5902992ABE839ECE /* KeyStoreError.swift in Sources */,

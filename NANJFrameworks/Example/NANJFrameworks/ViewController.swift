@@ -89,7 +89,7 @@ class ViewController: BaseViewController, NANJWalletManagerDelegate, NANJWalletD
 //        NANJWalletManager.shared.scanAddressFromNFC()
         self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
         //0x225358f337d33F9959fAa106800Ac865Eee7d994
-        self.currentWallet?.sendNANJ(toAddress: "0x22d9f789111e6d467c42607b72f165feffff8b83", amount: "0.8686")
+        self.currentWallet?.sendNANJ(toAddress: "0x22d9f789111e6d467c42607b72f165feffff8b83", amount: "2.86")
     }
     
     //MARK: - NANJWalletManagerDelegate
