@@ -122,13 +122,26 @@ extension NANJQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                if NANJWalletManager.shared.isValidAddress(address: metadataObj.stringValue) {
-                    //Close scan
-                    self.delegate?.didScanQRCode?(address: metadataObj.stringValue!)
-                    self.closeVC()
+            if let __object: String = metadataObj.stringValue {
+                if __object.contains(Character.init(":")) {
+                    let ether: [String] = __object.split(separator: Character.init(":")).map(String.init)
+                    ether.forEach { address in
+                        if NANJWalletManager.shared.isValidAddress(address: address) {
+                            //Close scan
+                            self.delegate?.didScanQRCode?(address: address)
+                            self.closeVC()
+                        } else {
+                            print("Invalid Address")
+                        }
+                    }
                 } else {
-                    print("Invalid Address")
+                    if NANJWalletManager.shared.isValidAddress(address: metadataObj.stringValue) {
+                        //Close scan
+                        self.delegate?.didScanQRCode?(address: metadataObj.stringValue!)
+                        self.closeVC()
+                    } else {
+                        print("Invalid Address")
+                    }
                 }
             }
         }
