@@ -36,7 +36,6 @@
 		0CC226B2209F02C400B55D55 /* SendNANJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC226B1209F02C400B55D55 /* SendNANJViewController.swift */; };
 		36BD4843AFB7A663DF078BF0 /* Pods_NANJFrameworks_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817CEDEB117173B292B63120 /* Pods_NANJFrameworks_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -91,7 +90,6 @@
 		607FACD01AFB9204008FA782 /* NANJFrameworks_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NANJFrameworks_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				0CA40427208ACE14006D6117 /* View */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				0CA40425208AC916006D6117 /* BaseViewController.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				0CC226AF209EF72C00B55D55 /* WalletViewController.swift */,
 				0CC226AD209EF71500B55D55 /* TransactionViewController.swift */,
 				0CA40423208AC776006D6117 /* WalletListController.swift */,
@@ -511,7 +508,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				0CC2269D209EE17100B55D55 /* DataExtensions.swift in Sources */,
 				0CC2269F209EE17100B55D55 /* DictionaryExtensions.swift in Sources */,
 				0CC2269C209EE17100B55D55 /* CharacterExtensions.swift in Sources */,
@@ -686,7 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NANJFrameworks_Example.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TQXT24NXN6;
 				INFOPLIST_FILE = NANJFrameworks/Info.plist;
@@ -695,8 +691,8 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = iKite.dev.NANJ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0eb8ce98-4aeb-4044-b915-c9802f940584";
-				PROVISIONING_PROFILE_SPECIFIER = "NANJ Adhoc";
+				PROVISIONING_PROFILE = "055c7e9a-3869-4a82-9b07-2d2b11b84959";
+				PROVISIONING_PROFILE_SPECIFIER = "NANJ Coin - Dev";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

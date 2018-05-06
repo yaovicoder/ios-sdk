@@ -15,15 +15,19 @@ class SendNANJViewController: BaseViewController {
     
     @IBOutlet weak var txfAmount: UITextField!
     
+    fileprivate var nfc: NANJNFC?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBAction func onClickQRCode(_ sender: Any) {
@@ -32,7 +36,16 @@ class SendNANJViewController: BaseViewController {
     
     @IBAction func onClickNFC(_ sender: Any) {
         //Open NFC
-        
+        if #available(iOS 11.0, *) {
+            if self.nfc == nil {
+                self.nfc = NANJNFC.init()
+                self.nfc?.delegate = self
+            }
+            self.nfc?.startScan()
+        } else {
+            //iOS not support
+            print("iOS not support NFC")
+        }
     }
     
     @IBAction func onClickSendNANJ(_ sender: Any) {
@@ -40,8 +53,6 @@ class SendNANJViewController: BaseViewController {
         if !self.validateInput() {
             return
         }
-        
-        
         
     }
     
@@ -60,3 +71,20 @@ class SendNANJViewController: BaseViewController {
     }
     
 }
+
+extension SendNANJViewController: NANJNFCDelegate {
+    func didScanNFC(address: String?) {
+        DispatchQueue.main.async {
+            if let __address = address {
+                self.txfAddress.text = __address
+            } else {
+                print("Address invalid")
+            }
+        }
+    }
+    
+    func didCloseScan() {
+        self.nfc = nil
+    }
+}
+
