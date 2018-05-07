@@ -87,43 +87,45 @@ extension NANJNFC {
         if length == 0 {
             return nil
         }
-        if __type == "T" {
+//        if __type == "T" {
             if (length < 1) {
                 return nil;
             }
             var payloadBytes: Array<UInt8> = payload.payload.bytes
             let codeLength: UInt8 = UInt8((payloadBytes[0]) & 0x7f)
             print(codeLength)
-            if length < 1 + Int(codeLength) {
-                return nil
-            }
+//            if length < 1 + Int(codeLength) {
+//                return nil
+//            }
             // Get lang code and text.
-            var bytes: Array<UInt8> = []
-            _ = payloadBytes.enumerated().map { (index, value) -> UInt8 in
-                if index != 0 {
-                    bytes.append(value)
-                }
-                return UInt8(value)
-            }
-            
-            let dataCodeLenght = NSData(bytes: bytes, length: Int(codeLength))
-            let langCode = String.init(data: dataCodeLenght as Data, encoding: .utf8)
-            print(langCode ?? "NO LANG")
-            
-            var bytesText: Array<UInt8> = []
-            _ = payloadBytes.enumerated().map { (index, value) -> UInt8 in
-                if index > codeLength {
-                    bytesText.append(value)
-                }
-                return UInt8(value)
-            }
-            let __dataText = NSData(bytes: bytesText, length: Int(length - 1 - Int(codeLength)))
-            let address = String.init(data: __dataText as Data, encoding: .utf8)
+//            var bytes: Array<UInt8> = []
+//            _ = payloadBytes.enumerated().map { (index, value) -> UInt8 in
+//                if index != 0 {
+//                    bytes.append(value)
+//                }
+//                return UInt8(value)
+//            }
+        
+//            let dataCodeLenght = NSData(bytes: bytes, length: Int(codeLength))
+//            let langCode = String.init(data: dataCodeLenght as Data, encoding: .utf8)
+//            print(langCode ?? "NO LANG")
+//
+//            var bytesText: Array<UInt8> = []
+//            _ = payloadBytes.enumerated().map { (index, value) -> UInt8 in
+//                if index > codeLength {
+//                    bytesText.append(value)
+//                }
+//                return UInt8(value)
+//            }
+//            let __dataText = NSData(bytes: bytesText, length: Int(length - 1 - Int(codeLength)))
+//            let address = String.init(data: __dataText as Data, encoding: .utf8)
+        
+            let address: String? = String(data: payload.payload, encoding: .utf8)
             if CryptoAddressValidator.isValidAddress(address) {
                return address
             }
             return nil
-        }
+//        }
         return nil
     }
     

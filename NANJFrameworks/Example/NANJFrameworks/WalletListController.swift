@@ -137,7 +137,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         }
         actionSheet.addAction(copy)
         
-        let keyStore = UIAlertAction(title: "Export Keystore", style: .default)
+        let keyStore = UIAlertAction(title: "Backup Keystore", style: .default)
         { _ in
             self.openExportKeystore(wallet: wallet)
         }

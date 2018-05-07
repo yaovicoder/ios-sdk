@@ -35,7 +35,7 @@ class PasswordViewController: BaseViewController {
         if (__password != nil) {
             //Check password
             if self.txfPassword.text != __password!  {
-                self.showMessage("Password in correct.")
+                self.showMessage("Password incorrect.")
             } else {
                 self.gotoMain()
             }

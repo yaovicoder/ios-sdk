@@ -179,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="144" width="320" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="066-8q-FVW" id="f8M-E8-n4L">
@@ -517,7 +517,7 @@
                                 <color key="textColor" red="0.90196078430000004" green="0.36470588240000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dsdsds" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dh0-21-AoS">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dh0-21-AoS">
                                 <rect key="frame" x="60" y="200" width="200" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -531,7 +531,7 @@
                                     <constraint firstAttribute="height" constant="40" id="ICv-kQ-R2A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="DONE">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
