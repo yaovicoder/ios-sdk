@@ -30,6 +30,25 @@
             </objects>
             <point key="canvasLocation" x="2494" y="-580"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gpR-sT-VR2">
+            <objects>
+                <tabBarController id="C21-1C-fBL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wwj-CB-FCu"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i3P-E6-4Lr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="ZVa-Dq-Qp5"/>
+                        <segue destination="s3x-WZ-ibc" kind="relationship" relationship="viewControllers" id="WdG-8w-fpN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOe-sx-2zM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="-1390"/>
+        </scene>
         <!--NANJ SDK-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -52,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyJ-De-C7M">
-                                <rect key="frame" x="50" y="488" width="220" height="40"/>
+                                <rect key="frame" x="50" y="439" width="220" height="40"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="5Hn-co-apn"/>
@@ -130,11 +149,11 @@
                             <constraint firstAttribute="trailing" secondItem="OOW-yE-mFw" secondAttribute="trailing" constant="30" id="648-uL-QYw"/>
                             <constraint firstItem="xYu-68-l2p" firstAttribute="top" secondItem="mis-K6-IoH" secondAttribute="bottom" constant="3" id="6cL-19-REp"/>
                             <constraint firstItem="eyJ-De-C7M" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="9ZE-Pu-OCH"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eyJ-De-C7M" secondAttribute="bottom" constant="40" id="Cwa-s1-icU"/>
                             <constraint firstItem="xYu-68-l2p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="ErC-em-VYO"/>
                             <constraint firstItem="mis-K6-IoH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="50" id="Gej-vo-QAw"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="eyJ-De-C7M" secondAttribute="bottom" constant="40" id="PGu-5U-FWk"/>
+                            <constraint firstItem="ZqR-Iz-WjD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="QE6-9O-4da"/>
                             <constraint firstAttribute="trailing" secondItem="Y1p-0V-qcq" secondAttribute="trailing" constant="20" id="Swp-vi-wXV"/>
-                            <constraint firstItem="ZqR-Iz-WjD" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="T8x-Z0-TPj"/>
                             <constraint firstItem="OOW-yE-mFw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="buY-Qo-bCg"/>
                             <constraint firstItem="mis-K6-IoH" firstAttribute="top" secondItem="ZqR-Iz-WjD" secondAttribute="bottom" constant="10" id="dOQ-qc-wpB"/>
                             <constraint firstAttribute="trailing" secondItem="ZqR-Iz-WjD" secondAttribute="trailing" constant="20" id="fBh-re-WWu"/>
@@ -144,6 +163,7 @@
                             <constraint firstItem="QB7-Z0-M9U" firstAttribute="top" secondItem="Y1p-0V-qcq" secondAttribute="bottom" constant="26" id="zdV-lF-mq2"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Wallet" id="kaM-np-uMq"/>
                     <navigationItem key="navigationItem" title="NANJ SDK" id="D2L-s9-3yc">
                         <barButtonItem key="backBarButtonItem" title="    " id="KFZ-4e-muI"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OzH-Er-GUo">
@@ -478,7 +498,7 @@
             </objects>
             <point key="canvasLocation" x="974" y="202"/>
         </scene>
-        <!--Transaction View Controller-->
+        <!--Transaction-->
         <scene sceneID="BKf-Cq-CjL">
             <objects>
                 <viewController id="s3x-WZ-ibc" customClass="TransactionViewController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -489,12 +509,51 @@
                     <view key="view" contentMode="scaleToFill" id="IKp-lD-9Qv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIw-lK-Usx">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5Kb-Rr-ZqG">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Kb-Rr-ZqG" id="np3-zg-UJb">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orw-oA-ebB">
+                                                    <rect key="frame" x="122" y="11" width="90" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="s3x-WZ-ibc" id="fqN-y6-vaz"/>
+                                    <outlet property="delegate" destination="s3x-WZ-ibc" id="ctA-Du-zGk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yIw-lK-Usx" firstAttribute="top" secondItem="ky4-9D-ILx" secondAttribute="bottom" id="IpM-yW-KnQ"/>
+                            <constraint firstAttribute="trailing" secondItem="yIw-lK-Usx" secondAttribute="trailing" id="hHq-nZ-Vb6"/>
+                            <constraint firstItem="z3V-A0-5Ah" firstAttribute="top" secondItem="yIw-lK-Usx" secondAttribute="bottom" id="r8b-l1-BQG"/>
+                            <constraint firstItem="yIw-lK-Usx" firstAttribute="leading" secondItem="IKp-lD-9Qv" secondAttribute="leading" id="sWR-Eg-Qfv"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Transaction" id="k5i-wQ-3gB"/>
+                    <connections>
+                        <outlet property="tbvTransaction" destination="yIw-lK-Usx" id="MmU-aJ-CIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzW-x7-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2495" y="202"/>
+            <point key="canvasLocation" x="1871.25" y="-1390.1408450704225"/>
         </scene>
         <!--NANJ Password-->
         <scene sceneID="2is-Sv-qfw">
@@ -575,12 +634,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="JXQ-15-Zb6"/>
+                        <segue destination="C21-1C-fBL" kind="relationship" relationship="rootViewController" id="sdi-zp-9z2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6v-zx-SKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="224.80000000000001" y="-579.76011994002999"/>
+            <point key="canvasLocation" x="133" y="-581"/>
         </scene>
     </scenes>
     <resources>
