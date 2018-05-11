@@ -10,7 +10,15 @@ import APIKit
 
 struct TransactionRequest: Request {
     typealias Response = [NANJTransaction]
+    private var _address: String?
+    private var _page: Int?
+    private var _offset: Int?
     
+    init(_ address: String, _ page: Int, _ offset: Int) {
+        _address = address
+        _page = page
+        _offset = offset
+    }
     var baseURL: URL {
         return URL(string: NANJConfig.apiServer)!
     }
@@ -23,17 +31,18 @@ struct TransactionRequest: Request {
         return "/api"
     }
     
+    
     var queryParameters: [String : Any]? {
         return [
             "module" : "account",
             "action" : "tokentx",
-            "address" : "0x225358f337d33F9959fAa106800Ac865Eee7d994",
+            "address" : _address ?? "",
             "startblock" : 0,
             "endblock" : "999999999",
             "sort" : "asc",
             "apikey" : "WR5V2SAEJSPVVYPKJRFQI1HVBWT22T5XUJ",
-            "page" : 1,
-            "offset" : 3
+            "page" : _page ?? 1,
+            "offset" : _offset ?? 1
         ]
     }
     
