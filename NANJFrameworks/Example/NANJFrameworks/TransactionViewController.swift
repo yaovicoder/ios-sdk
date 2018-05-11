@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import NANJFrameworks
 
 class TransactionViewController: BaseViewController {
     
     let cellIdentifier:String = "Cell"
-    
+    var transactions: [NANJTransaction] = []
     @IBOutlet weak var tbvTransaction: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadTransactions()
         
     }
 
+    func loadTransactions() {
+        NANJWalletManager.shared.getTransactions()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
