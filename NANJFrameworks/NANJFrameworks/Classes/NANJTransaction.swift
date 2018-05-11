@@ -17,6 +17,17 @@ public class NANJTransaction: NSObject {
     var amount: Double = 0.0
     var fee: Double = 0.0
     
+//    init(object: Any) throws {
+//        guard let dictionary = object as? [String: Any] else {
+//            return
+//        }
+////            let rateDictionary = dictionary["rate"] as? [String: Any],
+////            let limit = rateDictionary["limit"] as? Int,
+////            let remaining = rateDictionary["remaining"] as? Int else {
+////                throw ResponseError.unexpectedObject(object)
+////            throw
+//    }
+    
     public func getURLOnEtherscan() -> URL? {
         
         return nil

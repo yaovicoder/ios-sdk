@@ -7,6 +7,7 @@
 
 import UIKit
 import TrustKeystore
+import APIKit
 
 @objc public protocol NANJWalletManagerDelegate {
     
@@ -234,8 +235,18 @@ public class NANJWalletManager: NSObject {
     /// After finish get Rate of NAJI on async function
     /// It return a NANJ Rate in callback delegate.
     public func getNANJRate(){
-        
+        let request: TransactionRequest = TransactionRequest()
+        Session.send(request) {result in
+            switch result {
+            case .success(let transaction):
+                break
+            case .failure(let error):
 
+                print("Get Nonce error")
+                print(error)
+                break
+            }
+        }
     }
     
     public func scanAddressFromQRCode() {

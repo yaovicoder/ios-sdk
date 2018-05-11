@@ -38,6 +38,7 @@
 		0B0572B9007726D14DEB1D44B4C786E8 /* StringDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62898960A85B45983D25F698A1B75DFF /* StringDataParser.swift */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08307514839BA19E7373CF8183D5149 /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E75736ECF73ADB21168A5CFDF0E53BD /* Floating Point Conversion.swift */; };
+		0CEB24EE20A49F3200246984 /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB24ED20A49F3200246984 /* TransactionRequest.swift */; };
 		0D8436E62C639632DE1E369E9CECD63E /* GasPriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF1033CFC14F06F67B7379565D3A81 /* GasPriceRequest.swift */; };
 		0E05BACA08A9DC7A4C09E93A09F7276C /* pbkdf2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CDC2413072456A4A90C2C411786B3B /* pbkdf2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4C6ACB40BFA129B404D0E320F34F22 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A450C8956A45093BBC5DD2E735CE63 /* Wallet.swift */; };
@@ -912,6 +913,7 @@
 		0B82A7A0EEA846074535EB2329DA6757 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
 		0BF4333FEA40A95AB7B6228ABAD7248B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
+		0CEB24ED20A49F3200246984 /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
 		0D61BEC9715D610438C1F9075462AC72 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		0E4E117ED20D960C80B2D51A5FDD9B08 /* GasLimitConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GasLimitConfiguration.swift; sourceTree = "<group>"; };
 		0E69DB0946C3ED6581D9A666348A0059 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
@@ -1855,6 +1857,7 @@
 				93FEE7F563EDBE0B35EAEF62BD8797B2 /* GetTransactionRequest.swift */,
 				5A27F04B077C5D391E62D0D51F452467 /* SendRawTransactionRequest.swift */,
 				23EC6843355CFBD80F2C3B6F23E592F5 /* EtherServiceRequest.swift */,
+				0CEB24ED20A49F3200246984 /* TransactionRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -3773,6 +3776,7 @@
 				863610ECF77C2DA5425FC7D787B3217D /* RPCServers.swift in Sources */,
 				9C8E3D463536D57F6C63F4877C1101E4 /* SendRawTransactionRequest.swift in Sources */,
 				D8085E34F37A7753E7B96BDDB04AA8BA /* SendTransaction.swift in Sources */,
+				0CEB24EE20A49F3200246984 /* TransactionRequest.swift in Sources */,
 				15FF018F0653FB49ADAAD3EFBAC607C1 /* SendTransactionCoordinator.swift in Sources */,
 				F5590295914801BCE2D4EBEDC9F8BABA /* SentTransaction.swift in Sources */,
 				ADFEF48665E74EE64E5CC34087DF9F8E /* Session.swift in Sources */,

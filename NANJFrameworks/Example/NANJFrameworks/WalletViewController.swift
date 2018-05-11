@@ -35,6 +35,9 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onClickTransaction(_ sender: Any) {
+        NANJWalletManager.shared.getNANJRate()
+    }
     
     fileprivate func loadCurrentWallet() {
         self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
