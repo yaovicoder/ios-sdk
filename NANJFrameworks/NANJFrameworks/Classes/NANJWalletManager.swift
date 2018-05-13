@@ -256,24 +256,4 @@ public class NANJWalletManager: NSObject {
     public func isValidAddress(address: String?) -> Bool {
         return CryptoAddressValidator.isValidAddress(address)
     }
-    
-    public func getTransactions() {
-        guard let wallet: NANJWallet = NANJWalletManager.shared.getCurrentWallet() else {
-            return
-        }
-        
-        let request: TransactionRequest = TransactionRequest(wallet.address, 1, 3)
-        //request.queryParameters = params
-        Session.send(request) {result in
-            switch result {
-            case .success(let transaction):
-                break
-            case .failure(let error):
-                
-                print("Get Nonce error")
-                print(error)
-                break
-            }
-        }
-    }
 }

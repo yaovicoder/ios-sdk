@@ -121,7 +121,7 @@ public class NANJWallet: NSObject {
                                 switch result {
                                 case .success:
                                     print(data.sha3(.keccak256).hexEncoded)
-                                    self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction())
+                                    self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: [:]))
                                     break
                                 case .failure(let error):
                                     self.delegate?.didSendNANJCompleted?(transaction: nil)
@@ -192,10 +192,10 @@ public class NANJWallet: NSObject {
     
     /// After get transactions on async function
     /// return list transactions in callback delegate.
-    public func getTransactionList() {
+    public func getTransactionList(page: Int, offset: Int) {
         //Return by delegate
         //Ex
-        self.delegate?.didGetTransactionList?(transactions: nil)
+        self.exeGetTransaction(page: page, offset: offset)
     }
     
     
@@ -218,5 +218,24 @@ public class NANJWallet: NSObject {
     
     func getEtherWallet() -> Wallet? {
         return self.etherWallet
+    }
+}
+
+extension NANJWallet {
+    fileprivate func exeGetTransaction(page: Int, offset: Int) {
+        let request: TransactionRequest = TransactionRequest(self.address, page, offset)
+        Session.send(request) { result in
+            switch result {
+            case .success(let transactions):
+                self.delegate?.didGetTransactionList?(transactions: transactions)
+                break
+            case .failure(let error):
+                self.delegate?.didGetTransactionList?(transactions: nil)
+                print("Get Nonce error")
+                print(error)
+                break
+            }
+        }
+
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */; };
 		0CA40424208AC776006D6117 /* WalletListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40423208AC776006D6117 /* WalletListController.swift */; };
 		0CA40426208AC916006D6117 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40425208AC916006D6117 /* BaseViewController.swift */; };
 		0CA40429208ACE34006D6117 /* WalletListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40428208ACE34006D6117 /* WalletListCell.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		0C67B17E208481CF00C2054B /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA40423208AC776006D6117 /* WalletListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListController.swift; sourceTree = "<group>"; };
 		0CA40425208AC916006D6117 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				0CA40425208AC916006D6117 /* BaseViewController.swift */,
 				0CC226AF209EF72C00B55D55 /* WalletViewController.swift */,
 				0CC226AD209EF71500B55D55 /* TransactionViewController.swift */,
+				0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */,
 				0CA40423208AC776006D6117 /* WalletListController.swift */,
 				0CC226B1209F02C400B55D55 /* SendNANJViewController.swift */,
 				0CA4042A208AFBEE006D6117 /* ImportJSONViewController.swift */,
@@ -525,6 +528,7 @@
 				0CA4042B208AFBEE006D6117 /* ImportJSONViewController.swift in Sources */,
 				0CC226A5209EE17100B55D55 /* TextViewExtensions.swift in Sources */,
 				0CC2269B209EE17100B55D55 /* CGColorExtensions.swift in Sources */,
+				0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */,
 				0CC226AC209EE17100B55D55 /* UIViewExtensions.swift in Sources */,
 				0CC226A0209EE17100B55D55 /* FontExtention.swift in Sources */,
 				0CC226AB209EE17100B55D55 /* UIViewControllerExtensions.swift in Sources */,

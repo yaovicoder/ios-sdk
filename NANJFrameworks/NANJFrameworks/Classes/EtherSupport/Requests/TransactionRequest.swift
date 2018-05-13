@@ -9,7 +9,7 @@ import Foundation
 import APIKit
 
 struct TransactionRequest: Request {
-    typealias Response = [NANJTransaction]
+    typealias Response = [NANJTransaction]?
     private var _address: String?
     private var _page: Int?
     private var _offset: Int?
@@ -37,20 +37,33 @@ struct TransactionRequest: Request {
             "module" : "account",
             "action" : "tokentx",
             "address" : _address ?? "",
-            "startblock" : 0,
+            "startblock" : "0",
             "endblock" : "999999999",
             "sort" : "asc",
-            "apikey" : "WR5V2SAEJSPVVYPKJRFQI1HVBWT22T5XUJ",
+            "apikey" : NANJConfig.apiRinkebyKey,
             "page" : _page ?? 1,
-            "offset" : _offset ?? 1
+            "offset" : _offset ?? 20
         ]
     }
     
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [NANJTransaction] {
-        guard let dictionary = object as? [String: Any] else {
-            return [NANJTransaction()]
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [NANJTransaction]? {
+        guard let dict = object as? Dictionary<String, Any> else {
+            return nil
         }
-        print(dictionary)
-        return [NANJTransaction()]
+        print(dict)
+        //
+        let status: Int = (Int)(dict["status"] as? String ?? "0")!
+        if status == 1 {
+            //Success
+            if let result: Array<Dictionary<String, Any>> = dict["result"] as? Array<Dictionary<String, Any>> {
+                return result.map({ dict -> NANJTransaction in
+                    return NANJTransaction(transaction: dict)
+                })
+            }
+        } else {
+            //Error
+            print(dict["message"] ?? " - - -")
+        }
+        return nil
     }
 }

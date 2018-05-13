@@ -9,27 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home PageController-->
-        <scene sceneID="dCo-6L-pdS">
-            <objects>
-                <viewController title="Home PageController" id="Bee-yZ-IWy" customClass="ViewController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2le-lY-uO7"/>
-                        <viewControllerLayoutGuide type="bottom" id="oAq-Kp-bbs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XRA-Cv-icq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="NANJ Example" id="zOE-h3-nVr">
-                        <barButtonItem key="backBarButtonItem" title="    " id="Wpu-Yl-dyX"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kT2-yV-KUm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2494" y="-580"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gpR-sT-VR2">
             <objects>
@@ -42,7 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ehp-iP-nFw" kind="relationship" relationship="viewControllers" id="19W-3E-Pa0"/>
-                        <segue destination="s3x-WZ-ibc" kind="relationship" relationship="viewControllers" id="iBu-PA-aW4"/>
+                        <segue destination="yIO-iU-rLo" kind="relationship" relationship="viewControllers" id="CFx-6b-gIK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LOe-sx-2zM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06u-1e-F9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="-597"/>
+            <point key="canvasLocation" x="142" y="-582"/>
         </scene>
         <!--NANJ SDK-->
         <scene sceneID="ufC-wZ-h7g">
@@ -95,7 +74,7 @@
                                     <constraint firstAttribute="height" constant="40" id="eIQ-7p-3Ld"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="SEND">
+                                <state key="normal" title="SEND NANJ">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -216,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="144" width="375" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="066-8q-FVW" id="f8M-E8-n4L">
@@ -338,6 +317,24 @@
             </objects>
             <point key="canvasLocation" x="1736.8" y="-580.65967016491754"/>
         </scene>
+        <!--Transaction Detail View Controller-->
+        <scene sceneID="Ce6-T3-mTa">
+            <objects>
+                <viewController id="LKz-HC-fE7" customClass="TransactionDetailViewController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kpa-rI-VI8"/>
+                        <viewControllerLayoutGuide type="bottom" id="U7y-4e-TuP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zuD-ao-bTq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXG-dq-0eT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="-581"/>
+        </scene>
         <!--Send NANJ-->
         <scene sceneID="D4q-aR-XI2">
             <objects>
@@ -440,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCJ-A1-hy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736.8" y="201.94902548725639"/>
+            <point key="canvasLocation" x="1737" y="202"/>
         </scene>
         <!--ImportJSON View Controller-->
         <scene sceneID="mbF-Am-FrO">
@@ -516,6 +513,23 @@
             <point key="canvasLocation" x="974" y="202"/>
         </scene>
         <!--Transaction-->
+        <scene sceneID="hez-67-Hak">
+            <objects>
+                <navigationController id="yIO-iU-rLo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Transaction" id="QMd-C3-gLh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hz2-kp-jbe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s3x-WZ-ibc" kind="relationship" relationship="rootViewController" id="YHA-AS-RYr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCr-3n-2XV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="-1390"/>
+        </scene>
+        <!--Transaction-->
         <scene sceneID="BKf-Cq-CjL">
             <objects>
                 <viewController id="s3x-WZ-ibc" customClass="TransactionViewController" customModule="NANJFrameworks_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -528,10 +542,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIw-lK-Usx">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5Kb-Rr-ZqG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5Kb-Rr-ZqG">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Kb-Rr-ZqG" id="np3-zg-UJb">
@@ -564,13 +578,16 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Transaction" id="k5i-wQ-3gB"/>
+                    <navigationItem key="navigationItem" title="Transaction" id="0KJ-tc-xqm">
+                        <barButtonItem key="backBarButtonItem" title="   " id="8w4-dN-8K1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tbvTransaction" destination="yIw-lK-Usx" id="MmU-aJ-CIA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzW-x7-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871.25" y="-1390.1408450704225"/>
+            <point key="canvasLocation" x="2494" y="-1390"/>
         </scene>
         <!--NANJ Password-->
         <scene sceneID="2is-Sv-qfw">
@@ -593,7 +610,7 @@
                                 <color key="textColor" red="0.90196078430000004" green="0.36470588240000001" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dh0-21-AoS">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dsdsds" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dh0-21-AoS">
                                 <rect key="frame" x="60" y="200" width="255" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -638,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uK2-vw-zCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="202"/>
+            <point key="canvasLocation" x="142" y="202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1AZ-ql-3Yy">

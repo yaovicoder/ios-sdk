@@ -6,27 +6,40 @@
 //
 
 import UIKit
+import BigInt
 
 public class NANJTransaction: NSObject {
-    var hashString: String! = ""
-    var status: String! = ""
-    var blockHeight: Any?
-    var timeStamp: Date?
-    var from: String?
-    var to: String?
-    var amount: Double = 0.0
-    var fee: Double = 0.0
+    let blockHash: String?
+    let blockNumber: String?
+    let from: String?
+    let to: String?
+    let gas: String?
+    let gasPrice: String?
+    let txHash: String?
+    let value: String?
+    let nonce: Int?
     
-//    init(object: Any) throws {
-//        guard let dictionary = object as? [String: Any] else {
-//            return
-//        }
-////            let rateDictionary = dictionary["rate"] as? [String: Any],
-////            let limit = rateDictionary["limit"] as? Int,
-////            let remaining = rateDictionary["remaining"] as? Int else {
-////                throw ResponseError.unexpectedObject(object)
-////            throw
-//    }
+    init(transaction: Dictionary<String, Any>) {
+        let blockHash = transaction["blockHash"] as? String ?? ""
+        let blockNumber = transaction["blockNumber"] as? String ?? ""
+        let gas = transaction["gas"] as? String ?? "0"
+        let gasPrice = transaction["gasPrice"] as? String ?? "0"
+        let hash = transaction["hash"] as? String ?? ""
+        let value = transaction["value"] as? String ?? "0"
+        let nonce = transaction["nonce"] as? String ?? "0"
+        let from = transaction["from"] as? String ?? ""
+        let to = transaction["to"] as? String ?? ""
+        
+        self.blockHash = blockHash
+        self.blockNumber = BigInt(blockNumber.drop0x, radix: 16)?.description ?? ""
+        self.from = from
+        self.to = to
+        self.gas = BigInt(gas.drop0x, radix: 16)?.description ?? ""
+        self.gasPrice = BigInt(gasPrice.drop0x, radix: 16)?.description ?? ""
+        self.txHash = hash
+        self.value = BigInt(value.drop0x, radix: 16)?.description ?? ""
+        self.nonce = Int(BigInt(nonce.drop0x, radix: 16)?.description ?? "-1") ?? -1
+    }
     
     public func getURLOnEtherscan() -> URL? {
         
