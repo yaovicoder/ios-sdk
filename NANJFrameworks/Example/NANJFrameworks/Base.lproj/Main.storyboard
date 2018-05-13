@@ -32,7 +32,7 @@
         <scene sceneID="pl8-RD-qdV">
             <objects>
                 <navigationController id="Ehp-iP-nFw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wallet" id="cuk-6B-ZKx"/>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="settings-wallet" id="cuk-6B-ZKx"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e3S-vL-Ld2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -516,7 +516,7 @@
         <scene sceneID="hez-67-Hak">
             <objects>
                 <navigationController id="yIO-iU-rLo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transaction" id="QMd-C3-gLh"/>
+                    <tabBarItem key="tabBarItem" title="Transaction" image="feed" id="QMd-C3-gLh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hz2-kp-jbe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -544,23 +544,70 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIw-lK-Usx">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="5Kb-Rr-ZqG">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionListCell" rowHeight="80" id="5Kb-Rr-ZqG" customClass="TransactionListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Kb-Rr-ZqG" id="np3-zg-UJb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orw-oA-ebB">
-                                                    <rect key="frame" x="122" y="11" width="90" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer ESNJ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orw-oA-ebB">
+                                                    <rect key="frame" x="55" y="14" width="204" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="H5J-Yc-lm6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transaction_sent" translatesAutoresizingMaskIntoConstraints="NO" id="xQz-I5-1fo">
+                                                    <rect key="frame" x="15" y="25" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="hEU-Ts-eBm"/>
+                                                        <constraint firstAttribute="height" constant="30" id="wpu-bF-ns2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1.000 ESNJ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL2-wc-dZu">
+                                                    <rect key="frame" x="271" y="30" width="89" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="n9O-vy-MYk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: 0xb66e92f4713de200bc9cb61269a746aa005cbec3" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvC-i6-ESa">
+                                                    <rect key="frame" x="55" y="44" width="204" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="xSN-Wc-JXd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                    <color key="textColor" red="0.56862745100000001" green="0.59215686270000001" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CvC-i6-ESa" firstAttribute="top" secondItem="orw-oA-ebB" secondAttribute="bottom" id="47h-2d-1fO"/>
+                                                <constraint firstItem="xQz-I5-1fo" firstAttribute="centerY" secondItem="np3-zg-UJb" secondAttribute="centerY" id="7ll-6g-kc4"/>
+                                                <constraint firstItem="CvC-i6-ESa" firstAttribute="leading" secondItem="xQz-I5-1fo" secondAttribute="trailing" constant="10" id="9TJ-0Y-WEF"/>
+                                                <constraint firstItem="fL2-wc-dZu" firstAttribute="centerY" secondItem="np3-zg-UJb" secondAttribute="centerY" id="FAS-zb-pXo"/>
+                                                <constraint firstAttribute="trailing" secondItem="fL2-wc-dZu" secondAttribute="trailing" constant="15" id="NmA-ak-BKd"/>
+                                                <constraint firstItem="fL2-wc-dZu" firstAttribute="leading" secondItem="orw-oA-ebB" secondAttribute="trailing" constant="12" id="O92-Rp-B2d"/>
+                                                <constraint firstItem="orw-oA-ebB" firstAttribute="leading" secondItem="xQz-I5-1fo" secondAttribute="trailing" constant="10" id="R2Z-ep-aBj"/>
+                                                <constraint firstItem="xQz-I5-1fo" firstAttribute="leading" secondItem="np3-zg-UJb" secondAttribute="leading" constant="15" id="Vzk-uf-CNH"/>
+                                                <constraint firstItem="fL2-wc-dZu" firstAttribute="leading" secondItem="CvC-i6-ESa" secondAttribute="trailing" constant="12" id="ZtS-cc-owD"/>
+                                                <constraint firstItem="orw-oA-ebB" firstAttribute="top" secondItem="np3-zg-UJb" secondAttribute="top" constant="14" id="bOi-G8-wps"/>
+                                                <constraint firstItem="CvC-i6-ESa" firstAttribute="top" secondItem="orw-oA-ebB" secondAttribute="bottom" id="sDI-Z4-RjA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imvIcon" destination="xQz-I5-1fo" id="WMz-Nh-Kw7"/>
+                                            <outlet property="lblAmount" destination="fL2-wc-dZu" id="UVV-P9-UTL"/>
+                                            <outlet property="lblTitle" destination="orw-oA-ebB" id="Qfm-CT-E9B"/>
+                                            <outlet property="lblTo" destination="CvC-i6-ESa" id="8ut-ey-42w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -587,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzW-x7-mVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2494" y="-1390"/>
+            <point key="canvasLocation" x="2493.5999999999999" y="-1390.2548725637182"/>
         </scene>
         <!--NANJ Password-->
         <scene sceneID="2is-Sv-qfw">
@@ -676,6 +723,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feed" width="24" height="24"/>
         <image name="ic_more" width="22" height="7"/>
+        <image name="settings-wallet" width="21" height="21"/>
+        <image name="transaction_sent" width="26" height="26"/>
     </resources>
 </document>

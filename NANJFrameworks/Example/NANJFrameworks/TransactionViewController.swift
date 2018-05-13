@@ -11,7 +11,7 @@ import NANJFrameworks
 
 class TransactionViewController: BaseViewController {
     
-    let cellIdentifier:String = "Cell"
+    let cellIdentifier: String = "TransactionListCell"
     var transactions: [NANJTransaction] = []
     var currentWallet: NANJWallet?
     
@@ -31,7 +31,7 @@ class TransactionViewController: BaseViewController {
         self.showLoading()
         self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
         self.currentWallet?.delegate = self
-        self.currentWallet?.getTransactionList(page: 1, offset: 20)
+        self.currentWallet?.getTransactionList(page: 1, offset: 2000)
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,9 +50,8 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) 
-        cell.selectionStyle = .none
-        
+        let cell:TransactionListCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TransactionListCell
+        cell.updateCellWith(transaction: self.transactions[indexPath.row])
         return cell
     }
     

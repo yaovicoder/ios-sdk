@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */; };
+		0C28EA2B20A8A371006C6E71 /* TransactionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */; };
 		0CA40424208AC776006D6117 /* WalletListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40423208AC776006D6117 /* WalletListController.swift */; };
 		0CA40426208AC916006D6117 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40425208AC916006D6117 /* BaseViewController.swift */; };
 		0CA40429208ACE34006D6117 /* WalletListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40428208ACE34006D6117 /* WalletListCell.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCell.swift; sourceTree = "<group>"; };
 		0C67B17E208481CF00C2054B /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA40423208AC776006D6117 /* WalletListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListController.swift; sourceTree = "<group>"; };
 		0CA40425208AC916006D6117 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA40428208ACE34006D6117 /* WalletListCell.swift */,
+				0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				0CC226A7209EE17100B55D55 /* UICollectionViewExtensions.swift in Sources */,
 				0CA4042B208AFBEE006D6117 /* ImportJSONViewController.swift in Sources */,
 				0CC226A5209EE17100B55D55 /* TextViewExtensions.swift in Sources */,
+				0C28EA2B20A8A371006C6E71 /* TransactionListCell.swift in Sources */,
 				0CC2269B209EE17100B55D55 /* CGColorExtensions.swift in Sources */,
 				0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */,
 				0CC226AC209EE17100B55D55 /* UIViewExtensions.swift in Sources */,

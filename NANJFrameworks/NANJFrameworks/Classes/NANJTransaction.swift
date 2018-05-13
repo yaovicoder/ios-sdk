@@ -7,17 +7,18 @@
 
 import UIKit
 import BigInt
+import TrustCore
 
 public class NANJTransaction: NSObject {
-    let blockHash: String?
-    let blockNumber: String?
-    let from: String?
-    let to: String?
-    let gas: String?
-    let gasPrice: String?
-    let txHash: String?
-    let value: String?
-    let nonce: Int?
+    public let blockHash: String?
+    public let blockNumber: String?
+    public let from: String?
+    public let to: String?
+    public let gas: String?
+    public let gasPrice: String?
+    public let txHash: String?
+    public let value: String?
+    public let nonce: Int?
     
     init(transaction: Dictionary<String, Any>) {
         let blockHash = transaction["blockHash"] as? String ?? ""
@@ -37,8 +38,9 @@ public class NANJTransaction: NSObject {
         self.gas = BigInt(gas.drop0x, radix: 16)?.description ?? ""
         self.gasPrice = BigInt(gasPrice.drop0x, radix: 16)?.description ?? ""
         self.txHash = hash
-        self.value = BigInt(value.drop0x, radix: 16)?.description ?? ""
+        self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJContract.decimals)
         self.nonce = Int(BigInt(nonce.drop0x, radix: 16)?.description ?? "-1") ?? -1
+        //EtherNumberFormatter.full.string(from: __value, decimals: NANJContract.decimals)
     }
     
     public func getURLOnEtherscan() -> URL? {
