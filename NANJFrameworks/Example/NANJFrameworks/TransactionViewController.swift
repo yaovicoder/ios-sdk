@@ -15,6 +15,8 @@ class TransactionViewController: BaseViewController {
     var transactions: [NANJTransaction] = []
     var currentWallet: NANJWallet?
     
+    fileprivate var isLoading: Bool = false
+    
     @IBOutlet weak var tbvTransaction: UITableView!
     
     override func viewDidLoad() {
@@ -28,6 +30,10 @@ class TransactionViewController: BaseViewController {
     }
 
     func loadTransactions() {
+        if self.isLoading {
+            return;
+        }
+        self.isLoading = true;
         self.showLoading()
         self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
         self.currentWallet?.delegate = self
@@ -71,6 +77,7 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension TransactionViewController: NANJWalletDelegate {
     func didGetTransactionList(transactions: Array<NANJTransaction>?) {
+        self.isLoading = false
         self.hideLoading()
         if transactions != nil {
             self.transactions = transactions!

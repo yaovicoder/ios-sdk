@@ -29,8 +29,22 @@ class TransactionListCell: UITableViewCell {
     }
     
     func updateCellWith(transaction: NANJTransaction) {
-        self.lblAmount.text = transaction.value
-        self.lblTo.text = transaction.to
+        self.lblTo.text = ""
+        if let address: String = NANJWalletManager.shared.getCurrentWallet()?.address {
+            if address.lowercased() == transaction.to?.lowercased() {
+                // Received
+                self.lblTo.text = String(format: "From: %@", transaction.from ?? "")
+                self.lblAmount.text = String(format: "+%@ %@", transaction.value ?? 0, "ESNJ")
+                self.lblAmount.textColor = UIColor(hexString: "009051", transparency: 0.8)
+                self.imvIcon.image = UIImage(named: "transaction_received")
+            } else {
+                //Send
+                self.lblTo.text = String(format: "To: %@", transaction.to ?? "")
+                self.lblAmount.textColor = UIColor.red
+                self.lblAmount.text = String(format: "-%@ %@", transaction.value ?? 0, "ESNJ")
+                self.imvIcon.image = UIImage(named: "transaction_sent")
+            }
+        }
     }
 
 }

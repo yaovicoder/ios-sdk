@@ -39,7 +39,7 @@ struct TransactionRequest: Request {
             "address" : _address ?? "",
             "startblock" : "0",
             "endblock" : "999999999",
-            "sort" : "asc",
+            "sort" : "desc",
             "apikey" : NANJConfig.apiRinkebyKey,
             "page" : _page ?? 1,
             "offset" : _offset ?? 20
