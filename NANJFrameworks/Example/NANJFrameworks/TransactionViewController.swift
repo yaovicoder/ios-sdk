@@ -15,6 +15,8 @@ class TransactionViewController: BaseViewController {
     var transactions: [NANJTransaction] = []
     var currentWallet: NANJWallet?
     
+    private let refreshControl = UIRefreshControl()
+    
     fileprivate var isLoading: Bool = false
     
     @IBOutlet weak var tbvTransaction: UITableView!
@@ -22,6 +24,8 @@ class TransactionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tbvTransaction.tableFooterView = UIView()
+        self.tbvTransaction.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(loadTransactions), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +33,8 @@ class TransactionViewController: BaseViewController {
         loadTransactions()
     }
 
-    func loadTransactions() {
+    @objc func loadTransactions() {
+        self.refreshControl.endRefreshing()
         if self.isLoading {
             return;
         }

@@ -62,7 +62,7 @@ struct TransactionRequest: Request {
             }
         } else {
             //Error
-            print(dict["message"] ?? " - - -")
+            return []
         }
         return nil
     }
