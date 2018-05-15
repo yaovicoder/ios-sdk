@@ -9,6 +9,7 @@ import Foundation
 struct NANJConfig {
     static let rpcServer: RPCServer = RPCServer.rinkeby //Test net.
     static let apiServer: String = "http://api-rinkeby.etherscan.io"
+    static let rinkbyServer: String = "https://rinkeby.etherscan.io/"
     static let apiRinkebyKey: String = "WR5V2SAEJSPVVYPKJRFQI1HVBWT22T5XUJ"
 }
 

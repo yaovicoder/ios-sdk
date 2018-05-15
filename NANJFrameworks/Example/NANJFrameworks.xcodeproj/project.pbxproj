@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */; };
 		0C28EA2B20A8A371006C6E71 /* TransactionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */; };
+		0C653ABE20AB3D8000BC7551 /* DateCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C653ABD20AB3D7F00BC7551 /* DateCommon.swift */; };
 		0CA40424208AC776006D6117 /* WalletListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40423208AC776006D6117 /* WalletListController.swift */; };
 		0CA40426208AC916006D6117 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40425208AC916006D6117 /* BaseViewController.swift */; };
 		0CA40429208ACE34006D6117 /* WalletListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40428208ACE34006D6117 /* WalletListCell.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCell.swift; sourceTree = "<group>"; };
+		0C653ABD20AB3D7F00BC7551 /* DateCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCommon.swift; sourceTree = "<group>"; };
 		0C67B17E208481CF00C2054B /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA40423208AC776006D6117 /* WalletListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListController.swift; sourceTree = "<group>"; };
 		0CA40425208AC916006D6117 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0CC22697209EE17100B55D55 /* UIImageViewExtensions.swift */,
 				0CC22698209EE17100B55D55 /* UIViewControllerExtensions.swift */,
 				0CC22699209EE17100B55D55 /* UIViewExtensions.swift */,
+				0C653ABD20AB3D7F00BC7551 /* DateCommon.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				0CC226AC209EE17100B55D55 /* UIViewExtensions.swift in Sources */,
 				0CC226A0209EE17100B55D55 /* FontExtention.swift in Sources */,
 				0CC226AB209EE17100B55D55 /* UIViewControllerExtensions.swift in Sources */,
+				0C653ABE20AB3D8000BC7551 /* DateCommon.swift in Sources */,
 				0CC226B2209F02C400B55D55 /* SendNANJViewController.swift in Sources */,
 				0CA40424208AC776006D6117 /* WalletListController.swift in Sources */,
 				0CC22685209EE0BE00B55D55 /* PasswordViewController.swift in Sources */,

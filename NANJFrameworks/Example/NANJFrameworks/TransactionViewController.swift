@@ -70,12 +70,12 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         return 80;
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let transaction: NANJTransaction = self.transactions[safe: indexPath.row] {
+            let controller: TransactionDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TransactionDetailViewController") as! TransactionDetailViewController
+            controller.transaction = transaction
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }
 
