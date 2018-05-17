@@ -19,6 +19,12 @@ import APIKit
     /// - Parameter transaction: transaction success.
     @objc optional func didSendNANJCompleted(transaction: NANJTransaction?)
     
+    
+    /// Callback Transaction when send NANJ error
+    ///
+    /// - Parameter error: transaction fail
+    @objc optional func didSendNANJError(error: String)
+    
     /// Callback list Transaction when get completed.
     ///
     /// - Parameter transactions: list Transaction.
@@ -58,7 +64,8 @@ public class NANJWallet: NSObject {
     ///
     /// - Parameters:
     ///   - address: wallet target
-    ///   - amount: the number of coin you want to transfer
+    ///   - amount: the number of coin that you want to transfer
+    
     public func sendNANJ(toAddress address: String, amount: String) {
         //Step 1: Create UnconfirmTransaction
         //Step 2: Change unconfirm to TransactionConfirm
@@ -68,12 +75,12 @@ public class NANJWallet: NSObject {
         //Data Tranfer
         guard let address = Address(string: address.trimmed) else {
             print("Address error")
-            self.delegate?.didSendNANJCompleted?(transaction: nil)
+            self.delegate?.didSendNANJError!(error: "Address invaild")
             return
         }
         guard let value = EtherNumberFormatter.full.number(from: amount, decimals: NANJContract.decimals) else {
             print("Amount error")
-            self.delegate?.didSendNANJCompleted?(transaction: nil)
+            self.delegate?.didSendNANJError!(error: "Amount invaild")
             return
         }
         let sendEncoded = ERC20Encoder.encodeTransfer(to: address, tokens: value.magnitude)
@@ -81,7 +88,7 @@ public class NANJWallet: NSObject {
         //Sign Transaction
         guard let currentAddress = self.etherWallet?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
             print("Current account not found")
-            self.delegate?.didSendNANJCompleted?(transaction: nil)
+            self.delegate?.didSendNANJError!(error: "Current account not found")
             return
         }
         
@@ -124,7 +131,7 @@ public class NANJWallet: NSObject {
                                     self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: [:]))
                                     break
                                 case .failure(let error):
-                                    self.delegate?.didSendNANJCompleted?(transaction: nil)
+                                    self.delegate?.didSendNANJError!(error: error.localizedDescription)
                                     print(error.localizedDescription)
                                     print(result.error ?? "Error")
                                     break
@@ -133,7 +140,7 @@ public class NANJWallet: NSObject {
                         }
                         break
                     case .failure(let error):
-                        self.delegate?.didSendNANJCompleted?(transaction: nil)
+                        self.delegate?.didSendNANJError!(error: error.errorDescription!)
                         print("sign transaction error")
                         print(error.errorDescription ?? "Error")
                         break
@@ -141,7 +148,7 @@ public class NANJWallet: NSObject {
                 }
                 break
             case .failure(let error):
-                self.delegate?.didSendNANJCompleted?(transaction: nil)
+                self.delegate?.didSendNANJError!(error: error.localizedDescription)
                 print("Get Nonce error")
                 print(error)
                 break
