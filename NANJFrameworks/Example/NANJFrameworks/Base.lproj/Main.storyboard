@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -195,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="144" width="320" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="90" id="066-8q-FVW" customClass="WalletListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="066-8q-FVW" id="f8M-E8-n4L">
@@ -882,7 +883,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionListCell" rowHeight="80" id="5Kb-Rr-ZqG" customClass="TransactionListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionListCell" rowHeight="80" id="5Kb-Rr-ZqG" customClass="TransactionListCell" customModule="NANJFrameworks_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Kb-Rr-ZqG" id="np3-zg-UJb">
@@ -1022,11 +1023,24 @@
                                     <action selector="onClickPassword:" destination="32m-PU-6QY" eventType="touchUpInside" id="WRK-pZ-Egl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-Te-UVu">
+                                <rect key="frame" x="214" y="62" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fZX-7G-io8"/>
+                                    <constraint firstAttribute="width" constant="46" id="v7x-GL-h0M"/>
+                                </constraints>
+                                <state key="normal" title="Sign"/>
+                                <connections>
+                                    <action selector="onClickSignin:" destination="32m-PU-6QY" eventType="touchUpInside" id="UCM-He-E09"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g2a-Ye-ZSC" firstAttribute="top" secondItem="UFB-FN-RaL" secondAttribute="bottom" constant="80" id="80a-nf-HNw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oAZ-Te-UVu" secondAttribute="trailing" constant="44" id="NS3-wE-YnB"/>
                             <constraint firstAttribute="trailing" secondItem="g2a-Ye-ZSC" secondAttribute="trailing" constant="30" id="V7C-8E-bHS"/>
+                            <constraint firstItem="oAZ-Te-UVu" firstAttribute="top" secondItem="UFB-FN-RaL" secondAttribute="bottom" constant="42" id="ZFO-Fd-iiz"/>
                             <constraint firstItem="dh0-21-AoS" firstAttribute="top" secondItem="g2a-Ye-ZSC" secondAttribute="bottom" constant="60" id="b3Y-dm-oeX"/>
                             <constraint firstItem="g2a-Ye-ZSC" firstAttribute="leading" secondItem="jys-e5-w32" secondAttribute="leading" constant="30" id="cfX-ao-2w3"/>
                             <constraint firstItem="baZ-Mq-wAI" firstAttribute="top" secondItem="dh0-21-AoS" secondAttribute="bottom" constant="50" id="cgS-Ri-7yz"/>
@@ -1036,6 +1050,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="onClickSign" destination="oAZ-Te-UVu" id="rph-UX-nv7"/>
                         <outlet property="txfPassword" destination="dh0-21-AoS" id="Jvx-eR-BbI"/>
                     </connections>
                 </viewController>

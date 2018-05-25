@@ -8,6 +8,9 @@
 import UIKit
 import TrustKeystore
 import APIKit
+import BigInt
+import CryptoSwift
+import TrustCore.EthereumCrypto
 
 @objc public protocol NANJWalletManagerDelegate {
     
@@ -255,5 +258,100 @@ public class NANJWalletManager: NSObject {
     
     public func isValidAddress(address: String?) -> Bool {
         return CryptoAddressValidator.isValidAddress(address)
+    }
+    
+    public func demoSigninMessage() {
+        let str: String = "Hello World"
+        let privateKey: String = "d8816e6d65b327575cdfe58dbe3ed83ade7079dc4885ef51cf38e795a6d71020"
+        let addressKey: String = "0xB66E92f4713DE200bc9Cb61269a746Aa005cBeC3"
+        //"0xb66e92f4713de200bc9cb61269a746aa005cbec3"
+        //"0xB66E92f4713DE200bc9Cb61269a746Aa005cBeC3"
+        
+        guard let currentAddress = self.getCurrentWallet()?.getEtherWallet()?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
+            print("No account")
+            return
+        }
+        
+        let hashMes = str.data(using: .utf8)!.sha3(.keccak256)
+        
+        print("HASH MESSAGE")
+        print(hashMes.hexEncoded)
+        
+//        let hashPrivateKey = privateKey.data(using: .utf8)!.sha3(.keccak256)
+//        let hashAddressKey = addressKey.data(using: .utf8)!.sha3(.keccak256)
+        let publicKeyData = EthereumCrypto.getPublicKey(from: privateKey.data(using: .utf8)!)
+
+        let signature = EthereumCrypto.sign(hash: hashMes, privateKey: privateKey.data(using: .utf8)!)
+        let dataR = signature[..<32]
+        print(dataR.hexEncoded)
+
+        let dataS = signature[32..<64]
+        print(dataS.hexEncoded)
+
+        let dataV = signature[64] + 27
+
+        print(dataV)
+        print(signature.hexEncoded)
+        print(signature)
+        print("------")
+        
+        let isVerify2: Bool = EthereumCrypto.verify(signature: signature, message: hashMes, publicKey: publicKeyData)
+        if (isVerify2) {
+            print("Verify success.")
+            print(publicKeyData.hexString)
+        } else {
+            print("Verify failed.")
+        }
+        print("------\n")
+        
+// = = = = = = = = = =
+        
+//        let signReusult2 = EtherKeystore.shared.signMessage(hashMes, for: currentAccount)
+//        if let data =  signReusult2.value {
+//
+//            let dataR = data[..<32]
+//            print(dataR.hexEncoded)
+//
+//            let dataS = data[32..<64]
+//            print(dataS.hexEncoded)
+//
+//            let dataV = data[64]
+//
+//            print(dataV)
+//
+//            print(data.hexEncoded)
+//            print(signReusult2)
+//            print("-------")
+//
+//            let verifyMes = EthereumCrypto.verify(signature: data, message:hashMes, publicKey: publicKeyData)
+//            if (verifyMes) {
+//                print("Verify success.")
+//            } else {
+//                print("Verify failed.")
+//            }
+//        }
+        
+// = = = = = = = = = =
+        
+        //        let signReusult = EtherKeystore.shared.signPersonalMessage(str.data(using: .utf8)!, for: currentAccount)
+        //        if let data =  signReusult.value {
+        //            let dataR = data[..<32]
+        //            print(dataR.hexEncoded)
+        //
+        //            let dataS = data[32..<64]
+        //            print(dataS.hexEncoded)
+        //
+        //            let dataV = data[64]
+        //
+        //            print(dataV)
+        //
+        //            print(data.hexEncoded)
+        //        }
+        //        print(signReusult)
+        
+        //        let hello = "Hello World".data(using: .utf8)!.sha3(.keccak256)
+        //        print(hello.hexEncoded)
+        //        return
+        
     }
 }

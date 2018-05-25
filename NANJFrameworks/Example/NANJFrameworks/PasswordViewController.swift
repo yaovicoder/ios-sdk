@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NANJFrameworks
 
 class PasswordViewController: BaseViewController {
 
@@ -22,6 +23,12 @@ class PasswordViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBOutlet weak var onClickSign: UIButton!
+    
+    @IBAction func onClickSignin(_ sender: Any) {
+        NANJWalletManager.shared.demoSigninMessage()
+    }
+    
     
     @IBAction func onClickPassword(_ sender: Any) {
         if (self.txfPassword.text?.length ?? 0) == 0 {
