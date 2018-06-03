@@ -36,6 +36,8 @@
 		0A1A3DC52B83AA8A153A008710FCBFFA /* NBSMockedApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC13AC7A494746E23CD9E4B231A203 /* NBSMockedApplication.m */; };
 		0A2CA8B0DD7E300ABFCF1956E6B58248 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A0FBBBCF4062E0487EE3C8978111404 /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B0572B9007726D14DEB1D44B4C786E8 /* StringDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62898960A85B45983D25F698A1B75DFF /* StringDataParser.swift */; };
+		0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */; };
+		0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08307514839BA19E7373CF8183D5149 /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E75736ECF73ADB21168A5CFDF0E53BD /* Floating Point Conversion.swift */; };
 		0CEB24EE20A49F3200246984 /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB24ED20A49F3200246984 /* TransactionRequest.swift */; };
@@ -913,6 +915,8 @@
 		0B82A7A0EEA846074535EB2329DA6757 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha2.c; path = "trezor-crypto/sha2.c"; sourceTree = "<group>"; };
 		0BF4333FEA40A95AB7B6228ABAD7248B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
+		0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJApiManager.swift; path = NANJFrameworks/Classes/NANJApiManager.swift; sourceTree = "<group>"; };
+		0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNANJWalletRequest.swift; sourceTree = "<group>"; };
 		0CEB24ED20A49F3200246984 /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
 		0D61BEC9715D610438C1F9075462AC72 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		0E4E117ED20D960C80B2D51A5FDD9B08 /* GasLimitConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GasLimitConfiguration.swift; sourceTree = "<group>"; };
@@ -1858,6 +1862,7 @@
 				5A27F04B077C5D391E62D0D51F452467 /* SendRawTransactionRequest.swift */,
 				23EC6843355CFBD80F2C3B6F23E592F5 /* EtherServiceRequest.swift */,
 				0CEB24ED20A49F3200246984 /* TransactionRequest.swift */,
+				0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -2581,6 +2586,7 @@
 				21A2667A0895FD92764A6AE3DF876905 /* NANJTransaction.swift */,
 				5F6B264F670EA3C3479CB88CFF151858 /* NANJWallet.swift */,
 				ED11461C8E948FD7A889B0318D932785 /* NANJWalletManager.swift */,
+				0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */,
 				A528200FA2B735FE8F1334553A7CDFEA /* EtherSupport */,
 				DB563818827F2D4C7378C2FA2B78B924 /* Extensions */,
 				D8EB710F54C8EFB193CAFFA37BC776BF /* Support Files */,
@@ -3745,6 +3751,7 @@
 				9738F68CEDAE6B2808D4074ACD543051 /* ConfirmType.swift in Sources */,
 				2DB0B12D33DB815C415A5E4A30DF9118 /* Constants.swift in Sources */,
 				876AA76CF67927D6C1101053064C0ED2 /* CryptoAddressValidator.swift in Sources */,
+				0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */,
 				DD26866EDC2B9C71E8C607125D99D965 /* Currency.swift in Sources */,
 				4BB546D330FA207A9AA596B0235C437A /* CurrencyRate.swift in Sources */,
 				BD464E5E059B37DF0344B3097FBA4FB8 /* Data.swift in Sources */,
@@ -3756,6 +3763,7 @@
 				3F0B5FDD14F1C74A587F93FA7D3C1BE3 /* EtherNumberFormatter.swift in Sources */,
 				400D4AE797B2397F27AE45DA4B258538 /* EtherServiceRequest.swift in Sources */,
 				63F9064CD978F95FD1C8010F7A0615AE /* EthTypedData.swift in Sources */,
+				0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */,
 				DBC9DBF6C8FF9678370F0C078ED4C4AE /* GasLimitConfiguration.swift in Sources */,
 				40BE89D238A932A05A95D9CAA31E3140 /* GasPriceConfiguration.swift in Sources */,
 				0D8436E62C639632DE1E369E9CECD63E /* GasPriceRequest.swift in Sources */,

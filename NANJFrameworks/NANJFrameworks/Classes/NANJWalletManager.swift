@@ -10,6 +10,7 @@ import TrustKeystore
 import APIKit
 import BigInt
 import CryptoSwift
+import TrustCore
 import TrustCore.EthereumCrypto
 
 @objc public protocol NANJWalletManagerDelegate {
@@ -90,11 +91,15 @@ public class NANJWalletManager: NSObject {
      - returns: Wallet by NANJWalletManagerDelegate.
      */
     public func createWallet(password: String) {
-        self.keystore.createAccount(with: password) { result in
+        self.keystore.createAccount(with: password) {[weak self] result in
+            guard let `self` = self else {return}
             if result.error != nil {
                 self.delegate?.didCreateWallet?(wallet: nil, error: nil)
             } else {
-                self.delegate?.didCreateWallet?(wallet: result.value?.toNANJWallet(), error: nil)
+                //Create NANJ wallet
+                let address: Address? = result.value?.address
+                self.createNANJWallet(address: address, privateKey: nil)
+                //self.delegate?.didCreateWallet?(wallet: result.value?.toNANJWallet(), error: nil)
             }
         }
     }
@@ -109,6 +114,7 @@ public class NANJWalletManager: NSObject {
             if result.error != nil {
                 self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.import"]))
             } else {
+                let address: Address? = result.value?.address
                 let __wallet: NANJWallet? = result.value?.toNANJWallet()
                 self.delegate?.didImportWallet?(wallet: __wallet, error: nil)
             }
@@ -260,98 +266,99 @@ public class NANJWalletManager: NSObject {
         return CryptoAddressValidator.isValidAddress(address)
     }
     
-    public func demoSigninMessage() {
-        let str: String = "Hello World"
-        let privateKey: String = "d8816e6d65b327575cdfe58dbe3ed83ade7079dc4885ef51cf38e795a6d71020"
-        let addressKey: String = "0xB66E92f4713DE200bc9Cb61269a746Aa005cBeC3"
-        //"0xb66e92f4713de200bc9cb61269a746aa005cbec3"
-        //"0xB66E92f4713DE200bc9Cb61269a746Aa005cBeC3"
-        
-        guard let currentAddress = self.getCurrentWallet()?.getEtherWallet()?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
+    public func createNANJWallet(address: Address?, privateKey: String?) {
+        guard let currentAddress = address else {
             print("No account")
             return
         }
         
-        let hashMes = str.data(using: .utf8)!.sha3(.keccak256)
+        var _privateKey: String = privateKey ?? ""
         
-        print("HASH MESSAGE")
-        print(hashMes.hexEncoded)
-        
-//        let hashPrivateKey = privateKey.data(using: .utf8)!.sha3(.keccak256)
-//        let hashAddressKey = addressKey.data(using: .utf8)!.sha3(.keccak256)
-        let publicKeyData = EthereumCrypto.getPublicKey(from: privateKey.data(using: .utf8)!)
-
-        let signature = EthereumCrypto.sign(hash: hashMes, privateKey: privateKey.data(using: .utf8)!)
-        let dataR = signature[..<32]
-        print(dataR.hexEncoded)
-
-        let dataS = signature[32..<64]
-        print(dataS.hexEncoded)
-
-        let dataV = signature[64] + 27
-
-        print(dataV)
-        print(signature.hexEncoded)
-        print(signature)
-        print("------")
-        
-        let isVerify2: Bool = EthereumCrypto.verify(signature: signature, message: hashMes, publicKey: publicKeyData)
-        if (isVerify2) {
-            print("Verify success.")
-            print(publicKeyData.hexString)
-        } else {
-            print("Verify failed.")
+        if _privateKey.count == 0 {
+            //Get Private key
+            if let account = self.keystore.getAccount(for: currentAddress) {
+                do {
+                    let result = try self.keystore.exportPrivateKey(account: account).dematerialize()
+                    _privateKey = result.hexString
+                } catch {
+                    //Error
+                }
+            }
         }
-        print("------\n")
         
-// = = = = = = = = = =
+        //STEP1: FUNCTION ENCODE
+        print("* * * * * * * * * * * * STEP 1 * * * * * * * * * * * *")
+        let function = Function(name: "createWallet", parameters: [.address])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [currentAddress])
+        //print(encoder.data.hexEncoded)
+        let functionEndcodeData = encoder.data
+        print(functionEndcodeData.hexEncoded)
+        print("\n\n")
         
-//        let signReusult2 = EtherKeystore.shared.signMessage(hashMes, for: currentAccount)
-//        if let data =  signReusult2.value {
-//
-//            let dataR = data[..<32]
-//            print(dataR.hexEncoded)
-//
-//            let dataS = data[32..<64]
-//            print(dataS.hexEncoded)
-//
-//            let dataV = data[64]
-//
-//            print(dataV)
-//
-//            print(data.hexEncoded)
-//            print(signReusult2)
-//            print("-------")
-//
-//            let verifyMes = EthereumCrypto.verify(signature: data, message:hashMes, publicKey: publicKeyData)
-//            if (verifyMes) {
-//                print("Verify success.")
-//            } else {
-//                print("Verify failed.")
-//            }
-//        }
+        //STEP2: SIGN FUNCTION ENCODE
+        print("* * * * * * * * * * * * STEP 2 * * * * * * * * * * * *")
+        let signature = EthereumCrypto.sign(hash: functionEndcodeData, privateKey: _privateKey.data(using: .utf8)!)
         
-// = = = = = = = = = =
+        let dataR = signature[..<32]
+        let signR = dataR.hexEncoded
+        print("R: ", signR)
         
-        //        let signReusult = EtherKeystore.shared.signPersonalMessage(str.data(using: .utf8)!, for: currentAccount)
-        //        if let data =  signReusult.value {
-        //            let dataR = data[..<32]
-        //            print(dataR.hexEncoded)
-        //
-        //            let dataS = data[32..<64]
-        //            print(dataS.hexEncoded)
-        //
-        //            let dataV = data[64]
-        //
-        //            print(dataV)
-        //
-        //            print(data.hexEncoded)
-        //        }
-        //        print(signReusult)
+        let dataS = signature[32..<64]
+        let signS = dataS.hexEncoded
+        print("S: ", signS)
         
-        //        let hello = "Hello World".data(using: .utf8)!.sha3(.keccak256)
-        //        print(hello.hexEncoded)
-        //        return
+        let signV = signature[64] + 27
+        print("V: ", signV)
+    
+        print("\n")
+        
+        //STEP3: CREATE TX_HASH INPUT WITH TX_RELAY, WALLET OWNER,
+        //              PAD, NANJCOIN ADDRESS
+        print("* * * * * * * * * * * * STEP 3 * * * * * * * * * * * *")
+        let txHashInput = String(format: "0x1900%@%@%@%@%@",
+                                 NANJConfig.TX_RELAY_ADDRESS.drop0x,
+                                 NANJConfig.WALLET_OWNER.drop0x,
+                                 NANJConfig.PAD,
+                                 NANJConfig.NANJCOIN_ADDRESS.drop0x,
+                                 functionEndcodeData.hexEncoded.drop0x
+                      )
+        print("Hash Input: ", txHashInput)
+        print("\n")
+        
+        //STEP4: SHA3 TX_HASH
+        print("* * * * * * * * * * * * STEP 4 * * * * * * * * * * * *")
+        let txHashData = txHashInput.data(using: .utf8)?.sha3(.keccak256)
+        let txHash: String = txHashData?.hexEncoded  ?? "TX HASH ERROR"
+        print("txHash: ", txHash)
+        print("\n")
+        
+        //STEP5: CREATE JSON DATA
+        print("* * * * * * * * * * * * STEP 5 * * * * * * * * * * * *")
+        let para:NSMutableDictionary = NSMutableDictionary()
+        para.setValue(functionEndcodeData.hexEncoded, forKey: "data")
+        para.setValue(NANJConfig.NANJCOIN_ADDRESS, forKey: "dest")
+        para.setValue(txHash, forKey: "hash")
+        para.setValue(NANJConfig.PAD, forKey: "nonce")
+        para.setValue(signR, forKey: "r")
+        para.setValue(signS, forKey: "s")
+        para.setValue(signV, forKey: "v")
+        let jsonData = try! JSONSerialization.data(withJSONObject: para, options: JSONSerialization.WritingOptions.init(rawValue: 0))
+        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+        print(jsonString)
+        print("\n")
+        
+        //STEP6: PUSH TO API CREATE https://nanj-demo.herokuapp.com/api/relayTx
+        print("* * * * * * * * * * * * STEP 6 * * * * * * * * * * * *")
+        NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
+            guard let `self` = self else {return}
+            print(txHash ?? "Completion create wallet")
+            self.delegate?.didCreateWallet?(wallet: Wallet(type: .address(currentAddress)).toNANJWallet(), error: nil)
+        }
+        print("\n")
+    }
+    
+    public func demoSigninMessage() {
         
     }
 }

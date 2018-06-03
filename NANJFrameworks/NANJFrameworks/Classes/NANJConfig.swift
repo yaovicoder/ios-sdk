@@ -11,6 +11,12 @@ struct NANJConfig {
     static let apiServer: String = "http://api-rinkeby.etherscan.io"
     static let rinkbyServer: String = "https://rinkeby.etherscan.io/"
     static let apiRinkebyKey: String = "WR5V2SAEJSPVVYPKJRFQI1HVBWT22T5XUJ"
+    
+    static let NANJ_SERVER: String = "https://nanj-demo.herokuapp.com/api"
+    static let TX_RELAY_ADDRESS: String = "0x81031e97729515a7458e547e68efec7747665629"
+    static let NANJCOIN_ADDRESS: String = "0x17b8b16c20db3eb7100ef9c36cc904cace0aa20b"
+    static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
+    static let PAD: String = "0000000000000000000000000000000000000000000000000000000000000000"
 }
 
 struct NANJContract {
