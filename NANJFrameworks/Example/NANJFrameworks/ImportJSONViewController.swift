@@ -50,6 +50,25 @@ class ImportJSONViewController: BaseViewController, UITextViewDelegate, UITextFi
     }
     
     //MARK: -
+    func didCreatingWallet(wallet: NANJWallet?) {
+        self.hideLoading()
+        if let __wallet = wallet {
+            self.showMessage("Creating NANJ wallet from ETH wallet: " + __wallet.addressETH)
+        } else {
+            self.showMessage("Created wallet fail.")
+        }
+    }
+    
+    func didCreateWallet(wallet: NANJWallet?, error: Error?) {
+         self.hideLoading()
+        if let __wallet = wallet {
+            self.showMessage("Created wallet: " + __wallet.address)
+        } else {
+            self.showMessage("Created NANJ wallet fail.")
+        }
+
+    }
+    
     func didImportWallet(wallet: NANJWallet?, error: Error?) {
         self.hideLoading()
         if wallet != nil {

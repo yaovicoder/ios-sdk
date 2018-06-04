@@ -132,13 +132,15 @@ public class NANJWalletManager: NSObject {
     ///   - privateKey: Private key of wallet.
     public func importWallet(privateKey key: String) {
         //Return value with delegate
-        self.keystore.importWallet(type: .privateKey(privateKey: key)) { result in
+        self.keystore.importWallet(type: .privateKey(privateKey: key)) {[weak self] result in
+            guard let `self` = self else {return}
             if result.error != nil {
                 self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.import"]))
             } else {
                 let address: Address? = result.value?.address
-                let __wallet: NANJWallet? = result.value?.toNANJWallet()
-                self.delegate?.didImportWallet?(wallet: __wallet, error: nil)
+                //let __wallet: NANJWallet? = result.value?.toNANJWallet()
+                //self.delegate?.didImportWallet?(wallet: __wallet, error: nil)
+                self.importedGetOrCreateNANJWallet(address: address, privateKey: key)
             }
         }
     }
@@ -151,11 +153,14 @@ public class NANJWalletManager: NSObject {
     public func importWallet(keyStore key: String, password pass: String) {
         //Return value with delegate
         EtherKeystore.shared.importWallet(type: .keystore(string: key, password: pass)) { result in
-            guard let error = result.error else {
-                self.delegate?.didImportWallet?(wallet: result.value?.toNANJWallet(), error: nil)
+            guard let wallet = result.value else {
+                print(result.error)
+                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description": "com.nanj.error.import"]))
                 return
             }
-            self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":error.errorDescription ?? "com.nanj.error.import"]))
+            let address: Address? = wallet.address
+            //self.delegate?.didImportWallet?(wallet: wallet.toNANJWallet(), error: nil)
+            self.importedGetOrCreateNANJWallet(address: address, privateKey: key)
         }
     }
     
@@ -244,9 +249,12 @@ public class NANJWalletManager: NSObject {
     /// After finish get wallets on async function
     /// It return list wallets in callback delegate.
     public func getWalletList() {
-        let walletList = self.keystore.wallets.map { wallet -> NANJWallet in
+        var walletList = self.keystore.wallets.map { wallet -> NANJWallet in
             return wallet.toNANJWallet()
         }
+        walletList = walletList.filter({ currentWallet -> Bool in
+            return currentWallet.address.count > 0
+        })
         self.delegate?.didGetWalletList?(wallets: walletList, error: nil)
     }
     
@@ -285,7 +293,28 @@ public class NANJWalletManager: NSObject {
         return CryptoAddressValidator.isValidAddress(address)
     }
     
-    public func createNANJWallet(address: Address?, privateKey: String?) {
+    //MARK: - Private function
+    private func importedGetOrCreateNANJWallet(address: Address?, privateKey: String?) {
+        guard let addressETH = address?.eip55String, let __address = address else {return}
+        NANJApiManager.shared.getNANJAdress(ethAdress: addressETH) {[weak self] nanjAddress in
+            guard let `self` = self else {return}
+            if nanjAddress == nil || (nanjAddress?.drop0x ?? "") == NANJConfig.PAD {
+                self.delegate?.didCreatingWallet?(wallet: Wallet(type: .address(__address)).toNANJWallet())
+                self.createNANJWallet(address: address, privateKey: privateKey)
+            } else {
+                let addressNANJ = nanjAddress?.replacingOccurrences(of: "000000000000000000000000", with: "")
+                if self.isValidAddress(address: addressNANJ) {
+                    UserDefaults.standard.set(addressNANJ, forKey: addressETH)
+                    UserDefaults.standard.synchronize()
+                    print(addressNANJ ?? "NANJ Adress error")
+                    
+                    self.delegate?.didImportWallet?(wallet: Wallet(type: .address(__address)).toNANJWallet(), error: nil)
+                }
+            }
+        }
+    }
+    
+    private func createNANJWallet(address: Address?, privateKey: String?) {
         guard let currentAddress = address else {
             print("No account")
             return
@@ -380,8 +409,7 @@ public class NANJWalletManager: NSObject {
         }
         print("\n")
     }
-    
-    //MARK: - Private function
+
     
     @objc private func checkNANJWalletCreated() {
         print("checkNANJWalletCreated")
