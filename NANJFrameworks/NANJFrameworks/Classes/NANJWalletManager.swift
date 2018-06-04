@@ -18,6 +18,12 @@ import TrustCore.EthereumCrypto
     /// Callback wallet when create completed.
     ///
     /// - Parameters:
+    ///   - wallet: Wallet has been creating.
+    @objc optional func didCreatingWallet(wallet: NANJWallet?)
+    
+    /// Callback wallet when create completed.
+    ///
+    /// - Parameters:
     ///   - wallet: Wallet has been created.
     ///   - error: Error during wallet creation.
     @objc optional func didCreateWallet(wallet: NANJWallet?, error: Error?)
@@ -76,6 +82,11 @@ public class NANJWalletManager: NSObject {
     fileprivate var config: Config = Config()
     var chainState: ChainState!
     
+    //ETH adress creating NANJ adress
+    fileprivate var followUpAddress: [String] = []
+    
+    //MARK: - Public function
+    
     public func startConfig() {
         //Setup RPC Server
         config.chainID = NANJConfig.rpcServer.chainID
@@ -83,6 +94,17 @@ public class NANJWalletManager: NSObject {
         //Start Chain state
         self.chainState = ChainState(config: self.config)
         self.chainState.start()
+        
+        Timer.scheduledTimer(timeInterval: 15,
+                             target: self,
+                             selector: #selector(checkNANJWalletCreated),
+                             userInfo: nil,
+                             repeats: true)
+        self.keystore.wallets.forEach { wallet in
+            if wallet.toNANJWallet().address.count <= 0 {
+                self.followUpAddress.append(wallet.address.eip55String)
+            }
+        }
     }
     
     /**
@@ -223,10 +245,7 @@ public class NANJWalletManager: NSObject {
     /// It return list wallets in callback delegate.
     public func getWalletList() {
         let walletList = self.keystore.wallets.map { wallet -> NANJWallet in
-            let nanjWallet: NANJWallet = NANJWallet()
-            nanjWallet.address = wallet.address.eip55String
-            nanjWallet.addEtherWallet(wallet: wallet)
-            return nanjWallet
+            return wallet.toNANJWallet()
         }
         self.delegate?.didGetWalletList?(wallets: walletList, error: nil)
     }
@@ -353,12 +372,39 @@ public class NANJWalletManager: NSObject {
         NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
             guard let `self` = self else {return}
             print(txHash ?? "Completion create wallet")
-            self.delegate?.didCreateWallet?(wallet: Wallet(type: .address(currentAddress)).toNANJWallet(), error: nil)
+            //Add to check NANJ create success
+            self.followUpAddress.append(currentAddress.eip55String)
+            
+            self.delegate?.didCreatingWallet?(wallet: Wallet(type: .address(currentAddress)).toNANJWallet())
+            //self.delegate?.didCreateWallet?(wallet: Wallet(type: .address(currentAddress)).toNANJWallet(), error: nil)
         }
         print("\n")
     }
     
-    public func demoSigninMessage() {
-        
+    //MARK: - Private function
+    
+    @objc private func checkNANJWalletCreated() {
+        print("checkNANJWalletCreated")
+        self.followUpAddress.forEach { address in
+            print("NANJ Adress  - - - - - - - ")
+            NANJApiManager.shared.getNANJAdress(ethAdress: address, completion: {[weak self] nanjAddress in
+                guard let `self` = self else {return}
+                print(nanjAddress ?? "NANJ Adress error")
+                let addressNANJ = nanjAddress?.replacingOccurrences(of: "000000000000000000000000", with: "")
+                if self.isValidAddress(address: addressNANJ) {
+                    guard let __adress = Address(eip55: address) else {return}
+                    UserDefaults.standard.set(addressNANJ, forKey: address)
+                    UserDefaults.standard.synchronize()
+                    print(addressNANJ ?? "NANJ Adress error")
+                    
+                    self.delegate?.didCreateWallet?(wallet: Wallet(type: .address(__adress)).toNANJWallet(), error: nil)
+                    
+                    //Remove follow up
+                    if let index = self.followUpAddress.index(of: address) {
+                        self.followUpAddress.remove(at: index)
+                    }
+                }
+            })
+        }
     }
 }

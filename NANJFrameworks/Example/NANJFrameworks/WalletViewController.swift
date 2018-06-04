@@ -18,10 +18,11 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     @IBOutlet weak var lblCoinETH: UILabel!
     
     fileprivate var currentWallet: NANJWallet?
+    fileprivate var walletManager: NANJWalletManager = NANJWalletManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NANJWalletManager.shared.delegate = self
+        self.walletManager.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +58,18 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     
     //MARK: - NANJWalletManagerDelegate
 
-    
+    func didCreateWallet(wallet: NANJWallet?, error: Error?) {
+        if let __wallet = wallet {
+            if self.currentWallet == nil {
+                __wallet.enableWallet()
+                self.loadCurrentWallet()
+                self.loadBalance()
+            }
+            self.showMessage("Created wallet: " + __wallet.address)
+        } else {
+            self.showMessage("Created wallet fail.")
+        }
+    }
     
     //MARK: = NANJWalletDelegate
     func didSendNANJCompleted(transaction: NANJTransaction?) {

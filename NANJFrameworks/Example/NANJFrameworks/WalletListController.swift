@@ -15,14 +15,14 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var wallets: Array<NANJWallet> = []
+    fileprivate var walletManager: NANJWalletManager = NANJWalletManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.tableFooterView = UIView()
-        NANJWalletManager.shared.delegate = self
-        
+        self.walletManager.delegate = self
         self.loadWallets()
     }
 
@@ -33,7 +33,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     
     func loadWallets() {
         self.showLoading()
-        NANJWalletManager.shared.getWalletList()
+        self.walletManager.getWalletList()
     }
     
     @IBAction func onClickCreateWallet(_ sender: Any) {
@@ -42,7 +42,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         
         if (__password != nil) {
             self.showLoading()
-            NANJWalletManager.shared.createWallet(password: __password!)
+            self.walletManager.createWallet(password: __password!)
         } else {
             self.openCreateWallet()
         }
@@ -87,7 +87,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
             if let __text = textField?.text {
                 if __text.count > 0 {
                     self.showLoading()
-                    NANJWalletManager.shared.importWallet(privateKey: __text)
+                    self.walletManager.importWallet(privateKey: __text)
                 }
             }
         }))
@@ -110,7 +110,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
             if let __text = textField?.text {
                 if __text.count > 0 {
                     self.showLoading()
-                    NANJWalletManager.shared.createWallet(password: __text)
+                    self.walletManager.createWallet(password: __text)
                 }
             }
         }))
@@ -146,14 +146,14 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         let privateKey = UIAlertAction(title: "Export private key", style: .default)
         { _ in
             self.showLoading()
-            NANJWalletManager.shared.exportPrivateKey(wallet: wallet)
+            self.walletManager.exportPrivateKey(wallet: wallet)
         }
         actionSheet.addAction(privateKey)
         
         let remove = UIAlertAction(title: "Remove wallet", style: .destructive)
         { _ in
             self.showLoading()
-            if NANJWalletManager.shared.removeWallet(wallet: wallet) {
+            if self.walletManager.removeWallet(wallet: wallet) {
                 self.loadWallets()
             } else {
                 self.showMessage("Remove wallet failed.")
@@ -175,7 +175,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
             if let __text = textField?.text {
                 if __text.count > 0 {
                     self.showLoading()
-                    NANJWalletManager.shared.exportKeystore(wallet: wallet, password: __text)
+                    self.walletManager.exportKeystore(wallet: wallet, password: __text)
                 }
             }
         }))
@@ -204,6 +204,15 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         }
         self.wallets = __wallets
         self.tableView.reloadData()
+    }
+    
+    func didCreatingWallet(wallet: NANJWallet?) {
+        self.hideLoading()
+        if let __wallet = wallet {
+            self.showMessage("Creating NANJ wallet from ETH wallet: " + __wallet.addressETH)
+        } else {
+            self.showMessage("Created wallet fail.")
+        }
     }
     
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
@@ -268,7 +277,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let wallet: NANJWallet = self.wallets[indexPath.row]
-        if NANJWalletManager.shared.enableWallet(wallet: wallet) {
+        if self.walletManager.enableWallet(wallet: wallet) {
             self.showMessage("Active wallet: " + wallet.address)
         } else {
             self.showMessage("Coun't active wallet")

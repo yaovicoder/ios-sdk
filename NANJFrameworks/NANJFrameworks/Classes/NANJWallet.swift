@@ -52,6 +52,7 @@ public class NANJWallet: NSObject {
     public var delegate: NANJWalletDelegate?
     
     public var address: String = ""
+    public var addressETH: String = ""
     public var name: String?
     
     var amountNANJ: Double = 0.0

@@ -11,7 +11,10 @@ import TrustKeystore
 extension Account {
     func toNANJWallet() -> NANJWallet {
         let wallet: NANJWallet = NANJWallet()
-        wallet.address = self.address.eip55String
+        if let address = UserDefaults.standard.string(forKey: self.address.eip55String) {
+            wallet.address = address
+        }
+        wallet.addressETH = self.address.eip55String
         wallet.addEtherWallet(wallet: Wallet(type: .privateKey(self)))
         return wallet
     }
@@ -20,7 +23,10 @@ extension Account {
 extension Wallet {
     func toNANJWallet() -> NANJWallet {
         let wallet: NANJWallet = NANJWallet()
-        wallet.address = self.address.eip55String
+        if let address = UserDefaults.standard.string(forKey: self.address.eip55String) {
+            wallet.address = address
+        }
+        wallet.addressETH = self.address.eip55String
         wallet.addEtherWallet(wallet: self)
         return wallet
     }
