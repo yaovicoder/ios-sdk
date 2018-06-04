@@ -9,13 +9,13 @@
 import UIKit
 import NANJFrameworks
 
-class PasswordViewController: BaseViewController {
+class PasswordViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txfPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        txfPassword.delegate = self;
         // Do any additional setup after loading the view.
     }
 
@@ -24,11 +24,6 @@ class PasswordViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBOutlet weak var onClickSign: UIButton!
-    
-    @IBAction func onClickSignin(_ sender: Any) {
-        NANJWalletManager.shared.demoSigninMessage()
-    }
-    
     
     @IBAction func onClickPassword(_ sender: Any) {
         if (self.txfPassword.text?.length ?? 0) == 0 {
@@ -61,6 +56,11 @@ class PasswordViewController: BaseViewController {
     func gotoMain() {
         let navi: UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RootNavigationController") as! UINavigationController
         UIApplication.shared.delegate?.window??.rootViewController = navi
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.onClickPassword(self.onClickSign)
+        return true
     }
 
 }
