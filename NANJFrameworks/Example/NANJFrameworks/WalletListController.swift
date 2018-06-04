@@ -31,6 +31,10 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        print("Dealoc WalletListController")
+    }
+    
     func loadWallets() {
         self.showLoading()
         self.walletManager.getWalletList()

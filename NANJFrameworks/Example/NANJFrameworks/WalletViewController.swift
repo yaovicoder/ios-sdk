@@ -52,7 +52,7 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     
     fileprivate func loadBalance() {
         self.currentWallet?.getAmountNANJ()
-        self.currentWallet?.getAmountETH()
+        //self.currentWallet?.getAmountETH()
     }
     
     

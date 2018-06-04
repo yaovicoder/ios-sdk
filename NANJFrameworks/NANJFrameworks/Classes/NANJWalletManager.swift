@@ -73,7 +73,7 @@ public class NANJWalletManager: NSObject {
 
     public static let shared : NANJWalletManager = NANJWalletManager()
     
-    public var delegate: NANJWalletManagerDelegate?
+    public weak var delegate: NANJWalletManagerDelegate?
     
     fileprivate lazy var keystore: EtherKeystore = {
         return EtherKeystore.shared
@@ -368,7 +368,7 @@ public class NANJWalletManager: NSObject {
                                  NANJConfig.TX_RELAY_ADDRESS.drop0x,
                                  NANJConfig.WALLET_OWNER.drop0x,
                                  NANJConfig.PAD,
-                                 NANJConfig.NANJCOIN_ADDRESS.drop0x,
+                                 NANJConfig.META_NANJCOIN_MANAGER.drop0x,
                                  functionEndcodeData.hexEncoded.drop0x
                       )
         print("Hash Input: ", txHashInput)
@@ -385,7 +385,7 @@ public class NANJWalletManager: NSObject {
         print("* * * * * * * * * * * * STEP 5 * * * * * * * * * * * *")
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(functionEndcodeData.hexEncoded, forKey: "data")
-        para.setValue(NANJConfig.NANJCOIN_ADDRESS, forKey: "dest")
+        para.setValue(NANJConfig.META_NANJCOIN_MANAGER, forKey: "dest")
         para.setValue(txHash, forKey: "hash")
         para.setValue(NANJConfig.PAD, forKey: "nonce")
         para.setValue(signR, forKey: "r")

@@ -49,7 +49,7 @@ import APIKit
 
 public class NANJWallet: NSObject {
     
-    public var delegate: NANJWalletDelegate?
+    public weak var delegate: NANJWalletDelegate?
     
     public var address: String = ""
     public var addressETH: String = ""
@@ -68,12 +68,12 @@ public class NANJWallet: NSObject {
     ///   - amount: the number of coin that you want to transfer
     
     public func sendNANJ(toAddress address: String, amount: String) {
-        //Step 1: Create UnconfirmTransaction
-        //Step 2: Change unconfirm to TransactionConfirm
-        //Step 3: Sign transaction
-        //Step 4: Use Send signTransaction
+        //Step 1: Create/Encode function transfer
+        //Step 2: Create/Encode function forwardTo
+        //Step 3: Sign data forwardTo
+        //Step 4: Push API with signature
         
-        //Data Tranfer
+        //STEP1: Data Tranfer
         guard let address = Address(string: address.trimmed) else {
             print("Address error")
             self.delegate?.didSendNANJError!(error: "Address invaild")
@@ -86,73 +86,95 @@ public class NANJWallet: NSObject {
         }
         let sendEncoded = ERC20Encoder.encodeTransfer(to: address, tokens: value.magnitude)
         
-        //Sign Transaction
-        guard let currentAddress = self.etherWallet?.address, let currentAccount = EtherKeystore.shared.getAccount(for: currentAddress) else {
-            print("Current account not found")
-            self.delegate?.didSendNANJError!(error: "Current account not found")
-            return
-        }
-        
-        let valueZero: BigInt = {
+        //STEP2: Data forwardTo
+        //        Address(addressETH), Address(nanjAddress), Address(NANJCOIN_ADDRESS),
+        guard let addressNANJ = Address(string: self.address),
+              let addressETH = self.etherWallet?.address,
+              let addressNANJCOIN = Address(string: NANJConfig.NANJCOIN_ADDRESS) else { return}
+        let valueZero: BigUInt = {
             return 0
         }()
+        let functionForward = Function(name: "forwardTo",
+                                parameters: [.address, .address, .address, .uint(bits: 256), .dynamicBytes])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: functionForward, arguments: [addressETH, addressNANJ, addressNANJCOIN, valueZero, sendEncoded])
+        //print(encoder.data.hexEncoded)
+        let forwardEncoded = encoder.data
         
-        let addressToken: Address? = {
-            return Address(string: NANJContract.contract)
-        }()
-        let requestNonce = EtherServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(
-            address: currentAddress.eip55String,
-            state: "latest"
-        )))
-        Session.send(requestNonce) { result in
-            switch result {
-            case .success(let count):
-                do {
-                    let signTransaction = SignTransaction(
-                        value: valueZero,
-                        account: currentAccount,
-                        to: addressToken,
-                        nonce: BigInt(count),
-                        data: sendEncoded,
-                        gasPrice: max(NANJWalletManager.shared.chainState.gasPrice ?? GasPriceConfiguration.default, GasPriceConfiguration.min),
-                        gasLimit: GasLimitConfiguration.tokenTransfer,
-                        chainID: NANJConfig.rpcServer.chainID
-                    )
-                    //Sign and Send Transaction
-                    let signedTransaction = EtherKeystore.shared.signTransaction(signTransaction)
-                    switch signedTransaction {
-                    case .success(let data):
-                        do {
-                            let request =
-                                EtherServiceRequest(batch: BatchFactory().create(SendRawTransactionRequest(signedTransaction: data.hexEncoded)))
-                            Session.send(request) { result in
-                                switch result {
-                                case .success:
-                                    print(data.sha3(.keccak256).hexEncoded)
-                                    self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: [:]))
-                                    break
-                                case .failure(let error):
-                                    self.delegate?.didSendNANJError!(error: error.localizedDescription)
-                                    print(error.localizedDescription)
-                                    print(result.error ?? "Error")
-                                    break
-                                }
-                            }
-                        }
-                        break
-                    case .failure(let error):
-                        self.delegate?.didSendNANJError!(error: error.errorDescription!)
-                        print("sign transaction error")
-                        print(error.errorDescription ?? "Error")
-                        break
-                    }
-                }
-                break
-            case .failure(let error):
-                self.delegate?.didSendNANJError!(error: error.localizedDescription)
-                print("Get Nonce error")
-                print(error)
-                break
+        //STEP3: Sign forwardEncoded data
+        //--- NANJ WALLET MANAGER
+        
+        var _privateKey: String = ""
+            //Get Private key
+        if let account = EtherKeystore.shared.getAccount(for: addressETH) {
+            do {
+                let result = try EtherKeystore.shared.exportPrivateKey(account: account).dematerialize()
+                _privateKey = result.hexString
+            } catch {
+                //Error
+            }
+        }
+
+        //STEP2: SIGN FUNCTION ENCODE
+        print("* * * * * * * * * * * * STEP 2 * * * * * * * * * * * *")
+        let signature = EthereumCrypto.sign(hash: forwardEncoded, privateKey: _privateKey.data(using: .utf8)!)
+        
+        let dataR = signature[..<32]
+        let signR = dataR.hexEncoded
+        print("R: ", signR)
+        
+        let dataS = signature[32..<64]
+        let signS = dataS.hexEncoded
+        print("S: ", signS)
+        
+        let signV = signature[64] + 27
+        print("V: ", signV)
+        
+        print("\n")
+        
+        //STEP3: CREATE TX_HASH INPUT WITH TX_RELAY, WALLET OWNER,
+        //              PAD, NANJCOIN ADDRESS
+        print("* * * * * * * * * * * * STEP 3 * * * * * * * * * * * *")
+        let txHashInput = String(format: "0x1900%@%@%@%@%@",
+                                 NANJConfig.TX_RELAY_ADDRESS.drop0x,
+                                 NANJConfig.WALLET_OWNER.drop0x,
+                                 NANJConfig.PAD,
+                                 NANJConfig.META_NANJCOIN_MANAGER.drop0x,
+                                 forwardEncoded.hexEncoded.drop0x
+        )
+        print("Hash Input: ", txHashInput)
+        print("\n")
+        
+        //STEP4: SHA3 TX_HASH
+        print("* * * * * * * * * * * * STEP 4 * * * * * * * * * * * *")
+        let txHashData = txHashInput.data(using: .utf8)?.sha3(.keccak256)
+        let txHash: String = txHashData?.hexEncoded  ?? "TX HASH ERROR"
+        print("txHash: ", txHash)
+        print("\n")
+        
+        //STEP5: CREATE JSON DATA
+        print("* * * * * * * * * * * * STEP 5 * * * * * * * * * * * *")
+        let para:NSMutableDictionary = NSMutableDictionary()
+        para.setValue(forwardEncoded.hexEncoded, forKey: "data")
+        para.setValue(NANJConfig.META_NANJCOIN_MANAGER, forKey: "dest")
+        para.setValue(txHash, forKey: "hash")
+        para.setValue(NANJConfig.PAD, forKey: "nonce")
+        para.setValue(signR, forKey: "r")
+        para.setValue(signS, forKey: "s")
+        para.setValue(signV, forKey: "v")
+        let jsonData = try! JSONSerialization.data(withJSONObject: para, options: JSONSerialization.WritingOptions.init(rawValue: 0))
+        let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
+        print(jsonString)
+        print("\n")
+        
+        //STEP6: PUSH TO API CREATE https://nanj-demo.herokuapp.com/api/relayTx
+        print("* * * * * * * * * * * * STEP 6 * * * * * * * * * * * *")
+        NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
+            guard let `self` = self else {return}
+            if txHash == nil || txHash?.count == 0 {
+                self.delegate?.didSendNANJError?(error: "Send NANJ failed.")
+            } else {
+                self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: [:]))
             }
         }
     }
@@ -161,7 +183,7 @@ public class NANJWallet: NSObject {
     ///
     public func getAmountNANJ() {
         let contract: Address? = Address(string: NANJContract.address)
-        guard let address = self.etherWallet?.address, let __contract = contract else { return }
+        guard let address = Address(string: self.address), let __contract = contract else { return }
         TokensBalanceService().getBalance(for: address, contract: __contract) {result in
             //guard let `self` = self else {return}
             guard let __value = result.value else {

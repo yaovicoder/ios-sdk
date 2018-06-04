@@ -10,7 +10,6 @@ import APIKit
 
 class CreateNANJWalletRequest: Request {
     typealias Response = String?
-    //typealias Response = [NANJTransaction]?
     
     var dict: NSDictionary!
     
@@ -38,7 +37,9 @@ class CreateNANJWalletRequest: Request {
         guard let dict = object as? Dictionary<String, Any> else {
             return nil
         }
-        print(dict)
+        if let txHash: String = dict["txHash"] as? String {
+            return txHash
+        }
         return nil
     }
 }

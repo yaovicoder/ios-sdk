@@ -24,10 +24,10 @@ class NANJApiManager: NSObject {
         Session.send(request) { result in
             switch result {
             case .success(let txHash):
-                completion("Create success ::D")
+                completion(txHash)
                 break
             case .failure(let error):
-                completion("Get Nonce error :((((")
+                completion(nil)
                 print(error)
                 break
             }
@@ -45,7 +45,7 @@ class NANJApiManager: NSObject {
         let encoded =  encoder.data
         
         let request = EtherServiceRequest(
-            batch: BatchFactory().create(CallRequest(to: NANJConfig.NANJCOIN_ADDRESS, data: encoded.hexEncoded))
+            batch: BatchFactory().create(CallRequest(to: NANJConfig.META_NANJCOIN_MANAGER, data: encoded.hexEncoded))
         )
         Session.send(request) { result in
             switch result {
