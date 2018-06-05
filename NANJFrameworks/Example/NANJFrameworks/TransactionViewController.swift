@@ -34,13 +34,17 @@ class TransactionViewController: BaseViewController {
     }
 
     @objc func loadTransactions() {
+        self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
+        if self.currentWallet == nil {
+            return
+        }
         self.refreshControl.endRefreshing()
         if self.isLoading {
             return;
         }
         self.isLoading = true;
         self.showLoading()
-        self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
+        
         self.currentWallet?.delegate = self
         self.currentWallet?.getTransactionList(page: 1, offset: 2000)
     }

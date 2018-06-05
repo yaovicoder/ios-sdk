@@ -254,7 +254,8 @@ public class NANJWallet: NSObject {
 extension NANJWallet {
     fileprivate func exeGetTransaction(page: Int, offset: Int) {
         let request: TransactionRequest = TransactionRequest(self.address, page, offset)
-        Session.send(request) { result in
+        Session.send(request) {[weak self] result in
+            guard let `self` = self else {return}
             switch result {
             case .success(let transactions):
                 self.delegate?.didGetTransactionList?(transactions: transactions)

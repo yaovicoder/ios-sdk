@@ -22,32 +22,32 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.walletManager.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadCurrentWallet()
-        self.loadBalance()
+        self.walletManager.delegate = self
+        if self.lblAddress.text != "Initializing ..." {
+            self.loadCurrentWallet()
+            self.loadBalance()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func onClickListWallet(_ sender: Any) {
+        let listVC: WalletListController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletListController") as! WalletListController
+        listVC.walletVC = self
+        self.navigationController?.pushViewController(listVC, animated: true)
+    }
     
     fileprivate func loadCurrentWallet() {
-        self.currentWallet = NANJWalletManager.shared.getCurrentWallet()
+        self.currentWallet = self.walletManager.getCurrentWallet()
         self.currentWallet?.delegate = self
-        if let wallet = self.currentWallet {
-            self.lblAddress.text = wallet.address
-            self.imvQRCode.backgroundColor = UIColor.white
-            self.imvQRCode.sd_setImage(with: URL(string: String(format: "http://api.qrserver.com/v1/create-qr-code/?data=%@", wallet.address)), completed: nil)
-        } else {
-            self.lblAddress.text = ""
-            self.imvQRCode.backgroundColor = UIColor.lightGray
-            self.imvQRCode.image = nil
-        }
+        self.updateLayout(self.currentWallet)
     }
     
     fileprivate func loadBalance() {
@@ -55,14 +55,33 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         //self.currentWallet?.getAmountETH()
     }
     
+    fileprivate func updateLayout(_ wallet: NANJWallet?) {
+        if let __wallet = wallet {
+            self.lblAddress.text = __wallet.address
+            self.imvQRCode.backgroundColor = UIColor.white
+            self.imvQRCode.sd_setImage(with: URL(string: String(format: "http://api.qrserver.com/v1/create-qr-code/?data=%@", __wallet.address)), completed: nil)
+        } else {
+            self.lblAddress.text = ""
+            self.imvQRCode.backgroundColor = UIColor.lightGray
+            self.imvQRCode.image = nil
+        }
+    }
+    
     
     //MARK: - NANJWalletManagerDelegate
+    func didCreatingWallet(wallet: NANJWallet?) {
+        print("WalletViewController didCreatingWallet")
+        self.lblAddress.text = "Initializing ..."
+    }
 
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
+        print("WalletViewController didCreateWallet")
         if let __wallet = wallet {
-            if self.currentWallet == nil {
+            if self.walletManager.getCurrentWallet() == nil {
                 __wallet.enableWallet()
-                self.loadCurrentWallet()
+                _ = self.walletManager.enableWallet(wallet: __wallet)
+                self.currentWallet = __wallet
+                self.updateLayout(__wallet)
                 self.loadBalance()
             }
             self.showMessage("Created wallet: " + __wallet.address)

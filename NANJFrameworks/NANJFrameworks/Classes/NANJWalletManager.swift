@@ -116,7 +116,8 @@ public class NANJWalletManager: NSObject {
         self.keystore.createAccount(with: password) {[weak self] result in
             guard let `self` = self else {return}
             if result.error != nil {
-                self.delegate?.didCreateWallet?(wallet: nil, error: nil)
+                self.delegate?.didCreateWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.create", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.create"]))
+
             } else {
                 //Create NANJ wallet
                 let address: Address? = result.value?.address
@@ -240,7 +241,9 @@ public class NANJWalletManager: NSObject {
     /// - Returns: return current NANJWallet
     public func getCurrentWallet() -> NANJWallet? {
         if let wallet: Wallet = self.keystore.recentlyUsedWallet {
-            return wallet.toNANJWallet()
+            if wallet.toNANJWallet().address.count > 0 {
+                return wallet.toNANJWallet()
+            }
         }
         return nil
     }
@@ -420,16 +423,22 @@ public class NANJWalletManager: NSObject {
                 print(nanjAddress ?? "NANJ Adress error")
                 let addressNANJ = nanjAddress?.replacingOccurrences(of: "000000000000000000000000", with: "")
                 if self.isValidAddress(address: addressNANJ) {
-                    guard let __adress = Address(eip55: address) else {return}
+                    //guard let __adress = Address(eip55: address) else {return}
                     UserDefaults.standard.set(addressNANJ, forKey: address)
                     UserDefaults.standard.synchronize()
                     print(addressNANJ ?? "NANJ Adress error")
                     
-                    self.delegate?.didCreateWallet?(wallet: Wallet(type: .address(__adress)).toNANJWallet(), error: nil)
-                    
-                    //Remove follow up
-                    if let index = self.followUpAddress.index(of: address) {
-                        self.followUpAddress.remove(at: index)
+                    //Return wallet in local
+                    let walletList = self.keystore.wallets.filter({ wallet -> Bool in
+                        return wallet.address.eip55String == address
+                    })
+                    if let walletObj = walletList.first {
+                        self.delegate?.didCreateWallet?(wallet: walletObj.toNANJWallet(), error: nil)
+            
+                        //Remove follow up
+                        if let index = self.followUpAddress.index(of: address) {
+                            self.followUpAddress.remove(at: index)
+                        }
                     }
                 }
             })

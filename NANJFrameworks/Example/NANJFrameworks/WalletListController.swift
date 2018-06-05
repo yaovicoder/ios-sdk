@@ -14,6 +14,8 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
+    weak var walletVC: WalletViewController?
+    
     fileprivate var wallets: Array<NANJWallet> = []
     fileprivate var walletManager: NANJWalletManager = NANJWalletManager.shared
     
@@ -43,7 +45,6 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     @IBAction func onClickCreateWallet(_ sender: Any) {
         //Get current password
         let __password: String? = (UserDefaults.standard.object(forKey: "user_password") as? String) ?? nil
-        
         if (__password != nil) {
             self.showLoading()
             self.walletManager.createWallet(password: __password!)
@@ -134,7 +135,8 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         actionSheet.addAction(cancel)
         
         let copy = UIAlertAction(title: "Copy address", style: .default)
-        { _ in
+        { [weak self] _ in
+            guard let `self` = self else {return}
             let pasteBoard = UIPasteboard.general
             pasteBoard.string = wallet.address
             self.showMessage("Copied: " + wallet.address)
@@ -142,27 +144,33 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         actionSheet.addAction(copy)
         
         let keyStore = UIAlertAction(title: "Backup Keystore", style: .default)
-        { _ in
+        { [weak self] _ in
+            guard let `self` = self else {return}
             self.openExportKeystore(wallet: wallet)
         }
         actionSheet.addAction(keyStore)
         
         let privateKey = UIAlertAction(title: "Export private key", style: .default)
-        { _ in
+        {[weak self] _ in
+            guard let `self` = self else {return}
             self.showLoading()
             self.walletManager.exportPrivateKey(wallet: wallet)
         }
         actionSheet.addAction(privateKey)
         
         let remove = UIAlertAction(title: "Remove wallet", style: .destructive)
-        { _ in
+        {[weak self] _ in
+            guard let `self` = self else {return}
             self.showLoading()
-            if self.walletManager.removeWallet(wallet: wallet) {
-                self.loadWallets()
-            } else {
-                self.showMessage("Remove wallet failed.")
+            DispatchQueue.main.async {
+                if self.walletManager.removeWallet(wallet: wallet) {
+                    self.hideLoading()
+                    self.loadWallets()
+                } else {
+                    self.hideLoading()
+                    self.showMessage("Remove wallet failed.")
+                }
             }
-            self.hideLoading()
         }
         actionSheet.addAction(remove)
         
@@ -213,7 +221,8 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     func didCreatingWallet(wallet: NANJWallet?) {
         self.hideLoading()
         if let __wallet = wallet {
-            self.showMessage("Creating NANJ wallet from ETH wallet: " + __wallet.addressETH)
+            self.walletVC?.didCreatingWallet(wallet: __wallet)
+            self.showMessage("Initializing NANJ wallet from ETH wallet: " + __wallet.addressETH)
         } else {
             self.showMessage("Created wallet fail.")
         }
@@ -222,6 +231,9 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
         self.hideLoading()
         if let __wallet = wallet {
+            if self.walletManager.getCurrentWallet() == nil {
+                __wallet.enableWallet()
+            }
             self.showMessage("Created wallet: " + __wallet.address)
             self.loadWallets()
         } else {
@@ -233,6 +245,9 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         print("didImportWallet")
         self.hideLoading()
         if let __wallet = wallet {
+            if self.walletManager.getCurrentWallet() == nil {
+                __wallet.enableWallet()
+            }
             self.showMessage("Imported wallet: " + __wallet.address)
             self.loadWallets()
         } else {
