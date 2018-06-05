@@ -118,18 +118,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 (NANJ COIN)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB7-Z0-M9U">
-                                <rect key="frame" x="30" y="380" width="260" height="30"/>
+                                <rect key="frame" x="30" y="380" width="260" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PmK-zi-ARV"/>
+                                    <constraint firstAttribute="height" constant="25" id="PmK-zi-ARV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 (ETH)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOW-yE-mFw">
-                                <rect key="frame" x="30" y="416" width="260" height="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 (YEN)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOW-yE-mFw">
+                                <rect key="frame" x="30" y="411" width="260" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="saG-8G-XkC"/>
+                                    <constraint firstAttribute="height" constant="25" id="saG-8G-XkC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                                 <nil key="textColor"/>

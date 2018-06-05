@@ -36,7 +36,7 @@ import APIKit
     ///    - wallet: wallet get amount.
     ///    - amount: current amount of NANJ
     ///    - error: error when get not complete.
-    @objc optional func didGetAmountNANJ(wallet: NANJWallet, amount: String, error: Error?)
+    @objc optional func didGetAmountNANJ(wallet: NANJWallet, amount: Double, error: Error?)
     
     /// Callback amount ETH of wallet.
     ///
@@ -187,11 +187,17 @@ public class NANJWallet: NSObject {
         TokensBalanceService().getBalance(for: address, contract: __contract) {result in
             //guard let `self` = self else {return}
             guard let __value = result.value else {
-                self.delegate?.didGetAmountNANJ?(wallet: self, amount: "0.0", error: result.error)
+                self.delegate?.didGetAmountNANJ?(wallet: self, amount: 0.0, error: result.error)
                 return
             }
-            let amount = EtherNumberFormatter.full.string(from: __value, decimals: NANJContract.decimals)
-            self.delegate?.didGetAmountNANJ?(wallet: self, amount: amount, error: nil)
+            //let amount = EtherNumberFormatter.full.string(from: __value, decimals: NANJContract.decimals)
+            
+            if let amount: Decimal = EtherNumberFormatter.full.decimal(from: __value, decimals: NANJContract.decimals) {
+                print(amount.description)
+                self.delegate?.didGetAmountNANJ?(wallet: self, amount: amount.description.doubleValue, error: nil)
+            }
+            
+            //self.delegate?.didGetAmountNANJ?(wallet: self, amount: amount, error: nil)
             print(result.value ?? "")
             print("Get NANJ value complete")
         }

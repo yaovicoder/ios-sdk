@@ -20,6 +20,9 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     fileprivate var currentWallet: NANJWallet?
     fileprivate var walletManager: NANJWalletManager = NANJWalletManager.shared
     
+    fileprivate var balance: Double?
+    fileprivate var nanjRate: Double?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +31,15 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.walletManager.delegate = self
-        if self.lblAddress.text != "Initializing ..." {
+        if self.walletManager.getCurrentWallet() != nil {
             self.loadCurrentWallet()
             self.loadBalance()
+            self.walletManager.getNANJRate()
         }
+//        if self.lblAddress.text != "Initializing ..." {
+//            self.loadCurrentWallet()
+//            self.loadBalance()
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,11 +75,25 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         }
     }
     
+    fileprivate func updateYEN() {
+        guard let rate = self.nanjRate, let amount = self.balance else {
+            return
+        }
+        let jpy = rate*amount;
+        if jpy > 0 {
+            self.lblCoinETH.text = String(format: "%0.2f (JPY)", jpy)
+        } else {
+            self.lblCoinETH.text = String(format: "0 (JPY)", jpy)
+        }
+    }
+    
     
     //MARK: - NANJWalletManagerDelegate
     func didCreatingWallet(wallet: NANJWallet?) {
         print("WalletViewController didCreatingWallet")
-        self.lblAddress.text = "Initializing ..."
+        if self.walletManager.getCurrentWallet() == nil {
+            self.lblAddress.text = "Initializing ..."
+        }
     }
 
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
@@ -90,6 +112,11 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         }
     }
     
+    func didGetNANJRate(rate: Double) {
+        self.nanjRate = rate
+        self.updateYEN()
+    }
+    
     //MARK: = NANJWalletDelegate
     func didSendNANJCompleted(transaction: NANJTransaction?) {
         
@@ -99,8 +126,20 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         
     }
     
-    func didGetAmountNANJ(wallet: NANJWallet, amount: String, error: Error?) {
-        self.lblCoin.text = String(format: "%@ (ESNJCOIN)", amount)
+    func didGetAmountNANJ(wallet: NANJWallet, amount: Double, error: Error?) {
+        self.balance = amount
+        self.updateYEN()
+
+//        let currencyFormatter = NumberFormatter()
+//        currencyFormatter.usesGroupingSeparator = true
+//        currencyFormatter.numberStyle = .currency
+//
+//        let priceString = currencyFormatter.string(from: Decimal(amount) as NSDecimalNumber)
+//        if let __balcance = priceString {
+//            self.lblCoin.text = String(format: "%@ (ESNJCOIN)", __balcance)
+//        } else {
+            self.lblCoin.text = String(format: "%0.3f (ESNJCOIN)", amount)
+//        }
     }
     
     func didGetAmountETH(wallet: NANJWallet, amount: String, error: Error?) {

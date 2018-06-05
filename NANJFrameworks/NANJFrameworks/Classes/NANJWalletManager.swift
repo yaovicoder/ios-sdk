@@ -80,6 +80,8 @@ public class NANJWalletManager: NSObject {
     }()
     
     fileprivate var config: Config = Config()
+    fileprivate var nanjRate: Double?
+    
     var chainState: ChainState!
     
     //ETH adress creating NANJ adress
@@ -94,6 +96,9 @@ public class NANJWalletManager: NSObject {
         //Start Chain state
         self.chainState = ChainState(config: self.config)
         self.chainState.start()
+        
+        //Get NANJ Rate
+        self.getNANJRate()
         
         Timer.scheduledTimer(timeInterval: 15,
                              target: self,
@@ -274,18 +279,15 @@ public class NANJWalletManager: NSObject {
     /// After finish get Rate of NAJI on async function
     /// It return a NANJ Rate in callback delegate.
     public func getNANJRate(){
-//        let request: TransactionRequest = TransactionRequest()
-//        Session.send(request) {result in
-//            switch result {
-//            case .success(let transaction):
-//                break
-//            case .failure(let error):
-//
-//                print("Get Nonce error")
-//                print(error)
-//                break
-//            }
-//        }
+        if let rate = self.nanjRate {
+            self.delegate?.didGetNANJRate?(rate: rate)
+            return
+        }
+        NANJApiManager.shared.getNANJRate{[weak self] rate in
+            guard let `self` = self else {return}
+            self.nanjRate = rate;
+            self.delegate?.didGetNANJRate?(rate: rate ?? 0.0)
+        }
     }
     
     public func scanAddressFromQRCode() {
