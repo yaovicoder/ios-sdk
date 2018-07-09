@@ -20,7 +20,7 @@ struct TransactionRequest: Request {
         _offset = offset
     }
     var baseURL: URL {
-        return URL(string: NANJConfig.apiServer)!
+        return URL(string: NANJConfig.apiServerTransaction)!
     }
     
     var method: HTTPMethod {
@@ -40,7 +40,7 @@ struct TransactionRequest: Request {
             "startblock" : "0",
             "endblock" : "999999999",
             "sort" : "desc",
-            "apikey" : NANJConfig.apiRinkebyKey,
+            "apikey" : NANJConfig.apiServerTransactionKey,
             "page" : _page ?? 1,
             "offset" : _offset ?? 20
         ]

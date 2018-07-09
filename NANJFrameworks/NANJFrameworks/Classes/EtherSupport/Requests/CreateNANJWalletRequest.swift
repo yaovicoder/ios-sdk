@@ -34,6 +34,10 @@ class CreateNANJWalletRequest: Request {
     }
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> String? {
+        print("= = = = = = = = = = = = = = RESULT")
+        print(object)
+        print("= = = = = = = = = = = = = = RESULT\n")
+
         guard let dict = object as? Dictionary<String, Any> else {
             return nil
         }
