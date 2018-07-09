@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		0C28EA2920A7EBBB006C6E71 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */; };
 		0C28EA2B20A8A371006C6E71 /* TransactionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */; };
+		0C4D0B3420D73EC100DB3798 /* NANJWalletManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D0B3320D73EC100DB3798 /* NANJWalletManagerTests.swift */; };
 		0C653ABE20AB3D8000BC7551 /* DateCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C653ABD20AB3D7F00BC7551 /* DateCommon.swift */; };
+		0C977E7620D7564E006C7DC1 /* NANJTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C977E7520D7564E006C7DC1 /* NANJTransactionTests.swift */; };
 		0CA40424208AC776006D6117 /* WalletListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40423208AC776006D6117 /* WalletListController.swift */; };
 		0CA40426208AC916006D6117 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40425208AC916006D6117 /* BaseViewController.swift */; };
 		0CA40429208ACE34006D6117 /* WalletListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA40428208ACE34006D6117 /* WalletListCell.swift */; };
 		0CA4042B208AFBEE006D6117 /* ImportJSONViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA4042A208AFBEE006D6117 /* ImportJSONViewController.swift */; };
+		0CBDA65D20D7ABE000979589 /* NANJWalletTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBDA65C20D7ABE000979589 /* NANJWalletTest.swift */; };
+		0CBDA65F20D7AC1800979589 /* NANJApiManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBDA65E20D7AC1800979589 /* NANJApiManagerTest.swift */; };
 		0CC22685209EE0BE00B55D55 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22684209EE0BE00B55D55 /* PasswordViewController.swift */; };
 		0CC2269A209EE17100B55D55 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22687209EE17100B55D55 /* ArrayExtensions.swift */; };
 		0CC2269B209EE17100B55D55 /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC22688209EE17100B55D55 /* CGColorExtensions.swift */; };
@@ -42,7 +46,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		FEB215BC19E8B4BE33E316AE /* Pods_NANJFrameworks_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B2D7769455CF1294011E68 /* Pods_NANJFrameworks_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,13 +62,17 @@
 /* Begin PBXFileReference section */
 		0C28EA2820A7EBBB006C6E71 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		0C28EA2A20A8A371006C6E71 /* TransactionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCell.swift; sourceTree = "<group>"; };
+		0C4D0B3320D73EC100DB3798 /* NANJWalletManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NANJWalletManagerTests.swift; sourceTree = "<group>"; };
 		0C653ABD20AB3D7F00BC7551 /* DateCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCommon.swift; sourceTree = "<group>"; };
 		0C67B17E208481CF00C2054B /* NANJFrameworks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NANJFrameworks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C977E7520D7564E006C7DC1 /* NANJTransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJTransactionTests.swift; sourceTree = "<group>"; };
 		0CA40423208AC776006D6117 /* WalletListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListController.swift; sourceTree = "<group>"; };
 		0CA40425208AC916006D6117 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0CA40428208ACE34006D6117 /* WalletListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListCell.swift; sourceTree = "<group>"; };
 		0CA4042A208AFBEE006D6117 /* ImportJSONViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportJSONViewController.swift; sourceTree = "<group>"; };
 		0CA6398E2090EB5C005A1169 /* NANJFrameworks_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NANJFrameworks_Example.entitlements; sourceTree = "<group>"; };
+		0CBDA65C20D7ABE000979589 /* NANJWalletTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJWalletTest.swift; sourceTree = "<group>"; };
+		0CBDA65E20D7AC1800979589 /* NANJApiManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJApiManagerTest.swift; sourceTree = "<group>"; };
 		0CC22684209EE0BE00B55D55 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		0CC22687209EE17100B55D55 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		0CC22688209EE17100B55D55 /* CGColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
@@ -101,7 +108,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* NANJFrameworks_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NANJFrameworks_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		817CEDEB117173B292B63120 /* Pods_NANJFrameworks_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NANJFrameworks_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CD8ED668C35C022F7BC9762 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A3A27FDA4954D719DA5DBFBC /* Pods-NANJFrameworks_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Tests/Pods-NANJFrameworks_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,7 +227,10 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				0C4D0B3320D73EC100DB3798 /* NANJWalletManagerTests.swift */,
+				0CBDA65C20D7ABE000979589 /* NANJWalletTest.swift */,
+				0C977E7520D7564E006C7DC1 /* NANJTransactionTests.swift */,
+				0CBDA65E20D7AC1800979589 /* NANJApiManagerTest.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -555,7 +564,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				0CBDA65D20D7ABE000979589 /* NANJWalletTest.swift in Sources */,
+				0C4D0B3420D73EC100DB3798 /* NANJWalletManagerTests.swift in Sources */,
+				0C977E7620D7564E006C7DC1 /* NANJTransactionTests.swift in Sources */,
+				0CBDA65F20D7AC1800979589 /* NANJApiManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +763,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NANJFrameworks_Example.app/NANJFrameworks_Example";
 			};
 			name = Debug;
 		};
@@ -769,6 +782,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NANJFrameworks_Example.app/NANJFrameworks_Example";
 			};
 			name = Release;
 		};
