@@ -20,6 +20,8 @@ struct NANJConfig {
     static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
     static let PAD: String = "0000000000000000000000000000000000000000000000000000000000000000"
     static let APP_HASH: String = "0x01582ab7787de984d1c757d23061990a445253371dcb0be8f33cbf5df234bbdd"
+    static var APP_ID: String = ""
+    static var APP_KEY: String = ""
 }
 
 struct NANJContract {

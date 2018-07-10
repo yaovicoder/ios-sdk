@@ -37,8 +37,8 @@ import TrustCore.EthereumCrypto
     
     /// Callback wallet when export completed.
     ///
-    /// - Parameters:
-    ///   - wallet: Wallet export.
+    /// - Parametvar:
+    ///   - wallet: Wallet expvar.
     ///   - privateKey: Private key export from wallet.
     ///   - error: Error during wallet import.
     @objc optional func didExportPrivatekey(wallet: NANJWallet, privateKey: String?, error: Error?)
@@ -111,6 +111,19 @@ public class NANJWalletManager: NSObject {
             }
         }
     }
+    
+    /// Set App ID
+    ///
+    func setAppId(appId: String) {
+        NANJConfig.APP_ID = appId
+    }
+    
+    /// Set App KEY
+    ///
+    func setAppKey(appKey: String) {
+        NANJConfig.APP_KEY = appKey
+    }
+
     
     /**
      Create new wallet.
