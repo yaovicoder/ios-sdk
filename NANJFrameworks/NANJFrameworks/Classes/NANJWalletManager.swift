@@ -363,7 +363,6 @@ public class NANJWalletManager: NSObject {
         print("* * * * * * * * * * * * STEP 2 * * * * * * * * * * * *")
         let __bytes = Array<UInt8>(hex: txHashInput)
         let __hash = Digest.sha3(__bytes, variant: .keccak256)
-        print(__hash)
         let txHash = __hash.toHexString().add0x
         print("txHash: ", txHash)
         print("* * * * * * * * * * * * * * * * * * * * * * * * \n\n")
@@ -371,7 +370,6 @@ public class NANJWalletManager: NSObject {
         //STEP4: SHA3 TX_HASH
         print("* * * * * * * * * * * * STEP 4 * * * * * * * * * * * *")
         
-        //Numeric.hexStringToByteArray(hashInput)
         let __bytesSign = Array<UInt8>(hex: txHashInput)
         let __hashSign = Digest.sha3(__bytesSign, variant: .keccak256)
         let __txHashSignData = self.keystore.signHash(Data(bytes: __hashSign), for: currentAccount)
@@ -379,7 +377,6 @@ public class NANJWalletManager: NSObject {
             print("Sign hash error")
             return
         }
-        print(currentAccount.address.eip55String)
         
         let dataR = __txHashSign[..<32]
         let signR = dataR.hexEncoded
