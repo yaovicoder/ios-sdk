@@ -38,6 +38,7 @@
 		0B0572B9007726D14DEB1D44B4C786E8 /* StringDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62898960A85B45983D25F698A1B75DFF /* StringDataParser.swift */; };
 		0C20AE1E20C64D9E005B7186 /* GetNANJToUSDRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20AE1D20C64D9E005B7186 /* GetNANJToUSDRequest.swift */; };
 		0C20AE2020C64DDF005B7186 /* GetUSDToYENRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20AE1F20C64DDF005B7186 /* GetUSDToYENRequest.swift */; };
+		0C2C0A1920F836D100D73E55 /* GetAuthoriseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C0A1720F836C700D73E55 /* GetAuthoriseRequest.swift */; };
 		0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */; };
 		0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08307514839BA19E7373CF8183D5149 /* DSL.swift */; };
@@ -918,6 +919,7 @@
 		0BF4333FEA40A95AB7B6228ABAD7248B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		0C20AE1D20C64D9E005B7186 /* GetNANJToUSDRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNANJToUSDRequest.swift; sourceTree = "<group>"; };
 		0C20AE1F20C64DDF005B7186 /* GetUSDToYENRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUSDToYENRequest.swift; sourceTree = "<group>"; };
+		0C2C0A1720F836C700D73E55 /* GetAuthoriseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAuthoriseRequest.swift; sourceTree = "<group>"; };
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJApiManager.swift; path = NANJFrameworks/Classes/NANJApiManager.swift; sourceTree = "<group>"; };
 		0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNANJWalletRequest.swift; sourceTree = "<group>"; };
@@ -1869,6 +1871,7 @@
 				0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */,
 				0C20AE1D20C64D9E005B7186 /* GetNANJToUSDRequest.swift */,
 				0C20AE1F20C64DDF005B7186 /* GetUSDToYENRequest.swift */,
+				0C2C0A1720F836C700D73E55 /* GetAuthoriseRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -3760,6 +3763,7 @@
 				876AA76CF67927D6C1101053064C0ED2 /* CryptoAddressValidator.swift in Sources */,
 				0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */,
 				DD26866EDC2B9C71E8C607125D99D965 /* Currency.swift in Sources */,
+				0C2C0A1920F836D100D73E55 /* GetAuthoriseRequest.swift in Sources */,
 				4BB546D330FA207A9AA596B0235C437A /* CurrencyRate.swift in Sources */,
 				BD464E5E059B37DF0344B3097FBA4FB8 /* Data.swift in Sources */,
 				642A972161948B05F6CA82F01B06F405 /* Dictionary.swift in Sources */,

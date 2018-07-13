@@ -49,9 +49,7 @@ import NANJFrameworks
 ```
 -  Add following lines to didFinishLaunchingWithOptions method
 ```swift
-NANJWalletManager.shared.startConfig()
-NANJWalletManager.shared.setAppId("AppId")
-NANJWalletManager.shared.setAppKey("AppKey")
+NANJWalletManager.shared.startConfig(appId: "AppId", appSecret: "AppSecret", coinName: "CoinName")
 ```
 
 ### Create new Wallet

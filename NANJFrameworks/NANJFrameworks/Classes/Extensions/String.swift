@@ -76,4 +76,27 @@ extension String {
         let endIndex = index(from: r.upperBound)
         return String(self[startIndex..<endIndex])
     }
+
+    /// SwifterSwift: Returns a string by padding to fit the length parameter size with another string in the start.
+    ///
+    ///   "hue".paddingStart(10) -> "       hue"
+    ///   "hue".paddingStart(10, with: "br") -> "brbrbrbhue"
+    ///
+    /// - Parameter length: The target length to pad.
+    /// - Parameter string: Pad string. Default is " ".
+    /// - Returns: The string with the padding on the start.
+    public func paddingStart(_ length: Int, with string: String = " ") -> String {
+        guard count < length else { return self }
+        
+        let padLength = length - count
+        if padLength < string.count {
+            return string[string.startIndex..<string.index(string.startIndex, offsetBy: padLength)] + self
+        } else {
+            var padding = string
+            while padding.count < padLength {
+                padding.append(string)
+            }
+            return padding[padding.startIndex..<padding.index(padding.startIndex, offsetBy: padLength)] + self
+        }
+    }
 }

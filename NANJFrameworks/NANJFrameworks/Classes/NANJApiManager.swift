@@ -26,11 +26,7 @@ class NANJApiManager: NSObject {
             switch result {
             case .success(let txHash):
                 print("= = = = = = = = = = = = = =")
-                if txHash != nil {
-                    print(txHash)
-                } else {
-                    print("Create wallet error")
-                }
+                print(txHash ?? "Create wallet error")
                 print("= = = = = = = = = = = = = =")
                 completion(txHash)
                 break

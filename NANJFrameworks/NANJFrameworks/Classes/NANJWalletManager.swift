@@ -15,6 +15,16 @@ import TrustCore.EthereumCrypto
 
 @objc public protocol NANJWalletManagerDelegate {
     
+    /// Callback when authorise completed.
+    ///
+    /// - Parameters:
+    @objc optional func didAuthoriseSuccess()
+    
+    /// Callback when authorise completed.
+    ///
+    /// - Parameters:
+    @objc optional func didAuthoriseFail(error: String)
+    
     /// Callback wallet when create completed.
     ///
     /// - Parameters:
@@ -89,7 +99,15 @@ public class NANJWalletManager: NSObject {
     
     //MARK: - Public function
     
-    public func startConfig() {
+    /**
+     Start config developer, coin info.
+     */
+    public func startConfig(appId: String, appSecret: String, coinName: String = "NANJCOIN") {
+        //Setup developer info
+        NANJConfig.NANJWALLET_APP_ID = appId
+        NANJConfig.NANJWALLET_SECRET_KEY = appSecret
+        NANJConfig.NANJ_COIN_NAME = coinName
+        self.startAuthorise()
         //Setup RPC Server
         config.chainID = NANJConfig.rpcServer.chainID
         
@@ -111,19 +129,6 @@ public class NANJWalletManager: NSObject {
             }
         }
     }
-    
-    /// Set App ID
-    ///
-    func setAppId(appId: String) {
-        NANJConfig.APP_ID = appId
-    }
-    
-    /// Set App KEY
-    ///
-    func setAppKey(appKey: String) {
-        NANJConfig.APP_KEY = appKey
-    }
-
     
     /**
      Create new wallet.
@@ -463,6 +468,47 @@ public class NANJWalletManager: NSObject {
                     }
                 }
             })
+        }
+    }
+    
+    private func startAuthorise() {
+        let request: GetAuthoriseRequest = GetAuthoriseRequest()
+        Session.send(request) {[weak self] result in
+            guard let `self` = self else {return}
+            switch result {
+            case .success(let dict):
+                guard let data: NSDictionary = dict?["data"] as? NSDictionary, let appHash = data["appHash"] as? String,
+                    let smartContracts = data["smartContracts"] as? NSDictionary,
+                    let metaNanjManager = smartContracts["metaNanjManager"] as? String,
+                    let supportedERC20 = data["supportedERC20"] as? [NSDictionary]
+                else {
+                    self.delegate?.didAuthoriseFail?(error: "Can not get data from NANJ server.")
+                    return
+                }
+                NANJConfig.APP_HASH = appHash
+                NANJConfig.META_NANJCOIN_MANAGER = metaNanjManager
+                
+                var coinAddress: String? = nil
+                supportedERC20.forEach({ obj in
+                    guard let name:String = obj["name"] as? String, let address: String = obj["address"] as? String else {
+                        return
+                    }
+                    if name == NANJConfig.NANJ_COIN_NAME {
+                        coinAddress = address
+                    }
+                })
+                print(coinAddress ?? "GET Coin address error")
+                if let __coinAddress = coinAddress {
+                    NANJConfig.NANJCOIN_ADDRESS = __coinAddress
+                    self.delegate?.didAuthoriseSuccess?()
+                } else {
+                    self.delegate?.didAuthoriseFail?(error: "Can not find coin name " + NANJConfig.NANJ_COIN_NAME)
+                }
+                break
+            case .failure(let error):
+                self.delegate?.didAuthoriseFail?(error: error.localizedDescription)
+                break
+            }
         }
     }
 }

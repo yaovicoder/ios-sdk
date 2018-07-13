@@ -45,7 +45,7 @@ public class NANJTransaction: NSObject {
         self.gasPrice = gasPrice//BigInt(gasPrice.drop0x, radix: 16)?.description ?? ""
         self.gasUsed = gasUsed
         self.txHash = hash
-        self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJContract.decimals)
+        self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJConfig.DECIMALS)
         self.nonce = Int(BigInt(nonce.drop0x, radix: 16)?.description ?? "-1") ?? -1
         self.confirmations = confirmations
         self.timeStamp = timeStamp

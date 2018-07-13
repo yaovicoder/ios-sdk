@@ -19,8 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //NANJ Start config
-        NANJWalletManager.shared.startConfig()
-        
+        NANJWalletManager.shared.startConfig(appId: "575958089608922877", appSecret: "fF5MSugBFsUEoTiFIiRdUa1rFc5Y8119JVzyWUzJ", coinName: "NANJCOIN")        
         return true
     }
 

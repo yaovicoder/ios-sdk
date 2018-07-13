@@ -25,6 +25,13 @@ class CreateNANJWalletRequest: Request {
         return .post
     }
     
+    var headerFields: [String : String] {
+        return [
+            "Client-ID" : NANJConfig.NANJWALLET_APP_ID,
+            "Secret-Key" : NANJConfig.NANJWALLET_SECRET_KEY
+        ]
+    }
+    
     var path: String {
         return "/relayTx"
     }

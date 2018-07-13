@@ -63,7 +63,7 @@ class SendNANJViewController: BaseViewController {
             return
         }
         self.showLoading()
-        self.currentWallet?.sendNANJ(toAddress: self.txfAddress.text!, amount: self.txfAmount.text!)
+        self.currentWallet?.sendNANJ(toAddress: self.txfAddress.text!, amount: self.txfAmount.text!, message: "test")
     }
     
     
