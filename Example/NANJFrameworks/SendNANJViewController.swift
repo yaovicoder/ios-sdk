@@ -106,12 +106,14 @@ extension SendNANJViewController: NANJWalletDelegate {
     func didSendNANJCompleted(transaction: NANJTransaction?) {
         self.hideLoading()
         if transaction != nil {
+            print(transaction?.txHash ?? "")
             self.showMessage("Send NANJ success.")
         }
     }
     
-    func didSendNANJError(error: String?) {
-        self.showMessage(error ?? "Send NANJ Error.")
+    func didSendNANJError(error: String) {
+        self.hideLoading()
+        self.showMessage(error)
     }
 }
 

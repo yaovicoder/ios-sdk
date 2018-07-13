@@ -71,6 +71,11 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
+        if (UInt8(amount) ?? 0 <= 2) {
+            self.delegate?.didSendNANJError?(error: "Amount must be greater than 2 NANJ")
+            return
+        }
+        
         guard let address = Address(string: address.trimmed) else {
             print("Address error")
             self.delegate?.didSendNANJError!(error: "Address invaild")
@@ -81,6 +86,7 @@ public class NANJWallet: NSObject {
             self.delegate?.didSendNANJError!(error: "Amount invaild")
             return
         }
+        
         //Data Transfer
         let encoderTransfer = ABIEncoder()
         let functionTransfer = Function(name: "transfer", parameters: [.address, .uint(bits: 256), .dynamicBytes])
@@ -122,36 +128,23 @@ public class NANJWallet: NSObject {
             return
         }
         
-        /*let requestNonce2 = EtherServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(
-            address: addressNANJ.eip55String,
-            state: "latest"
-        )))
-        Session.send(requestNonce2) { result in
-            print(result)
-            switch result {
-            case .success(let count):
-                let valueNone = BigInt(count)
-                let pad = valueNone.description.paddingStart(64, with: "0")
-                print("PAD: ", pad)
-                break
-            case .failure(let error):
-                print("GET Fail: ", error.localizedDescription)
-            }
-        }
-        return*/
-        
         //  CREATE TX_HASH INPUT WITH TX_RELAY, WALLET OWNER,
         //              PAD, NANJCOIN ADDRESS
         print("* * * * * * * * * * * * STEP 2 * * * * * * * * * * * *")
-        let requestNonce = EtherServiceRequest(batch: BatchFactory().create(GetTransactionCountRequest(
-            address: addressNANJ.eip55String,
-            state: "latest"
-        )))
+        let encoderNonce = ABIEncoder()
+        let functionNonce = Function(name: "getNonce", parameters: [.address])
+        try! encoderNonce.encode(function: functionNonce, arguments: [addressETH])
+        let sendNonce = encoderNonce.data
+        
+        let requestNonce = EtherServiceRequest(
+            batch: BatchFactory().create(CallRequest(to: NANJConfig.TX_RELAY_ADDRESS, data: sendNonce.hexEncoded))
+        )
+        
         Session.send(requestNonce) { result in
             switch result {
             case .success(let count):
-                let valueNone = BigInt(count)
-                let pad = valueNone.description.paddingStart(64, with: "0")
+                let valueNonce = BigUInt(Data(hex: count))
+                let pad = valueNonce.description.paddingStart(64, with: "0")
                 let txHashInput = String(format: "0x1900%@%@%@%@%@",
                                          NANJConfig.TX_RELAY_ADDRESS.drop0x,
                                          NANJConfig.WALLET_OWNER.drop0x,
@@ -215,7 +208,7 @@ public class NANJWallet: NSObject {
                     if txHash == nil || txHash?.count == 0 {
                         self.delegate?.didSendNANJError?(error: "Send NANJ failed.")
                     } else {
-                        self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: [:]))
+                        self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: ["hash" : txHash!]))
                     }
                 }
                 break
