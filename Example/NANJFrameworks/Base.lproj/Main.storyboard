@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -117,7 +118,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 (NANJ COIN)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB7-Z0-M9U">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QB7-Z0-M9U">
                                 <rect key="frame" x="30" y="380" width="260" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="PmK-zi-ARV"/>
@@ -162,11 +163,18 @@
                     <tabBarItem key="tabBarItem" title="Wallet" id="kaM-np-uMq"/>
                     <navigationItem key="navigationItem" title="NANJ SDK" id="D2L-s9-3yc">
                         <barButtonItem key="backBarButtonItem" title="    " id="KFZ-4e-muI"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OzH-Er-GUo">
-                            <connections>
-                                <action selector="onClickListWallet:" destination="vXZ-lx-hvc" id="qI1-hB-llI"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="ic_change_coin" id="lOx-G1-jUL">
+                                <connections>
+                                    <action selector="onClickChangeCoin:" destination="vXZ-lx-hvc" id="hU1-uV-x2U"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="OzH-Er-GUo">
+                                <connections>
+                                    <action selector="onClickListWallet:" destination="vXZ-lx-hvc" id="qI1-hB-llI"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="imvQRCode" destination="mis-K6-IoH" id="eyi-8J-JFN"/>
@@ -693,7 +701,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dad-2w-Bfx">
-                                <rect key="frame" x="15" y="188" width="290" height="34"/>
+                                <rect key="frame" x="15" y="188" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Lcj-mf-ds9"/>
                                 </constraints>
@@ -716,7 +724,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he8-WU-3nA">
-                                <rect key="frame" x="15" y="298" width="290" height="47"/>
+                                <rect key="frame" x="15" y="329" width="290" height="47"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="am2-pV-NYC"/>
@@ -748,32 +756,62 @@
                                     <action selector="onClickQRCode:" destination="7as-hy-Hue" eventType="touchUpInside" id="g3j-ac-lBT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vh1-Yg-ehc">
+                                <rect key="frame" x="223" y="188" width="89" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="EIG-HX-W9H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="NANJCOIN">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClickSelectCoin:" destination="7as-hy-Hue" eventType="touchUpInside" id="No8-PI-Vmt"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="W2A-gK-i8X">
+                                <rect key="frame" x="15" y="253" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="jmA-tP-5xf"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Dad-2w-Bfx" secondAttribute="trailing" constant="15" id="1OI-2B-hvg"/>
+                            <constraint firstAttribute="trailing" secondItem="Dad-2w-Bfx" secondAttribute="trailing" constant="105" id="1OI-2B-hvg"/>
                             <constraint firstAttribute="trailing" secondItem="he8-WU-3nA" secondAttribute="trailing" constant="15" id="64e-4M-U33"/>
                             <constraint firstItem="iaF-py-oim" firstAttribute="leading" secondItem="w4O-GS-gFQ" secondAttribute="trailing" id="8dS-wE-eZH"/>
-                            <constraint firstItem="he8-WU-3nA" firstAttribute="top" secondItem="Dad-2w-Bfx" secondAttribute="bottom" constant="76" id="BUi-5Z-kEW"/>
+                            <constraint firstItem="he8-WU-3nA" firstAttribute="top" secondItem="Dad-2w-Bfx" secondAttribute="bottom" constant="107" id="BUi-5Z-kEW"/>
                             <constraint firstItem="he8-WU-3nA" firstAttribute="leading" secondItem="qWn-F8-UJc" secondAttribute="leading" constant="15" id="E36-Xi-Ii1"/>
+                            <constraint firstItem="Vh1-Yg-ehc" firstAttribute="top" secondItem="iaF-py-oim" secondAttribute="bottom" constant="31" id="aDv-lI-fAh"/>
+                            <constraint firstAttribute="trailing" secondItem="W2A-gK-i8X" secondAttribute="trailing" constant="15" id="dw1-RC-gZv"/>
+                            <constraint firstItem="W2A-gK-i8X" firstAttribute="top" secondItem="Dad-2w-Bfx" secondAttribute="bottom" constant="31" id="eEM-7Q-QAg"/>
+                            <constraint firstItem="W2A-gK-i8X" firstAttribute="leading" secondItem="qWn-F8-UJc" secondAttribute="leading" constant="15" id="eGX-Fn-coc"/>
+                            <constraint firstItem="Vh1-Yg-ehc" firstAttribute="leading" secondItem="Dad-2w-Bfx" secondAttribute="trailing" constant="8" id="efk-ZQ-bIY"/>
                             <constraint firstItem="OlK-KE-Ggo" firstAttribute="top" secondItem="xw7-RM-ttz" secondAttribute="bottom" constant="60" id="ibs-6S-NJA"/>
                             <constraint firstAttribute="trailing" secondItem="iaF-py-oim" secondAttribute="trailing" constant="15" id="jLO-Ci-jZZ"/>
                             <constraint firstItem="w4O-GS-gFQ" firstAttribute="top" secondItem="xw7-RM-ttz" secondAttribute="bottom" constant="60" id="lzj-hN-fJN"/>
                             <constraint firstItem="w4O-GS-gFQ" firstAttribute="leading" secondItem="OlK-KE-Ggo" secondAttribute="trailing" id="mhB-sP-Ays"/>
                             <constraint firstItem="iaF-py-oim" firstAttribute="top" secondItem="xw7-RM-ttz" secondAttribute="bottom" constant="60" id="qca-wY-tll"/>
                             <constraint firstItem="Dad-2w-Bfx" firstAttribute="leading" secondItem="qWn-F8-UJc" secondAttribute="leading" constant="15" id="vDs-SG-F8p"/>
+                            <constraint firstAttribute="trailing" secondItem="Vh1-Yg-ehc" secondAttribute="trailing" constant="8" id="vxe-Hl-AOM"/>
                             <constraint firstItem="OlK-KE-Ggo" firstAttribute="leading" secondItem="qWn-F8-UJc" secondAttribute="leading" constant="15" id="whA-65-1FS"/>
                             <constraint firstItem="Dad-2w-Bfx" firstAttribute="top" secondItem="OlK-KE-Ggo" secondAttribute="bottom" constant="30" id="yec-ny-oxD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCoin" destination="Vh1-Yg-ehc" id="fRc-qj-z3G"/>
                         <outlet property="txfAddress" destination="OlK-KE-Ggo" id="mRe-EC-drK"/>
                         <outlet property="txfAmount" destination="Dad-2w-Bfx" id="FR6-yE-JSb"/>
+                        <outlet property="txfMessage" destination="W2A-gK-i8X" id="Xz1-MM-PZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCJ-A1-hy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1737" y="202"/>
+            <point key="canvasLocation" x="1736.25" y="201.7605633802817"/>
         </scene>
         <!--ImportJSON View Controller-->
         <scene sceneID="mbF-Am-FrO">
@@ -1063,6 +1101,7 @@
     </scenes>
     <resources>
         <image name="feed" width="24" height="24"/>
+        <image name="ic_change_coin" width="17" height="22"/>
         <image name="ic_more" width="22" height="7"/>
         <image name="settings-wallet" width="21" height="21"/>
         <image name="transaction_sent" width="26" height="26"/>

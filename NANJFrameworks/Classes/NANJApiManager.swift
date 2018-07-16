@@ -40,7 +40,7 @@ class NANJApiManager: NSObject {
     
     func getNANJAdress(ethAdress: String, completion: @escaping(String?)-> Void) {
         guard let address = Address(eip55: ethAdress) else {
-            completion("GET Error")
+            completion("Get NANJ Adress failed.")
             return
         }
         let function = Function(name: "getWallet", parameters: [.address])
@@ -57,7 +57,7 @@ class NANJApiManager: NSObject {
                 print(object)
                 completion(object)
             case .failure(let error):
-                NSLog("getPrice error \(error)")
+                NSLog("Error \(error)")
                 completion(nil)
             }
         }

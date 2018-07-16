@@ -94,10 +94,10 @@ public class NANJWallet: NSObject {
         let sendEncoded = encoderTransfer.data
         
         //Data forwardTo
-        //Address(addressETH), Address(nanjAddress), Address(NANJCOIN_ADDRESS),
+        //Address(addressETH), Address(nanjAddress), Address(SMART_CONTRACT_ADDRESS),
         guard let addressNANJ = Address(string: self.address),
               let addressETH = self.etherWallet?.address,
-              let addressNANJCOIN = Address(string: NANJConfig.NANJCOIN_ADDRESS) else {return}
+              let addressNANJCOIN = Address(string: NANJConfig.SMART_CONTRACT_ADDRESS) else {return}
         let valueZero: BigUInt = {
             return 0
         }()
@@ -128,6 +128,10 @@ public class NANJWallet: NSObject {
             return
         }
         
+        print("TX_RELAY: ", NANJConfig.TX_RELAY_ADDRESS)
+        print("META_NANJCOIN_MANAGER: ", NANJConfig.META_NANJCOIN_MANAGER)
+        print("SMART_CONTRACTS: ", NANJConfig.SMART_CONTRACT_ADDRESS)
+        print("\n\n")
         //  CREATE TX_HASH INPUT WITH TX_RELAY, WALLET OWNER,
         //              PAD, NANJCOIN ADDRESS
         print("* * * * * * * * * * * * STEP 2 * * * * * * * * * * * *")
@@ -222,7 +226,7 @@ public class NANJWallet: NSObject {
     /// Get your NAJI amount
     ///
     public func getAmountNANJ() {
-        guard let address = Address(string: self.address), let contract = Address(string: NANJConfig.NANJCOIN_ADDRESS) else { return }
+        guard let address = Address(string: self.address), let contract = Address(string: NANJConfig.SMART_CONTRACT_ADDRESS) else { return }
         TokensBalanceService().getBalance(for: address, contract: contract) {result in
             //guard let `self` = self else {return}
             guard let __value = result.value else {

@@ -15,12 +15,17 @@ class SendNANJViewController: BaseViewController {
     
     @IBOutlet weak var txfAmount: UITextField!
     
+    @IBOutlet weak var txfMessage: UITextField!
+    
+    @IBOutlet weak var btnCoin: UIButton!
+    
     fileprivate var nfc: NANJNFC?
     fileprivate var currentWallet: NANJWallet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let erc20: ERC20? = NANJWalletManager.shared.getCurrentERC20Support()
+        self.btnCoin.setTitle(erc20?.getName(), for: .normal)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,13 +62,17 @@ class SendNANJViewController: BaseViewController {
         }
     }
     
+    @IBAction func onClickSelectCoin(_ sender: Any) {
+        
+    }
+    
     @IBAction func onClickSendNANJ(_ sender: Any) {
         //Send NANJ
         if !self.validateInput() {
             return
         }
         self.showLoading()
-        self.currentWallet?.sendNANJ(toAddress: self.txfAddress.text!, amount: self.txfAmount.text!, message: "test")
+        self.currentWallet?.sendNANJ(toAddress: self.txfAddress.text!, amount: self.txfAmount.text!, message: self.txfMessage.text ?? "")
     }
     
     

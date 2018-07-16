@@ -52,6 +52,30 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         self.navigationController?.pushViewController(listVC, animated: true)
     }
     
+    @IBAction func onClickChangeCoin(_ sender: Any) {
+        let alert: UIAlertController = UIAlertController(title: "Select Coin", message: nil, preferredStyle: .actionSheet)
+        
+        if let listERC20 = self.walletManager.getListERC20Support() {
+            listERC20.forEach { obj in
+                let action = UIAlertAction(title: obj.getName(), style: .default, handler: { action in
+                    if (NANJWalletManager.shared.setCurrentERC20Support(obj.getERC20Id())) {
+                        self.showMessage("Change \(obj.getName()) successfully.")
+                        self.loadCurrentWallet()
+                        self.loadBalance()
+                    } else {
+                        self.showMessage("Change \(obj.getName()) failed.")
+                    }
+                })
+                alert.addAction(action)
+            }
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(actionCancel)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: - Private method
+    
     fileprivate func loadCurrentWallet() {
         self.currentWallet = self.walletManager.getCurrentWallet()
         self.currentWallet?.delegate = self
@@ -129,17 +153,8 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     func didGetAmountNANJ(wallet: NANJWallet, amount: Double, error: Error?) {
         self.balance = amount
         self.updateYEN()
-
-//        let currencyFormatter = NumberFormatter()
-//        currencyFormatter.usesGroupingSeparator = true
-//        currencyFormatter.numberStyle = .currency
-//
-//        let priceString = currencyFormatter.string(from: Decimal(amount) as NSDecimalNumber)
-//        if let __balcance = priceString {
-//            self.lblCoin.text = String(format: "%@ (ESNJCOIN)", __balcance)
-//        } else {
-            self.lblCoin.text = String(format: "%0.3f (ESNJCOIN)", amount)
-//        }
+        
+        self.lblCoin.text = String(format: "%0.3f (\(self.walletManager.getCurrentERC20Support()?.getName() ?? ""))", amount)
     }
     
     func didGetAmountETH(wallet: NANJWallet, amount: String, error: Error?) {

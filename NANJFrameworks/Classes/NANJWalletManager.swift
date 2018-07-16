@@ -91,6 +91,8 @@ public class NANJWalletManager: NSObject {
     
     fileprivate var config: Config = Config()
     fileprivate var nanjRate: Double?
+    fileprivate var remoteConfig: NANJDataConfig?
+    fileprivate var supportERC20Id: Int = 1 //Start with NANJ Coin id = 1
     
     var chainState: ChainState!
     
@@ -102,12 +104,26 @@ public class NANJWalletManager: NSObject {
     /**
      Start config developer, coin info.
      */
-    public func startConfig(appId: String, appSecret: String, coinName: String = "NANJCOIN") {
+    public func startConfig(appId: String, appSecret: String) {
         //Setup developer info
         NANJConfig.NANJWALLET_APP_ID = appId
         NANJConfig.NANJWALLET_SECRET_KEY = appSecret
-        NANJConfig.NANJ_COIN_NAME = coinName
+        
+        //Load cache config
+        if let data: NSDictionary = UserDefaults.standard.value(forKey: "NANJDataConfig") as? NSDictionary {
+            self.remoteConfig = NANJDataConfig(val: data)
+            self.updateNANJConfigRemote()
+        }
+        //Cache ERC20 Support
+        if let __supportERC20Id = UserDefaults.standard.value(forKey: "NANJConfigERC20ID") as? Int {
+            if let __erc20 = self.getERC20Support(__supportERC20Id) {
+                self.updateNANJConfigERC20(__erc20)
+            }
+        }
+        
+        //Load new remote config
         self.startAuthorise()
+        
         //Setup RPC Server
         config.chainID = NANJConfig.rpcServer.chainID
         
@@ -316,6 +332,36 @@ public class NANJWalletManager: NSObject {
         return CryptoAddressValidator.isValidAddress(address)
     }
     
+    public func getListERC20Support() -> [ERC20]? {
+        if let __erc20 = self.remoteConfig?.supportedERC20 {
+            return __erc20
+        }
+        return nil
+    }
+    
+    public func getERC20Support(_ ERC20Id: Int) -> ERC20? {
+        let erc20 = self.remoteConfig?.supportedERC20.filter({ obj -> Bool in
+            return obj.ercId == ERC20Id
+        })
+        return erc20?.first
+    }
+    
+    public func setCurrentERC20Support(_ ERC20Id: Int) -> Bool {
+        let erc20 = self.remoteConfig?.supportedERC20.filter({ obj -> Bool in
+            return obj.ercId == ERC20Id
+        })
+        guard let __erc20: [ERC20] = erc20, let __obj: ERC20 = __erc20.first else { return false }
+        self.updateNANJConfigERC20(__obj)
+        return true
+    }
+    
+    public func getCurrentERC20Support() -> ERC20? {
+        let erc20 = self.remoteConfig?.supportedERC20.filter({ obj -> Bool in
+            return obj.ercId == self.supportERC20Id
+        })
+        return erc20?.first
+    }
+    
     //MARK: - Private function
     private func importedGetOrCreateNANJWallet(address: Address?, privateKey: String?) {
         guard let addressETH = address?.eip55String, let __address = address else {return}
@@ -477,38 +523,53 @@ public class NANJWalletManager: NSObject {
             guard let `self` = self else {return}
             switch result {
             case .success(let dict):
-                guard let data: NSDictionary = dict?["data"] as? NSDictionary, let appHash = data["appHash"] as? String,
+                guard let data: NSDictionary = dict?["data"] as? NSDictionary, let _ = data["appHash"] as? String,
                     let smartContracts = data["smartContracts"] as? NSDictionary,
-                    let metaNanjManager = smartContracts["metaNanjManager"] as? String,
-                    let supportedERC20 = data["supportedERC20"] as? [NSDictionary]
+                    let _ = smartContracts["metaNanjManager"] as? String,
+                    let _ = data["supportedERC20"] as? [NSDictionary]
                 else {
                     self.delegate?.didAuthoriseFail?(error: "Can not get data from NANJ server.")
                     return
                 }
-                NANJConfig.APP_HASH = appHash
-                NANJConfig.META_NANJCOIN_MANAGER = metaNanjManager
+                //Save cache data
+                UserDefaults.standard.set(data, forKey: "NANJDataConfig")
                 
-                var coinAddress: String? = nil
-                supportedERC20.forEach({ obj in
-                    guard let name:String = obj["name"] as? String, let address: String = obj["address"] as? String else {
-                        return
-                    }
-                    if name == NANJConfig.NANJ_COIN_NAME {
-                        coinAddress = address
-                    }
-                })
-                print(coinAddress ?? "GET Coin address error")
-                if let __coinAddress = coinAddress {
-                    NANJConfig.NANJCOIN_ADDRESS = __coinAddress
-                    self.delegate?.didAuthoriseSuccess?()
-                } else {
-                    self.delegate?.didAuthoriseFail?(error: "Can not find coin name " + NANJConfig.NANJ_COIN_NAME)
-                }
+                //Update Data
+                self.remoteConfig = NANJDataConfig(val: data)
+                self.updateNANJConfigRemote()
                 break
             case .failure(let error):
                 self.delegate?.didAuthoriseFail?(error: error.localizedDescription)
                 break
             }
+        }
+    }
+    
+    //Update for support switch coins
+    private func updateNANJConfigERC20(_ erc20: ERC20) {
+        NANJConfig.SMART_CONTRACT_ADDRESS = erc20.address
+        NANJConfig.NANJ_COIN_NAME = erc20.name
+        UserDefaults.standard.set(erc20.ercId, forKey: "NANJConfigERC20ID")
+        self.supportERC20Id = erc20.ercId
+        print("NANJ_CONFIG_LOCAL: Update ERC20 config successfully.")
+    }
+    
+    //Call update when get data from server successfully
+    private func updateNANJConfigRemote() {
+        if let __remote = self.remoteConfig {
+            NANJConfig.APP_HASH = __remote.appHash
+            NANJConfig.META_NANJCOIN_MANAGER = __remote.metaNanjManager
+            
+            //Need set default ERC20 support
+            // 1. Check not NANJConfigERC20 key
+            // 2. Update first object ERC20
+            if let _ = UserDefaults.standard.value(forKey: "NANJConfigERC20ID") as? Int {
+            } else {
+                if let __erc20 = self.remoteConfig?.supportedERC20.first {
+                    self.updateNANJConfigERC20(__erc20)
+                }
+            }
+            print("NANJ_CONFIG_LOCAL: Update Remote config successfully.")
         }
     }
 }
