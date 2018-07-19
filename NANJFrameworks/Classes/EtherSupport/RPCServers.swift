@@ -87,6 +87,22 @@ enum RPCServer {
         return URL(string: urlString)!
     }
     
+    var rpcEtherScanURL: URL {
+        let urlString: String = {
+            switch self {
+            case .main: return "https://mainnet.infura.io"
+            case .classic: return "https://web3.gastracker.io"
+            case .callisto: return "https://rpc.callisto.network"
+            case .kovan: return "https://kovan.etherscan.io"
+            case .ropsten: return "https://ropsten.etherscan.io"
+            case .rinkeby: return "https://rinkeby.etherscan.io"
+            case .poa: return "https://core.poa.network"
+            case .sokol: return "https://sokol.poa.network"
+            }
+        }()
+        return URL(string: urlString)!
+    }
+    
     var remoteURL: URL {
         let urlString: String = {
             switch self {

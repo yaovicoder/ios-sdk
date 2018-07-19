@@ -22,6 +22,7 @@ public class NANJTransaction: NSObject {
     public let nonce: Int?
     public let confirmations: String?
     public let timeStamp: String?
+    public let tokenSymbol: String?
     
     init(transaction: Dictionary<String, Any>) {
         let blockHash = transaction["blockHash"] as? String ?? ""
@@ -49,11 +50,12 @@ public class NANJTransaction: NSObject {
         self.nonce = Int(BigInt(nonce.drop0x, radix: 16)?.description ?? "-1") ?? -1
         self.confirmations = confirmations
         self.timeStamp = timeStamp
+        self.tokenSymbol = transaction["tokenSymbol"] as? String ?? ""
     }
     
     public func getURLOnEtherscan() -> URL? {
         if let txHash = self.txHash {
-            return URL(string: String(format: "%@/tx/%@", NANJConfig.rinkbyServer, txHash))
+            return URL(string: String(format: "%@/tx/%@", NANJConfig.rpcServer.rpcEtherScanURL.absoluteString, txHash))
         }
         return nil
     }

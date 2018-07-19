@@ -45,14 +45,14 @@ class TransactionDetailViewController: BaseViewController {
                 // Received
                 self.btnAddress.setTitle(String(format: "%@", transaction.from ?? ""), for: .normal)
                 self.btnCoin.setTitleColor(UIColor(hexString: "009051", transparency: 0.8), for: .normal)
-                self.btnCoin.setTitle(String(format: "  +%@ %@", transaction.value ?? 0, "ESNJ"), for: .normal)
+                self.btnCoin.setTitle(String(format: "  +%@ %@", transaction.value ?? 0, transaction.tokenSymbol ?? ""), for: .normal)
                 self.btnCoin.setImage(UIImage(named: "transaction_received"), for: .normal)
                 self.lblSender.text = "Sender"
             } else {
                 //Send
                 self.btnAddress.setTitle(String(format: "%@", transaction.to ?? ""), for: .normal)
                 self.btnCoin.setTitleColor(UIColor.red, for: .normal)
-                self.btnCoin.setTitle(String(format: "  -%@ %@", transaction.value ?? 0, "ESNJ"), for: .normal)
+                self.btnCoin.setTitle(String(format: "  -%@ %@", transaction.value ?? 0, transaction.tokenSymbol ?? ""), for: .normal)
                 self.lblSender.text = "Recipient"
                 self.btnCoin.setImage(UIImage(named: "transaction_sent"), for: .normal)
             }

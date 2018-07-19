@@ -34,14 +34,14 @@ class TransactionListCell: UITableViewCell {
             if address.lowercased() == transaction.to?.lowercased() {
                 // Received
                 self.lblTo.text = String(format: "From: %@", transaction.from ?? "")
-                self.lblAmount.text = String(format: "+%@ %@", transaction.value ?? 0, "ESNJ")
+                self.lblAmount.text = String(format: "+%@ %@", transaction.value ?? 0, transaction.tokenSymbol ?? "")
                 self.lblAmount.textColor = UIColor(hexString: "009051", transparency: 0.8)
                 self.imvIcon.image = UIImage(named: "transaction_received")
             } else {
                 //Send
                 self.lblTo.text = String(format: "To: %@", transaction.to ?? "")
                 self.lblAmount.textColor = UIColor.red
-                self.lblAmount.text = String(format: "-%@ %@", transaction.value ?? 0, "ESNJ")
+                self.lblAmount.text = String(format: "-%@ %@", transaction.value ?? 0, transaction.tokenSymbol ?? "")
                 self.imvIcon.image = UIImage(named: "transaction_sent")
             }
         }

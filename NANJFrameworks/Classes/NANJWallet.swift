@@ -71,7 +71,7 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
-        if BigUInt(amount) ?? BigUInt(0) <= BigUInt(2).magnitude {
+        if BigUInt(amount) ?? BigUInt(0) <= BigUInt(2) {
             self.delegate?.didSendNANJError?(error: "Amount must be greater than 2 NANJ")
             return
         }
