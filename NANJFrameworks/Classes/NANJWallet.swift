@@ -71,11 +71,10 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
-        if (UInt8(amount) ?? 0 <= 2) {
+        if BigUInt(amount) ?? BigUInt(0) <= BigUInt(2).magnitude {
             self.delegate?.didSendNANJError?(error: "Amount must be greater than 2 NANJ")
             return
         }
-        
         guard let address = Address(string: address.trimmed) else {
             print("Address error")
             self.delegate?.didSendNANJError!(error: "Address invaild")
