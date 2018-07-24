@@ -146,8 +146,8 @@ public class NANJWallet: NSObject {
         Session.send(requestNonce) { result in
             switch result {
             case .success(let count):
-                let valueNonce = BigUInt(Data(hex: count))
-                let pad = valueNonce.description.paddingStart(64, with: "0")
+//                let valueNonce = BigUInt(Data(hex: count))
+                let pad = count.drop0x //valueNonce.description.paddingStart(64, with: "0")
                 let txHashInput = String(format: "0x1900%@%@%@%@%@",
                                          NANJConfig.TX_RELAY_ADDRESS.drop0x,
                                          NANJConfig.WALLET_OWNER.drop0x,
