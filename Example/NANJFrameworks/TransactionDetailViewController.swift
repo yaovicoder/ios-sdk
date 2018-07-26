@@ -22,8 +22,7 @@ class TransactionDetailViewController: BaseViewController {
     @IBOutlet weak var btnConfirmNumber: UIButton!
     @IBOutlet weak var btnDate: UIButton!
     
-    @IBOutlet weak var btnNonce: UIButton!
-    
+    @IBOutlet weak var lblMessage: UILabel!
     
     var transaction: NANJTransaction!
     
@@ -58,13 +57,14 @@ class TransactionDetailViewController: BaseViewController {
             }
         }
         
-        self.btnTxHash.setTitle(self.transaction.txHash, for: .normal)
-        self.btnNonce.setTitle(String(format: "%d", self.transaction.nonce ?? 0), for: .normal)
-        self.btnConfirmNumber.setTitle(self.transaction.confirmations, for: .normal)
-        if let timeStamp = self.transaction.timeStamp {
-            self.btnDate.setTitle(DateCommon.convertTimestampToStringWith(Double(timeStamp)!), for: .normal)
+        self.btnTxHash.setTitle(self.transaction.txHash, for: .normal)    
+        
+        if let timeStamp = self.transaction.timestamp {
+            self.btnDate.setTitle(DateCommon.convertTimestampToStringWith(Double(timeStamp)), for: .normal)
         }
-        self.btnFee.setTitle(String(format: "%@ ETH", self.transaction.getFee() ?? ""), for: .normal)
+        self.btnFee.setTitle(String(format: "%@ NANJ", self.transaction.txFee ?? ""), for: .normal)
+        
+        self.lblMessage.text = transaction.message ?? "<No Message>"
         
     }
     

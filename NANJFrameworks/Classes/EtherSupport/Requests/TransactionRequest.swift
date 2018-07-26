@@ -20,7 +20,7 @@ struct TransactionRequest: Request {
         _offset = offset
     }
     var baseURL: URL {
-        return URL(string: NANJConfig.apiServerTransaction)!
+        return URL(string: NANJConfig.NANJ_SERVER)!
     }
     
     var method: HTTPMethod {
@@ -28,21 +28,22 @@ struct TransactionRequest: Request {
     }
     
     var path: String {
-        return "/api"
+        return "/tx/list/\(String(describing: _address!))"
+    }
+    
+    var headerFields: [String : String] {
+        return [
+            "Client-ID" : NANJConfig.NANJWALLET_APP_ID,
+            "Secret-Key" : NANJConfig.NANJWALLET_SECRET_KEY
+        ]
     }
     
     
     var queryParameters: [String : Any]? {
         return [
-            "module" : "account",
-            "action" : "tokentx",
-            "address" : _address ?? "",
-            "startblock" : "0",
-            "endblock" : "999999999",
-            "sort" : "desc",
-            "apikey" : NANJConfig.apiServerTransactionKey,
+            "order_by" : "desc",
             "page" : _page ?? 1,
-            "offset" : _offset ?? 20
+            "limit" : _offset ?? 20
         ]
     }
     
@@ -52,17 +53,21 @@ struct TransactionRequest: Request {
         }
         print(dict)
         //
-        let status: Int = (Int)(dict["status"] as? String ?? "0")!
-        if status == 1 {
-            //Success
-            if let result: Array<Dictionary<String, Any>> = dict["result"] as? Array<Dictionary<String, Any>> {
-                return result.map({ dict -> NANJTransaction in
-                    return NANJTransaction(transaction: dict)
-                })
+        if let status:Int = dict["statusCode"] as? Int {
+            if status == 200 {
+                //Success
+                if let data: Dictionary<String, Any> = dict["data"] as? Dictionary<String, Any>{
+                    if let items: Array<Dictionary<String, Any>> = data["items"] as? Array<Dictionary<String, Any>> {
+                        return items.map({ dict -> NANJTransaction in
+                            return NANJTransaction(transaction: dict)
+                        })
+                    }
+                }
             }
-        } else {
-            //Error
-            return []
+            else {
+                //Error
+                return []
+            }
         }
         return nil
     }

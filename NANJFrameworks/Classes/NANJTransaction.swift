@@ -10,47 +10,38 @@ import BigInt
 import TrustCore
 
 public class NANJTransaction: NSObject {
-    public let blockHash: String?
-    public let blockNumber: String?
+    public let id: UInt?
+    public let txHash: String?
+    public let status: Int?
     public let from: String?
     public let to: String?
-    public let gas: String?
-    public let gasUsed: String?
-    public let gasPrice: String?
-    public let txHash: String?
     public let value: String?
-    public let nonce: Int?
-    public let confirmations: String?
-    public let timeStamp: String?
+    public let message: String?
+    public let txFee: String?
+    public let timestamp: UInt?
     public let tokenSymbol: String?
     
     init(transaction: Dictionary<String, Any>) {
-        let blockHash = transaction["blockHash"] as? String ?? ""
-        let blockNumber = transaction["blockNumber"] as? String ?? ""
-        let gas = transaction["gas"] as? String ?? "0"
-        let gasUsed = transaction["gasUsed"] as? String ?? "0"
-        let gasPrice = transaction["gasPrice"] as? String ?? "0"
-        let hash = transaction["hash"] as? String ?? ""
+        let id = transaction["id"] as? UInt ?? 0
+        let txHash = transaction["TxHash"] as? String ?? ""
+        let status = transaction["status"] as? Int ?? 0
+        let from = transaction["from"] as? String ?? "0"
+        let to = transaction["to"] as? String ?? "0"
         let value = transaction["value"] as? String ?? "0"
-        let nonce = transaction["nonce"] as? String ?? "0"
-        let confirmations = transaction["confirmations"] as? String ?? "0"
-        let from = transaction["from"] as? String ?? ""
-        let to = transaction["to"] as? String ?? ""
-        let timeStamp = transaction["timeStamp"] as? String ?? ""
+        let message = transaction["message"] as? String ?? ""
+        let txFee = transaction["tx_fee"] as? String ?? "0"
+        let timestamp = transaction["time_stamp"] as? UInt
         
-        self.blockHash = blockHash
-        self.blockNumber = BigInt(blockNumber.drop0x, radix: 16)?.description ?? ""
+        self.id = id
+        self.txHash = txHash
         self.from = from
         self.to = to
-        self.gas = gas//BigInt(gas.drop0x, radix: 16)?.description ?? ""
-        self.gasPrice = gasPrice//BigInt(gasPrice.drop0x, radix: 16)?.description ?? ""
-        self.gasUsed = gasUsed
-        self.txHash = hash
+        self.status = status
+        self.message = message
+        self.txFee = EtherNumberFormatter.full.string(from: BigInt.init(txFee) ?? 0, decimals: NANJConfig.DECIMALS)
         self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJConfig.DECIMALS)
-        self.nonce = Int(BigInt(nonce.drop0x, radix: 16)?.description ?? "-1") ?? -1
-        self.confirmations = confirmations
-        self.timeStamp = timeStamp
-        self.tokenSymbol = transaction["tokenSymbol"] as? String ?? ""
+        self.timestamp = timestamp
+        self.tokenSymbol = "NANJ"
     }
     
     public func getURLOnEtherscan() -> URL? {
@@ -58,13 +49,5 @@ public class NANJTransaction: NSObject {
             return URL(string: String(format: "%@/tx/%@", NANJConfig.rpcServer.rpcEtherScanURL.absoluteString, txHash))
         }
         return nil
-    }
-    
-    public func getFee() -> String? {
-        guard let gasUsed = self.gasUsed, let gasPrice = self.gasPrice else { return nil }
-        let bigUsed = (BigInt.init(gasUsed) ?? 0)
-        let bigPrice = (BigInt.init(gasPrice) ?? 0)
-        let fee: Double = Double(bigUsed) / Double(bigPrice)
-        return String(format: "%f", fee)
     }
 }
