@@ -41,6 +41,7 @@
 		0C2C0A1920F836D100D73E55 /* GetAuthoriseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C0A1720F836C700D73E55 /* GetAuthoriseRequest.swift */; };
 		0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */; };
 		0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */; };
+		0C55CF1721095D6700F1B323 /* GetNANJRateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55CF1521095D0B00F1B323 /* GetNANJRateRequest.swift */; };
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08307514839BA19E7373CF8183D5149 /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E75736ECF73ADB21168A5CFDF0E53BD /* Floating Point Conversion.swift */; };
 		0CEB24EE20A49F3200246984 /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB24ED20A49F3200246984 /* TransactionRequest.swift */; };
@@ -923,6 +924,7 @@
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJApiManager.swift; path = NANJFrameworks/Classes/NANJApiManager.swift; sourceTree = "<group>"; };
 		0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNANJWalletRequest.swift; sourceTree = "<group>"; };
+		0C55CF1521095D0B00F1B323 /* GetNANJRateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNANJRateRequest.swift; sourceTree = "<group>"; };
 		0CEB24ED20A49F3200246984 /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
 		0D61BEC9715D610438C1F9075462AC72 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		0E4E117ED20D960C80B2D51A5FDD9B08 /* GasLimitConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GasLimitConfiguration.swift; sourceTree = "<group>"; };
@@ -1872,6 +1874,7 @@
 				0C20AE1D20C64D9E005B7186 /* GetNANJToUSDRequest.swift */,
 				0C20AE1F20C64DDF005B7186 /* GetUSDToYENRequest.swift */,
 				0C2C0A1720F836C700D73E55 /* GetAuthoriseRequest.swift */,
+				0C55CF1521095D0B00F1B323 /* GetNANJRateRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -3756,6 +3759,7 @@
 				0C20AE1E20C64D9E005B7186 /* GetNANJToUSDRequest.swift in Sources */,
 				A4B7D4776A32179C39B743E7D0CCC43E /* CallRequest.swift in Sources */,
 				16146008D6D872222F6CF567A3AFDF41 /* CastError.swift in Sources */,
+				0C55CF1721095D6700F1B323 /* GetNANJRateRequest.swift in Sources */,
 				6A4329436A78C4AED924AB50CF77B1DF /* ChainState.swift in Sources */,
 				1AB5BA0615EB9A1A83AF9AADCFE35D07 /* Config.swift in Sources */,
 				9738F68CEDAE6B2808D4074ACD543051 /* ConfirmType.swift in Sources */,

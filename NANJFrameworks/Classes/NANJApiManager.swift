@@ -25,9 +25,6 @@ class NANJApiManager: NSObject {
             print(result)
             switch result {
             case .success(let txHash):
-                print("= = = = = = = = = = = = = =")
-                print(txHash ?? "Create wallet error")
-                print("= = = = = = = = = = = = = =")
                 completion(txHash)
                 break
             case .failure(let error):
@@ -64,24 +61,12 @@ class NANJApiManager: NSObject {
     }
     
     func getNANJRate(completion: @escaping(Double?)-> Void) {
-        let requestNANJ = GetNANJToUSDRequest()
-        let requestYEN = GetUSDToYENRequest()
+        let requestNANJ = GetNANJRateRequest()
         Session.send(requestNANJ) { result in
             switch result {
             case .success(let object):
                 if let nanjRate = object {
-                    Session.send(requestYEN) { resultYEN in
-                        switch resultYEN {
-                        case .success(let objectYEN):
-                            if let usdToYEN = objectYEN {
-                                completion(nanjRate*usdToYEN)
-                            } else {
-                                completion(nil)
-                            }
-                        case .failure(_):
-                            completion(nil)
-                        }
-                    }
+                    completion(nanjRate)
                 } else {
                     completion(nil)
                 }
