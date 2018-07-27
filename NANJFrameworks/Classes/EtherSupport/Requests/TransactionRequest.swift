@@ -51,8 +51,7 @@ struct TransactionRequest: Request {
         guard let dict = object as? Dictionary<String, Any> else {
             return nil
         }
-        print(dict)
-        //
+
         if let status:Int = dict["statusCode"] as? Int {
             if status == 200 {
                 //Success

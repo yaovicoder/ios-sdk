@@ -147,6 +147,17 @@ public class NANJWalletManager: NSObject {
     }
     
     /**
+     Set Development Mode.
+     */
+    public func setDevelopmentMode(isDevelopment: Bool) {
+        //Default is Main Net
+        if isDevelopment {
+            NANJConfig.rpcServer = RPCServer.ropsten
+            NANJConfig.NANJ_SERVER = NANJConfig.NANJ_SERVER_STAGING
+        }
+    }
+    
+    /**
      Create new wallet.
      
      - returns: Wallet by NANJWalletManagerDelegate.

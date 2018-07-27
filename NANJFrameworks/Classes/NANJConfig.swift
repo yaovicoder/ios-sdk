@@ -7,13 +7,9 @@
 import Foundation
 
 public struct NANJConfig {
-    static let rpcServer: RPCServer = RPCServer.ropsten //Test net.
-//    static let apiServerTransaction: String = "https://api-ropsten.etherscan.io"
-    static let apiServerTransactionKey: String = "YourApiKeyToken"
-    static let rinkbyServer: String = "https://rinkeby.etherscan.io/"
-    
-//    static let NANJ_SERVER: String = "https://staging.nanjcoin.com/api"
+    static var rpcServer: RPCServer = RPCServer.main
     static var NANJ_SERVER: String = "https://api.nanjcoin.com/api"
+    static let NANJ_SERVER_STAGING: String = "https://staging.nanjcoin.com/api"
 
     static var TX_RELAY_ADDRESS: String = "0x7e861e36332693f271c66bdab40cda255a50d005"
     static var META_NANJCOIN_MANAGER: String = "0x8801307aec8ed852ea23d3d4e69f475f4f2dcb6e"
@@ -27,6 +23,8 @@ public struct NANJConfig {
     static var NANJ_COIN_NAME: String = ""
     static var SYMBOL: String = "ESNJ"
     static var DECIMALS: Int = 8
+    
+    static var IS_DEVELOPMENT: Bool = false
 }
 
 public class NANJDataConfig: NSObject {

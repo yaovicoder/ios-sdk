@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Set Development Mode
+        NANJWalletManager.shared.setDevelopmentMode(isDevelopment: true)
+        
         //NANJ Start config
         NANJWalletManager.shared.startConfig(appId: "575958089608922877", appSecret: "fF5MSugBFsUEoTiFIiRdUa1rFc5Y8119JVzyWUzJ")
         return true

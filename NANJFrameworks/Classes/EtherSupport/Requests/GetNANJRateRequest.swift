@@ -2,7 +2,7 @@
 //  GetNANJRateRequest.swift
 //  APIKit
 //
-//  Created by Long Lee on 7/26/18.
+//  Created by MinaWorks on 7/26/18.
 //
 
 import UIKit
