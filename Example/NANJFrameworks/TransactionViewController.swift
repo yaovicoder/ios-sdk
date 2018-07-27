@@ -46,7 +46,7 @@ class TransactionViewController: BaseViewController {
         self.showLoading()
         
         self.currentWallet?.delegate = self
-        self.currentWallet?.getTransactionList(page: 1, offset: 2000)
+        self.currentWallet?.getTransactionList(page: 1, offset: 20)
     }
     
     override func didReceiveMemoryWarning() {

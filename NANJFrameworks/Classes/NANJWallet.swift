@@ -204,7 +204,7 @@ public class NANJWallet: NSObject {
                 print(jsonString)
                 print("\n")
                 
-                //STEP6: PUSH TO API CREATE https://nanj-demo.herokuapp.com/api/relayTx
+                //STEP6: PUSH TO API CREATE
                     print("* * * * * * * * * * * * STEP 6 * * * * * * * * * * * *")
                 NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
                     guard let `self` = self else {return}
