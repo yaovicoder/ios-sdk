@@ -128,6 +128,36 @@ Or error persist via
 func didSendNANJError(error: String?)
 ```
 
+### Get transaction list
+```swift
+self.currentWallet?.delegate = self
+self.currentWallet?.getTransactionList(page: 1, offset: 20)
+```
+
+Receive via delegate call
+
+```swift
+func didGetTransactionList(transactions: Array<NANJTransaction>?)
+```
+
+NANJTransaction Class
+```swift
+public class NANJTransaction: NSObject {
+    public let id: UInt?
+    public let txHash: String?
+    public let status: Int?
+    public let from: String?
+    public let to: String?
+    public let value: String?
+    public let message: String?
+    public let txFee: String?
+    public let timestamp: UInt?
+    public let tokenSymbol: String?
+    ...
+}
+```
+
+
 ## Author
 
 NANJCOIN, support@nanjcoin.com
