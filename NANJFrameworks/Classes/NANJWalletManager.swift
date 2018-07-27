@@ -559,6 +559,7 @@ public class NANJWalletManager: NSObject {
         if let __remote = self.remoteConfig {
             NANJConfig.APP_HASH = __remote.appHash
             NANJConfig.META_NANJCOIN_MANAGER = __remote.metaNanjManager
+            NANJConfig.TX_RELAY_ADDRESS = __remote.txRelay
             
             //Need set default ERC20 support
             // 1. Check not NANJConfigERC20 key

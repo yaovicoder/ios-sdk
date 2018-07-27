@@ -99,7 +99,7 @@
 		1D4ACF835D95F6A8DF85FE46 /* Pods-NANJFrameworks_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Example/Pods-NANJFrameworks_Example.release.xcconfig"; sourceTree = "<group>"; };
 		23FC84B71C195CAD2A673DB0 /* Pods-NANJFrameworks_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Tests/Pods-NANJFrameworks_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		37B1B5E184A589D562BFE5E0 /* Pods-NANJFrameworks_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NANJFrameworks_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NANJFrameworks_Example/Pods-NANJFrameworks_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3D99A24C25487F4CB13D443C /* NANJFrameworks.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NANJFrameworks.podspec; path = ../NANJFrameworks.podspec; sourceTree = "<group>"; };
+		3D99A24C25487F4CB13D443C /* NANJFrameworks.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NANJFrameworks.podspec; path = ../NANJFrameworks.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* NANJFrameworks_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NANJFrameworks_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -287,7 +287,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				B5F5A9D9F4A3B97C736AF505 /* [CP] Embed Pods Frameworks */,
-				6A7242193C633BE503951963 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,7 +306,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				0A4F65F85781202203AAD642 /* [CP] Embed Pods Frameworks */,
-				1D0CB471026AE2981173DF1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,9 +329,9 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = TQXT24NXN6;
+						DevelopmentTeam = 6QQ2G5FNGG;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.NearFieldCommunicationTagReading = {
 								enabled = 1;
@@ -411,21 +409,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NANJFrameworks_Tests/Pods-NANJFrameworks_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1D0CB471026AE2981173DF1B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NANJFrameworks_Tests/Pods-NANJFrameworks_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4FDA1A5092D0572C4CE32701 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,21 +425,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A7242193C633BE503951963 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NANJFrameworks_Example/Pods-NANJFrameworks_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B55B56FC5424681560120DD7 /* [CP] Check Pods Manifest.lock */ = {
@@ -707,16 +675,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NANJFrameworks_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TQXT24NXN6;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QQ2G5FNGG;
 				INFOPLIST_FILE = NANJFrameworks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = iKite.dev.NANJ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanjcoin.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "098886d1-8531-43b9-bad6-3801652f9079";
-				PROVISIONING_PROFILE_SPECIFIER = "NANJ Coin - Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -729,16 +697,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NANJFrameworks_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TQXT24NXN6;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QQ2G5FNGG;
 				INFOPLIST_FILE = NANJFrameworks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = iKite.dev.NANJ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nanjcoin.sdkdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "098886d1-8531-43b9-bad6-3801652f9079";
-				PROVISIONING_PROFILE_SPECIFIER = "NANJ Coin - Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

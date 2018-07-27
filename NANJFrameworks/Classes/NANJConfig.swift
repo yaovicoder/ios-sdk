@@ -8,13 +8,14 @@ import Foundation
 
 public struct NANJConfig {
     static let rpcServer: RPCServer = RPCServer.ropsten //Test net.
-    static let apiServerTransaction: String = "https://api-ropsten.etherscan.io"
+//    static let apiServerTransaction: String = "https://api-ropsten.etherscan.io"
     static let apiServerTransactionKey: String = "YourApiKeyToken"
     static let rinkbyServer: String = "https://rinkeby.etherscan.io/"
     
-    static let NANJ_SERVER: String = "https://staging.nanjcoin.com/api"
+//    static let NANJ_SERVER: String = "https://staging.nanjcoin.com/api"
+    static var NANJ_SERVER: String = "https://api.nanjcoin.com/api"
 
-    static let TX_RELAY_ADDRESS: String = "0x7e861e36332693f271c66bdab40cda255a50d005"
+    static var TX_RELAY_ADDRESS: String = "0x7e861e36332693f271c66bdab40cda255a50d005"
     static var META_NANJCOIN_MANAGER: String = "0x8801307aec8ed852ea23d3d4e69f475f4f2dcb6e"
     static var SMART_CONTRACT_ADDRESS: String = "0xf7afb89bef39905ba47f3877e588815004f7c861"
     static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
@@ -35,6 +36,7 @@ public class NANJDataConfig: NSObject {
     var status: Int = 0
     var version: String = ""
     var metaNanjManager: String = "" //smartContracts{ metaNanjManager }
+    var txRelay: String = ""
     var supportedERC20: [ERC20] = []
     var appHash: String = ""
     var env: String = ""
@@ -60,6 +62,10 @@ public class NANJDataConfig: NSObject {
         if let smartContracts = val["smartContracts"] as? NSDictionary {
             if let __metaNanjManager  = smartContracts["metaNanjManager"] as? String {
                 self.metaNanjManager = __metaNanjManager
+            }
+            
+            if let __txRelay  = smartContracts["txRelay"] as? String {
+                self.txRelay = __txRelay
             }
         }
         if let supportedERC20  = val["supportedERC20"] as? [NSDictionary] {
