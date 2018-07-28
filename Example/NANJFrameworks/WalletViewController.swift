@@ -114,14 +114,12 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     
     //MARK: - NANJWalletManagerDelegate
     func didCreatingWallet(wallet: NANJWallet?) {
-        print("WalletViewController didCreatingWallet")
         if self.walletManager.getCurrentWallet() == nil {
             self.lblAddress.text = "Initializing ..."
         }
     }
 
     func didCreateWallet(wallet: NANJWallet?, error: Error?) {
-        print("WalletViewController didCreateWallet")
         if let __wallet = wallet {
             if self.walletManager.getCurrentWallet() == nil {
                 __wallet.enableWallet()

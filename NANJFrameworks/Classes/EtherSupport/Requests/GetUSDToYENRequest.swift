@@ -38,7 +38,6 @@ class GetUSDToYENRequest: Request {
             else {
             return nil
         }
-        print(yen, " - - - -")
         return yen
     }
 }

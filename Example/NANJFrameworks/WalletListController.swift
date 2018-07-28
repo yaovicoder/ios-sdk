@@ -34,7 +34,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     deinit {
-        print("Dealoc WalletListController")
+
     }
     
     func loadWallets() {
@@ -62,7 +62,7 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
         let actionSheet: UIAlertController = UIAlertController(title: "Select import type", message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
+
         }
         actionSheet.addAction(cancel)
         
@@ -242,7 +242,6 @@ class WalletListController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func didImportWallet(wallet: NANJWallet?, error: Error?) {
-        print("didImportWallet")
         self.hideLoading()
         if let __wallet = wallet {
             if self.walletManager.getCurrentWallet() == nil {

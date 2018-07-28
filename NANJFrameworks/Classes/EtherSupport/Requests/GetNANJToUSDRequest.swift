@@ -39,7 +39,6 @@ class GetNANJToUSDRequest: Request {
             else {
                 return nil
         }
-        print(usdPrice, " - - - -", nanjPrice)
         return usdPrice/nanjPrice
     }
 }

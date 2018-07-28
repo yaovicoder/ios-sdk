@@ -22,14 +22,12 @@ class NANJApiManager: NSObject {
     func createNANJWallet(params: NSDictionary, completion: @escaping (String?) -> Void ) {
         let request: CreateNANJWalletRequest = CreateNANJWalletRequest(dict: params)
         Session.send(request) { result in
-            print(result)
             switch result {
             case .success(let txHash):
                 completion(txHash)
                 break
             case .failure(let error):
                 completion(nil)
-                print(error)
                 break
             }
         }
@@ -51,7 +49,6 @@ class NANJApiManager: NSObject {
         Session.send(request) { result in
             switch result {
             case .success(let object):
-                print(object)
                 completion(object)
             case .failure(let error):
                 NSLog("Error \(error)")

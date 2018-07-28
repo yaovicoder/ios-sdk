@@ -99,7 +99,6 @@ class TransactionDetailViewController: BaseViewController {
         let actionSheet: UIAlertController = UIAlertController(title: string, message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
         }
         actionSheet.addAction(cancel)
         

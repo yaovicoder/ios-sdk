@@ -54,10 +54,6 @@ public class NANJQRCodeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
-        print("Deinit QRCode")
-    }
-    
     func initLayout() {
         guard let captureDevice: AVCaptureDevice = AVCaptureDevice.default(for: .video) else {
             print("Failed to get the camera device")
@@ -113,7 +109,6 @@ extension NANJQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            print("No QR code is detected")
             return
         }
         // Get the metadata object.
@@ -131,7 +126,6 @@ extension NANJQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                             self.delegate?.didScanQRCode?(address: address)
                             self.closeVC()
                         } else {
-                            print("Invalid Address")
                         }
                     }
                 } else {
@@ -140,7 +134,6 @@ extension NANJQRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                         self.delegate?.didScanQRCode?(address: metadataObj.stringValue!)
                         self.closeVC()
                     } else {
-                        print("Invalid Address")
                     }
                 }
             }
