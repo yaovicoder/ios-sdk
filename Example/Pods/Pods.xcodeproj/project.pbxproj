@@ -47,6 +47,7 @@
 		0C6DB82597C74784D2696CE86F032A25 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08307514839BA19E7373CF8183D5149 /* DSL.swift */; };
 		0C9F76EAB3D5C99ED2EAD2C422D53856 /* Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E75736ECF73ADB21168A5CFDF0E53BD /* Floating Point Conversion.swift */; };
 		0CEB24EE20A49F3200246984 /* TransactionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB24ED20A49F3200246984 /* TransactionRequest.swift */; };
+		0CF03954210CC8DB00ECB70F /* RelayNonceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF03953210CC8DA00ECB70F /* RelayNonceRequest.swift */; };
 		0E05BACA08A9DC7A4C09E93A09F7276C /* pbkdf2.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CDC2413072456A4A90C2C411786B3B /* pbkdf2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F4C6ACB40BFA129B404D0E320F34F22 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A450C8956A45093BBC5DD2E735CE63 /* Wallet.swift */; };
 		10D849DF130EDB35BB35FAB44655995A /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = E0851D790C72D9F1BA1485DD0638566F /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -904,6 +905,7 @@
 		0C69C62C210C87900024C249 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C69C62E210C89070024C249 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0CEB24ED20A49F3200246984 /* TransactionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRequest.swift; sourceTree = "<group>"; };
+		0CF03953210CC8DA00ECB70F /* RelayNonceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelayNonceRequest.swift; sourceTree = "<group>"; };
 		0D61BEC9715D610438C1F9075462AC72 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		0E69DB0946C3ED6581D9A666348A0059 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
 		0ED3CAC4E1708D97B9CC8B96B16A87E6 /* BodyParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BodyParameters.swift; path = Sources/APIKit/BodyParameters/BodyParameters.swift; sourceTree = "<group>"; };
@@ -1820,6 +1822,7 @@
 		360FDCF30B435676A6D510B29BE5C2BE /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				0CF03953210CC8DA00ECB70F /* RelayNonceRequest.swift */,
 				A81DC30191E482F4B54F7E206FDF5CC3 /* CallRequest.swift */,
 				23EC6843355CFBD80F2C3B6F23E592F5 /* EtherServiceRequest.swift */,
 				0CEB24ED20A49F3200246984 /* TransactionRequest.swift */,
@@ -3711,6 +3714,7 @@
 				400D4AE797B2397F27AE45DA4B258538 /* EtherServiceRequest.swift in Sources */,
 				63F9064CD978F95FD1C8010F7A0615AE /* EthTypedData.swift in Sources */,
 				0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */,
+				0CF03954210CC8DB00ECB70F /* RelayNonceRequest.swift in Sources */,
 				0C69C62D210C87900024C249 /* Constants.swift in Sources */,
 				56D040EC4E3C5A6E2718EA6BCCC9BE46 /* ImportType.swift in Sources */,
 				D6F037897FBA0593B698DAB3F9E3D406 /* Keystore.swift in Sources */,
