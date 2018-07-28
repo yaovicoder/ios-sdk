@@ -71,7 +71,7 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
-        if BigUInt(amount) ?? BigUInt(0) <= BigUInt(2) {
+        if amount.doubleValue <= 2 {
             self.delegate?.didSendNANJError?(error: "Amount must be greater than 2 NANJ")
             return
         }
@@ -236,21 +236,6 @@ public class NANJWallet: NSObject {
                 print(amount.description)
                 self.delegate?.didGetAmountNANJ?(wallet: self, amount: amount.description.doubleValue, error: nil)
             }
-        }
-    }
-    
-    /// Get your ETH amount
-    ///
-    public func getAmountETH() {
-        guard let address = self.etherWallet?.address else { return }
-        TokensBalanceService().getEthBalance(for: address) { result in
-            guard let __value = result.value else {
-                self.delegate?.didGetAmountETH?(wallet: self, amount: "0.0", error: result.error)
-                return
-            }
-            self.delegate?.didGetAmountETH?(wallet: self, amount: __value.amountFull, error: nil)
-            print(result.value ?? "")
-            print("Get ETH value complete")
         }
     }
     

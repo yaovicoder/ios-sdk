@@ -29,19 +29,4 @@ class TokensBalanceService {
             }
         }
     }
-
-    func getEthBalance(
-        for address: Address,
-        completion: @escaping (Result<Balance, AnyError>) -> Void
-    ) {
-        let request = EtherServiceRequest(batch: BatchFactory().create(BalanceRequest(address: address.description)))
-        Session.send(request) { result in
-            switch result {
-            case .success(let balance):
-                completion(.success(balance))
-            case .failure(let error):
-                completion(.failure(AnyError(error)))
-            }
-        }
-    }
 }

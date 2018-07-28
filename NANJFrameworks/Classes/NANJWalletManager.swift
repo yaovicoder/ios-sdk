@@ -94,8 +94,6 @@ public class NANJWalletManager: NSObject {
     fileprivate var remoteConfig: NANJDataConfig?
     fileprivate var supportERC20Id: Int = 1 //Start with NANJ Coin id = 1
     
-    var chainState: ChainState!
-    
     //ETH adress creating NANJ adress
     fileprivate var followUpAddress: [String] = []
     
@@ -127,10 +125,6 @@ public class NANJWalletManager: NSObject {
         //Setup RPC Server
         config.chainID = NANJConfig.rpcServer.chainID
         
-        //Start Chain state
-        self.chainState = ChainState(config: self.config)
-        self.chainState.start()
-        
         //Get NANJ Rate
         self.getNANJRate()
         
@@ -154,6 +148,7 @@ public class NANJWalletManager: NSObject {
         if isDevelopment {
             NANJConfig.rpcServer = RPCServer.ropsten
             NANJConfig.NANJ_SERVER = NANJConfig.NANJ_SERVER_STAGING
+            NANJConfig.IS_DEVELOPMENT = true
         }
     }
     
