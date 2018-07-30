@@ -8,6 +8,7 @@
 - [x] Export Private Key/ Key Store from NANJ Wallet
 - [x] Transfer NANJ Coin
 - [x] Transaction History
+- [x] Get NANJ Rate in JPY
 - [x] Capture Wallet Address via QRCode
 - [x] Capture Wallet Address via NFC Tapping
 
@@ -15,6 +16,12 @@
 - iOS 10.0+
 - Xcode 9.3+
 - Swift 3.1+
+
+## Communication
+- If you **need help** or **ask a general question**, use [Discord](https://discord.gg/xa94m8F). (Channel  'nanj-sdk')
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
 
 ## Installation
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -48,10 +55,26 @@ $ pod install
 import NANJFrameworks
 ```
 -  Add following lines to didFinishLaunchingWithOptions method
+
 ```swift
+//Set Development Mode
+NANJWalletManager.shared.setDevelopmentMode(isDevelopment: true)
 NANJWalletManager.shared.startConfig(appId: "AppId", appSecret: "AppSecret", coinName: "CoinName")
 ```
 
+### Environment Setup
+
+Development mode with staging server
+```swift
+NANJWalletManager.shared.setDevelopmentMode(isDevelopment: true)
+```
+
+Production mode with production server
+```swift
+NANJWalletManager.shared.setDevelopmentMode(isDevelopment: false)
+```
+
+**Notes**: Please call the method before `startConfig`
 ### Create new Wallet
 To create new wallet, use CreateWallet method via shared instance of NANJWalletManager
 ```swift
@@ -127,6 +150,18 @@ Or error persist via
 ```swift
 func didSendNANJError(error: String?)
 ```
+### Get NANJCOIN Rate in JPY
+
+```swift
+self.currentWallet?.delegate = self
+self.currentWallet?.getNANJRate()
+```
+
+NANJ rate will be returned over delegate method
+
+```swift
+@objc optional func didGetNANJRate(rate: Double)
+```
 
 ### Get transaction list
 ```swift
@@ -157,6 +192,34 @@ public class NANJTransaction: NSObject {
 }
 ```
 
+### NANJ SDK Support mutiple ERC20/ERC223
+To retreive supported ERC20/ERC223
+```swift 
+let arrayOfERC20 = NANJWalletManager.shared.getListERC20Support()
+```
+
+To retreive supported ERC20/ERC223 by Identifier of ERC20
+
+```swift 
+let idERC20 = 1
+let arrayOfERC20 = NANJWalletManager.shared.getERC20Support(idERC20)
+```
+
+To use ERC20/ERC223
+
+```swift
+let idERC20 = 1
+NANJWalletManager.shared.setCurrentERC20Support(idERC20)
+
+```
+
+To retrieve current ERC20/ERC223
+
+```swift
+NANJWalletManager.shared.getCurrentERC20Support(idERC20)
+```
+
+This feature allows the SDK can switch among multiple ERC20/ERC223 coins
 
 ## Author
 
