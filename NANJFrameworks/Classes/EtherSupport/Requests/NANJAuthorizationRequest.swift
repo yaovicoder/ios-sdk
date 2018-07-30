@@ -8,7 +8,7 @@
 import UIKit
 import APIKit
 
-class GetAuthoriseRequest: Request {
+class NANJAuthorizationRequest: Request {
     typealias Response = NSDictionary?
     
     var baseURL: URL {

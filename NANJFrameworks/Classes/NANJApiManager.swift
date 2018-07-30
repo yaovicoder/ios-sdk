@@ -58,7 +58,7 @@ class NANJApiManager: NSObject {
     }
     
     func getNANJRate(completion: @escaping(Double?)-> Void) {
-        let requestNANJ = GetNANJRateRequest()
+        let requestNANJ = NANJRateRequest()
         Session.send(requestNANJ) { result in
             switch result {
             case .success(let object):

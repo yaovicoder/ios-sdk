@@ -8,7 +8,7 @@
 import UIKit
 import APIKit
 
-class GetNANJRateRequest: Request {
+class NANJRateRequest: Request {
     typealias Response = Double?
     
     var baseURL: URL {

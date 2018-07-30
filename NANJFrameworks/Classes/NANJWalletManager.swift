@@ -495,7 +495,7 @@ public class NANJWalletManager: NSObject {
     }
     
     private func startAuthorise() {
-        let request: GetAuthoriseRequest = GetAuthoriseRequest()
+        let request: NANJAuthorizationRequest = NANJAuthorizationRequest()
         Session.send(request) {[weak self] result in
             guard let `self` = self else {return}
             switch result {
