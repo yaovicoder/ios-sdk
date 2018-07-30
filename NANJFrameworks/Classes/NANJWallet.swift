@@ -71,8 +71,8 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
-        if amount.doubleValue <= 2 {
-            self.delegate?.didSendNANJError?(error: "Amount must be greater than 2 NANJ")
+        if amount.doubleValue <= 0 {
+            self.delegate?.didSendNANJError?(error: "Amount must be greater than 0.")
             return
         }
         guard let address = Address(string: address.trimmed) else {
@@ -175,7 +175,6 @@ public class NANJWallet: NSObject {
             para.setValue(signV, forKey: "v")
             
             //STEP6: PUSH TO API CREATE
-            print("* * * * * * * * * * * * STEP 6 * * * * * * * * * * * *")
             NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
                 guard let `self` = self else {return}
                 if txHash == nil || txHash?.count == 0 {
