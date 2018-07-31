@@ -44,7 +44,7 @@ class NANJApiManager: NSObject {
         let encoded =  encoder.data
         
         let request = EtherServiceRequest(
-            batch: BatchFactory().create(CallRequest(to: NANJConfig.META_NANJCOIN_MANAGER, data: encoded.hexEncoded))
+            batch: BatchFactory().create(CallRequest(to: NANJConfig.metaNanjCoinManager, data: encoded.hexEncoded))
         )
         Session.send(request) { result in
             switch result {

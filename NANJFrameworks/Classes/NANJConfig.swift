@@ -8,23 +8,24 @@ import Foundation
 
 public struct NANJConfig {
     static var rpcServer: RPCServer = RPCServer.main
-    static var NANJ_SERVER: String = "https://api.nanjcoin.com/api"
-    static let NANJ_SERVER_STAGING: String = "https://api.nanjcoin.com/api" //"https://staging.nanjcoin.com/api"
+    static var nanjServer: String = "https://api.nanjcoin.com/api"
 
-    static var TX_RELAY_ADDRESS: String = "0x7e861e36332693f271c66bdab40cda255a50d005"
-    static var META_NANJCOIN_MANAGER: String = "0x8801307aec8ed852ea23d3d4e69f475f4f2dcb6e"
-    static var SMART_CONTRACT_ADDRESS: String = "0xf7afb89bef39905ba47f3877e588815004f7c861"
+    static var txRelayAddress: String = "0x7e861e36332693f271c66bdab40cda255a50d005"
+    static var metaNanjCoinManager: String = "0x8801307aec8ed852ea23d3d4e69f475f4f2dcb6e"
+    static var smartContractAddress: String = "0xf7afb89bef39905ba47f3877e588815004f7c861"
+    
+    static var appHash: String = ""
+    static var nanjWalletAppId: String = ""
+    static var nanjWalletSecretKey: String = ""
+    
+    static var nanjCoinName: String = ""
+    static var symbol: String = "ESNJ"
+    static var decimals: Int = 8
+    static var isDevelopment: Bool = false
+    
+    static let NANJ_SERVER_STAGING: String = "https://api.nanjcoin.com/api" //"https://staging.nanjcoin.com/api"
     static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
     static let PAD: String = "0000000000000000000000000000000000000000000000000000000000000000"
-    
-    static var APP_HASH: String = ""
-    static var NANJWALLET_APP_ID: String = ""
-    static var NANJWALLET_SECRET_KEY: String = ""
-    static var NANJ_COIN_NAME: String = ""
-    static var SYMBOL: String = "ESNJ"
-    static var DECIMALS: Int = 8
-    
-    static var IS_DEVELOPMENT: Bool = false
 }
 
 public class NANJDataConfig: NSObject {

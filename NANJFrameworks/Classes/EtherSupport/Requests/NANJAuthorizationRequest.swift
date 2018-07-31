@@ -12,7 +12,7 @@ class NANJAuthorizationRequest: Request {
     typealias Response = NSDictionary?
     
     var baseURL: URL {
-        return URL(string: NANJConfig.NANJ_SERVER)!
+        return URL(string: NANJConfig.nanjServer)!
     }
     
     var method: HTTPMethod {
@@ -21,8 +21,8 @@ class NANJAuthorizationRequest: Request {
     
     var headerFields: [String : String] {
         return [
-            "Client-ID" : NANJConfig.NANJWALLET_APP_ID,
-            "Secret-Key" : NANJConfig.NANJWALLET_SECRET_KEY
+            "Client-ID" : NANJConfig.nanjWalletAppId,
+            "Secret-Key" : NANJConfig.nanjWalletSecretKey
         ]
     }
     

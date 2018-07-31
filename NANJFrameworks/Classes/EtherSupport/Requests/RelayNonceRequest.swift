@@ -18,7 +18,7 @@ struct RelayNonceRequest: Request {
         _address = senderAddress
     }
     var baseURL: URL {
-        return URL(string: NANJConfig.NANJ_SERVER)!
+        return URL(string: NANJConfig.nanjServer)!
     }
     
     var method: HTTPMethod {
@@ -32,8 +32,8 @@ struct RelayNonceRequest: Request {
     
     var headerFields: [String : String] {
         return [
-            "Client-ID" : NANJConfig.NANJWALLET_APP_ID,
-            "Secret-Key" : NANJConfig.NANJWALLET_SECRET_KEY,
+            "Client-ID" : NANJConfig.nanjWalletAppId,
+            "Secret-Key" : NANJConfig.nanjWalletSecretKey,
             "Cache-Control": "no-cache"
         ]
     }

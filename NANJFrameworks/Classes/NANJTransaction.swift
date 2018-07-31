@@ -38,8 +38,8 @@ public class NANJTransaction: NSObject {
         self.to = to
         self.status = status
         self.message = message
-        self.txFee = EtherNumberFormatter.full.string(from: BigInt.init(txFee) ?? 0, decimals: NANJConfig.DECIMALS)
-        self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJConfig.DECIMALS)
+        self.txFee = EtherNumberFormatter.full.string(from: BigInt.init(txFee) ?? 0, decimals: NANJConfig.decimals)
+        self.value = EtherNumberFormatter.full.string(from: BigInt.init(value) ?? 0, decimals: NANJConfig.decimals)
         self.timestamp = timestamp
         self.tokenSymbol = "NANJ"
     }

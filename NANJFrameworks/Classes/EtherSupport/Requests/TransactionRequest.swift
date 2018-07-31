@@ -20,7 +20,7 @@ struct TransactionRequest: Request {
         _offset = offset
     }
     var baseURL: URL {
-        return URL(string: NANJConfig.NANJ_SERVER)!
+        return URL(string: NANJConfig.nanjServer)!
     }
     
     var method: HTTPMethod {
@@ -33,8 +33,8 @@ struct TransactionRequest: Request {
     
     var headerFields: [String : String] {
         return [
-            "Client-ID" : NANJConfig.NANJWALLET_APP_ID,
-            "Secret-Key" : NANJConfig.NANJWALLET_SECRET_KEY
+            "Client-ID" : NANJConfig.nanjWalletAppId,
+            "Secret-Key" : NANJConfig.nanjWalletSecretKey
         ]
     }
     

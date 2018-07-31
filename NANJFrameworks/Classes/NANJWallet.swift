@@ -79,7 +79,7 @@ public class NANJWallet: NSObject {
             self.delegate?.didSendNANJError!(error: "Address invaild")
             return
         }
-        guard let value = EtherNumberFormatter.full.number(from: amount, decimals: NANJConfig.DECIMALS) else {
+        guard let value = EtherNumberFormatter.full.number(from: amount, decimals: NANJConfig.decimals) else {
             self.delegate?.didSendNANJError!(error: "Amount invaild")
             return
         }
@@ -94,7 +94,7 @@ public class NANJWallet: NSObject {
         //Address(addressETH), Address(nanjAddress), Address(SMART_CONTRACT_ADDRESS),
         guard let addressNANJ = Address(string: self.address),
               let addressETH = self.etherWallet?.address,
-              let addressNANJCOIN = Address(string: NANJConfig.SMART_CONTRACT_ADDRESS) else {return}
+              let addressNANJCOIN = Address(string: NANJConfig.smartContractAddress) else {return}
         let valueZero: BigUInt = {
             return 0
         }()
@@ -103,7 +103,7 @@ public class NANJWallet: NSObject {
                                        parameters: [.address, .address, .address, .uint(bits: 256), .dynamicBytes, .bytes(32)])
         let encoder = ABIEncoder()
         
-        let appHash: Array<UInt8> = Array<UInt8>(hex: NANJConfig.APP_HASH)
+        let appHash: Array<UInt8> = Array<UInt8>(hex: NANJConfig.appHash)
         
         try! encoder.encode(function: functionForward, arguments: [addressETH, addressNANJ, addressNANJCOIN, valueZero, sendEncoded, Data(bytes: appHash)])
         let forwardEncoded = encoder.data
@@ -135,10 +135,10 @@ public class NANJWallet: NSObject {
             let pad = relayNonce.serialize().toHexString().paddingStart(64, with: "0")
             
             let txHashInput = String(format: "0x1900%@%@%@%@%@",
-                                     NANJConfig.TX_RELAY_ADDRESS.drop0x,
+                                     NANJConfig.txRelayAddress.drop0x,
                                      NANJConfig.WALLET_OWNER.drop0x,
                                      pad,
-                                     NANJConfig.META_NANJCOIN_MANAGER.drop0x,
+                                     NANJConfig.metaNanjCoinManager.drop0x,
                                      forwardEncoded.hexEncoded.drop0x
             )
             
@@ -167,7 +167,7 @@ public class NANJWallet: NSObject {
             //STEP5: CREATE JSON DATA
             let para:NSMutableDictionary = NSMutableDictionary()
             para.setValue(forwardEncoded.hexEncoded, forKey: "data")
-            para.setValue(NANJConfig.META_NANJCOIN_MANAGER, forKey: "dest")
+            para.setValue(NANJConfig.metaNanjCoinManager, forKey: "dest")
             para.setValue(txHash, forKey: "hash")
             para.setValue(NANJConfig.PAD, forKey: "nonce")
             para.setValue(signR, forKey: "r")
@@ -189,14 +189,14 @@ public class NANJWallet: NSObject {
     /// Get your NAJI amount
     ///
     public func getAmountNANJ() {
-        guard let address = Address(string: self.address), let contract = Address(string: NANJConfig.SMART_CONTRACT_ADDRESS) else { return }
+        guard let address = Address(string: self.address), let contract = Address(string: NANJConfig.smartContractAddress) else { return }
         TokensBalanceService().getBalance(for: address, contract: contract) {result in
             //guard let `self` = self else {return}
             guard let __value = result.value else {
                 self.delegate?.didGetAmountNANJ?(wallet: self, amount: 0.0, error: result.error)
                 return
             }
-            if let amount: Decimal = EtherNumberFormatter.full.decimal(from: __value, decimals: NANJConfig.DECIMALS) {
+            if let amount: Decimal = EtherNumberFormatter.full.decimal(from: __value, decimals: NANJConfig.decimals) {
                 self.delegate?.didGetAmountNANJ?(wallet: self, amount: amount.description.doubleValue, error: nil)
             }
         }

@@ -104,8 +104,8 @@ public class NANJWalletManager: NSObject {
      */
     public func startConfig(appId: String, appSecret: String) {
         //Setup developer info
-        NANJConfig.NANJWALLET_APP_ID = appId
-        NANJConfig.NANJWALLET_SECRET_KEY = appSecret
+        NANJConfig.nanjWalletAppId = appId
+        NANJConfig.nanjWalletSecretKey = appSecret
         
         //Load cache config
         if let data: NSDictionary = UserDefaults.standard.value(forKey: "NANJDataConfig") as? NSDictionary {
@@ -147,8 +147,8 @@ public class NANJWalletManager: NSObject {
         //Default is Main Net
         if isDevelopment {
             NANJConfig.rpcServer = RPCServer.ropsten
-            NANJConfig.NANJ_SERVER = NANJConfig.NANJ_SERVER_STAGING
-            NANJConfig.IS_DEVELOPMENT = true
+            NANJConfig.nanjServer = NANJConfig.NANJ_SERVER_STAGING
+            NANJConfig.isDevelopment = true
         }
     }
     
@@ -412,10 +412,10 @@ public class NANJWalletManager: NSObject {
         //STEP2: CREATE TX_HASH INPUT WITH TX_RELAY, WALLET OWNER,
         //              PAD, NANJCOIN ADDRESS
         let txHashInput = String(format: "0x1900%@%@%@%@%@",
-                                 NANJConfig.TX_RELAY_ADDRESS.drop0x,
+                                 NANJConfig.txRelayAddress.drop0x,
                                  NANJConfig.WALLET_OWNER.drop0x,
                                  NANJConfig.PAD,
-                                 NANJConfig.META_NANJCOIN_MANAGER.drop0x,
+                                 NANJConfig.metaNanjCoinManager.drop0x,
                                  functionEndcodeData.hexEncoded.drop0x
                       )
         
@@ -443,7 +443,7 @@ public class NANJWalletManager: NSObject {
         //STEP5: CREATE JSON DATA
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(functionEndcodeData.hexEncoded, forKey: "data")
-        para.setValue(NANJConfig.META_NANJCOIN_MANAGER, forKey: "dest")
+        para.setValue(NANJConfig.metaNanjCoinManager, forKey: "dest")
         para.setValue(txHash, forKey: "hash")
         para.setValue(NANJConfig.PAD, forKey: "nonce")
         para.setValue(signR, forKey: "r")
@@ -523,8 +523,8 @@ public class NANJWalletManager: NSObject {
     
     //Update for support switch coins
     private func updateNANJConfigERC20(_ erc20: ERC20) {
-        NANJConfig.SMART_CONTRACT_ADDRESS = erc20.address
-        NANJConfig.NANJ_COIN_NAME = erc20.name
+        NANJConfig.smartContractAddress = erc20.address
+        NANJConfig.nanjCoinName = erc20.name
         UserDefaults.standard.set(erc20.ercId, forKey: "NANJConfigERC20ID")
         self.supportERC20Id = erc20.ercId
     }
@@ -532,9 +532,9 @@ public class NANJWalletManager: NSObject {
     //Call update when get data from server successfully
     private func updateNANJConfigRemote() {
         if let __remote = self.remoteConfig {
-            NANJConfig.APP_HASH = __remote.appHash
-            NANJConfig.META_NANJCOIN_MANAGER = __remote.metaNanjManager
-            NANJConfig.TX_RELAY_ADDRESS = __remote.txRelay
+            NANJConfig.appHash = __remote.appHash
+            NANJConfig.metaNanjCoinManager = __remote.metaNanjManager
+            NANJConfig.txRelayAddress = __remote.txRelay
             
             //Need set default ERC20 support
             // 1. Check not NANJConfigERC20 key
