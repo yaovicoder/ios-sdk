@@ -175,10 +175,10 @@ public class NANJWallet: NSObject {
             para.setValue(signV, forKey: "v")
             
             //STEP6: PUSH TO API CREATE
-            NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
+            NANJApiManager.shared.postNANJRelayTx(params: para) {[weak self] (txHash, error) in
                 guard let `self` = self else {return}
                 if txHash == nil || txHash?.count == 0 {
-                    self.delegate?.didSendNANJError?(error: "Send NANJ failed.")
+                    self.delegate?.didSendNANJError?(error: error ?? "Send NANJ failed.")
                 } else {
                     self.delegate?.didSendNANJCompleted?(transaction: NANJTransaction(transaction: ["hash" : txHash!]))
                 }

@@ -38,7 +38,7 @@
 		0B0572B9007726D14DEB1D44B4C786E8 /* StringDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62898960A85B45983D25F698A1B75DFF /* StringDataParser.swift */; };
 		0C2C0A1920F836D100D73E55 /* NANJAuthorizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C0A1720F836C700D73E55 /* NANJAuthorizationRequest.swift */; };
 		0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */; };
-		0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */; };
+		0C39468220C4479100FB1740 /* NANJRelayTxRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */; };
 		0C55CF1721095D6700F1B323 /* NANJRateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */; };
 		0C69C62D210C87900024C249 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C62C210C87900024C249 /* Constants.swift */; };
 		0C69C62F210C89070024C249 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C62E210C89070024C249 /* Currency.swift */; };
@@ -896,7 +896,7 @@
 		0C2C0A1720F836C700D73E55 /* NANJAuthorizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJAuthorizationRequest.swift; sourceTree = "<group>"; };
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJApiManager.swift; path = NANJFrameworks/Classes/NANJApiManager.swift; sourceTree = "<group>"; };
-		0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNANJWalletRequest.swift; sourceTree = "<group>"; };
+		0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJRelayTxRequest.swift; sourceTree = "<group>"; };
 		0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJRateRequest.swift; sourceTree = "<group>"; };
 		0C69C62C210C87900024C249 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C69C62E210C89070024C249 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -1822,7 +1822,7 @@
 				A81DC30191E482F4B54F7E206FDF5CC3 /* CallRequest.swift */,
 				23EC6843355CFBD80F2C3B6F23E592F5 /* EtherServiceRequest.swift */,
 				0CEB24ED20A49F3200246984 /* TransactionRequest.swift */,
-				0C39468120C4479100FB1740 /* CreateNANJWalletRequest.swift */,
+				0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */,
 				0C2C0A1720F836C700D73E55 /* NANJAuthorizationRequest.swift */,
 				0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */,
 			);
@@ -3706,7 +3706,7 @@
 				3F0B5FDD14F1C74A587F93FA7D3C1BE3 /* EtherNumberFormatter.swift in Sources */,
 				400D4AE797B2397F27AE45DA4B258538 /* EtherServiceRequest.swift in Sources */,
 				63F9064CD978F95FD1C8010F7A0615AE /* EthTypedData.swift in Sources */,
-				0C39468220C4479100FB1740 /* CreateNANJWalletRequest.swift in Sources */,
+				0C39468220C4479100FB1740 /* NANJRelayTxRequest.swift in Sources */,
 				0CF03954210CC8DB00ECB70F /* RelayNonceRequest.swift in Sources */,
 				0C69C62D210C87900024C249 /* Constants.swift in Sources */,
 				56D040EC4E3C5A6E2718EA6BCCC9BE46 /* ImportType.swift in Sources */,

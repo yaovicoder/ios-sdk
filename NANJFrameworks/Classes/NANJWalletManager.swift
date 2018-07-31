@@ -23,7 +23,7 @@ import TrustCore.EthereumCrypto
     /// Callback when authorise completed.
     ///
     /// - Parameters:
-    @objc optional func didAuthoriseFail(error: String)
+    @objc optional func didAuthoriseError(error: String)
     
     /// Callback wallet when create completed.
     ///
@@ -161,7 +161,7 @@ public class NANJWalletManager: NSObject {
         self.keystore.createAccount(with: password) {[weak self] result in
             guard let `self` = self else {return}
             if result.error != nil {
-                self.delegate?.didCreateWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.create", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.create"]))
+                self.delegate?.didCreateWallet?(wallet: nil, error: NSError(domain: "", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.create"]))
 
             } else {
                 //Create NANJ wallet
@@ -181,7 +181,7 @@ public class NANJWalletManager: NSObject {
         self.keystore.importWallet(type: .privateKey(privateKey: key)) {[weak self] result in
             guard let `self` = self else {return}
             if result.error != nil {
-                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.import"]))
+                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "", code: 1992, userInfo: ["description":result.error?.errorDescription ?? "com.nanj.error.import"]))
             } else {
                 let address: Address? = result.value?.address
                 //let __wallet: NANJWallet? = result.value?.toNANJWallet()
@@ -200,7 +200,7 @@ public class NANJWalletManager: NSObject {
         //Return value with delegate
         EtherKeystore.shared.importWallet(type: .keystore(string: key, password: pass)) { result in
             guard let wallet = result.value else {
-                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 1992, userInfo: ["description": "com.nanj.error.import"]))
+                self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "", code: 1992, userInfo: ["description": "com.nanj.error.import"]))
                 return
             }
             let address: Address? = wallet.address
@@ -222,7 +222,7 @@ public class NANJWalletManager: NSObject {
     
     
     public func exportPrivateKey(wallet: NANJWallet) {
-        let error = NSError(domain: "com.nanj.error.export", code: 1992, userInfo: ["description": "com.nanj.error.export"])
+        let error = NSError(domain: "", code: 1992, userInfo: ["description": "com.nanj.error.export"])
         guard let address = wallet.getEtherWallet()?.address else {
             self.delegate?.didExportPrivatekey?(wallet: wallet, privateKey: nil, error: error)
             return
@@ -244,7 +244,7 @@ public class NANJWalletManager: NSObject {
     }
     
     public func exportKeystore(wallet: NANJWallet, password: String) {
-        let error = NSError(domain: "com.nanj.error.export", code: 1992, userInfo: ["description": "com.nanj.error.export"])
+        let error = NSError(domain: "", code: 1992, userInfo: ["description": "com.nanj.error.export"])
         guard let address = wallet.getEtherWallet()?.address else {
             self.delegate?.didExportKeystore?(wallet: wallet, keyStore: nil, error: error)
             return
@@ -404,7 +404,6 @@ public class NANJWalletManager: NSObject {
         }
         
         //STEP1: FUNCTION ENCODE
-        print("* * * * * * * * * * * * STEP 1 * * * * * * * * * * * *")
         let function = Function(name: "createWallet", parameters: [.address])
         let encoder = ABIEncoder()
         try! encoder.encode(function: function, arguments: [currentAddress])
@@ -452,12 +451,12 @@ public class NANJWalletManager: NSObject {
         para.setValue(signV, forKey: "v")
         
         //STEP6: PUSH TO API CREATE /api/relayTx
-        NANJApiManager.shared.createNANJWallet(params: para) {[weak self] txHash in
+        NANJApiManager.shared.postNANJRelayTx(params: para) {[weak self] (txHash, error) in
             guard let `self` = self else {return}
             //Add to check NANJ create success
             if txHash == nil {
                 _ = self.removeWallet(wallet: Wallet(type: .address(currentAddress)).toNANJWallet())
-                let error = NSError(domain: "com.nanj.error.create.server", code: 1992, userInfo: ["description": "Server create NANJ Wallet failed."])
+                let error = NSError(domain: "", code: 1992, userInfo: ["description": error ?? "Server create NANJ Wallet failed."])
                 self.delegate?.didCreateWallet?(wallet: nil, error: error)
                 return
             }
@@ -505,7 +504,7 @@ public class NANJWalletManager: NSObject {
                     let _ = smartContracts["metaNanjManager"] as? String,
                     let _ = data["supportedERC20"] as? [NSDictionary]
                 else {
-                    self.delegate?.didAuthoriseFail?(error: "Can not get data from NANJ server.")
+                    self.delegate?.didAuthoriseError?(error: "Can not get data from NANJ server.")
                     return
                 }
                 //Save cache data
@@ -516,7 +515,7 @@ public class NANJWalletManager: NSObject {
                 self.updateNANJConfigRemote()
                 break
             case .failure(let error):
-                self.delegate?.didAuthoriseFail?(error: error.localizedDescription)
+                self.delegate?.didAuthoriseError?(error: error.localizedDescription)
                 break
             }
         }

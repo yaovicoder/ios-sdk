@@ -1,5 +1,5 @@
 //
-//  CreateNANJWalletRequest.swift
+//  NANJRelayTxRequest.swift
 //  NANJFrameworks
 //
 //  Created by MinaWorks on 6/3/18.
@@ -8,8 +8,8 @@
 import UIKit
 import APIKit
 
-class CreateNANJWalletRequest: Request {
-    typealias Response = String?
+class NANJRelayTxRequest: Request {
+    typealias Response = (String?, String?) //TxHash, Error message
     
     var dict: NSDictionary!
     
@@ -40,13 +40,18 @@ class CreateNANJWalletRequest: Request {
         return JSONBodyParameters.init(JSONObject: dict)
     }
     
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> String? {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> (String?, String?) {
+        print(object)
         guard let dict = object as? Dictionary<String, Any> else {
-            return nil
+            return (nil, "Can't read response from server.")
         }
         if let txHash: String = dict["txHash"] as? String {
-            return txHash
+            return (txHash, nil)
         }
-        return nil
+        //Message from server
+        if let __message = dict["message"] as? String {
+            return (nil, __message)
+        }
+        return (nil, "Can't read response from server.")
     }
 }
