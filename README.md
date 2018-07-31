@@ -50,7 +50,7 @@ $ pod install
 
 ## Usage
 ### Initialization
-- Trong `AppDelegate.swift` tiên cần import thư viện `NANJFrameworks`
+- In `AppDelegate.swift` ,  import  `NANJFrameworks`
 ```swift
 import NANJFrameworks
 ```
