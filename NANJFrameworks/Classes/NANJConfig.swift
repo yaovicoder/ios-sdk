@@ -23,7 +23,7 @@ public struct NANJConfig {
     static var decimals: Int = 8
     static var isDevelopment: Bool = false
     
-    static let NANJ_SERVER_STAGING: String = "https://api.nanjcoin.com/api" //"https://staging.nanjcoin.com/api"
+    static let NANJ_SERVER_STAGING: String = "https://staging.nanjcoin.com/api"
     static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
     static let PAD: String = "0000000000000000000000000000000000000000000000000000000000000000"
 }
