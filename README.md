@@ -227,4 +227,4 @@ NANJCOIN, support@nanjcoin.com
 
 ## License
 
-NANJFrameworks is available under the MIT license. See the LICENSE file for more info.
+NANJFrameworks is available under the Our license. See the LICENSE file for more info.
