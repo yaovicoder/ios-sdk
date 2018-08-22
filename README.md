@@ -227,4 +227,6 @@ NANJCOIN, support@nanjcoin.com
 
 ## License
 
-NANJFrameworks is available under the Our license. See the LICENSE file for more info.
+## License
+please read our license at this link. [LICENSE](https://nanjcoin.com/sdk)
+you can change Language JP/EN
