@@ -226,7 +226,5 @@ This feature allows the SDK can switch among multiple ERC20/ERC223 coins
 NANJCOIN, support@nanjcoin.com
 
 ## License
-
-## License
 please read our license at this link. [LICENSE](https://nanjcoin.com/sdk)
 you can change Language JP/EN
