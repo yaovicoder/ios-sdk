@@ -369,7 +369,7 @@ public class NANJWalletManager: NSObject {
     
     //MARK: - Private function
     private func importedGetOrCreateNANJWallet(address: Address?, privateKey: String?) {
-        guard let addressETH = address?.eip55String, let __address = address else {return}
+        guard let addressETH = address?.eip55String else {return}
         NANJApiManager.shared.getNANJAdress(ethAdress: addressETH) {[weak self] nanjAddress in
             guard let `self` = self else {return}
             if nanjAddress == nil || (nanjAddress?.drop0x ?? "") == NANJConfig.PAD {
@@ -381,7 +381,14 @@ public class NANJWalletManager: NSObject {
                     UserDefaults.standard.set(addressNANJ, forKey: addressETH)
                     UserDefaults.standard.synchronize()
                     
-                    self.delegate?.didImportWallet?(wallet: Wallet(type: .address(__address)).toNANJWallet(), error: nil)
+                    let walletList = self.keystore.wallets.filter({ wallet -> Bool in
+                        return wallet.address.eip55String == addressETH
+                    })
+                    if let walletObj = walletList.first {
+                        self.delegate?.didCreateWallet?(wallet: walletObj.toNANJWallet(), error: nil)
+                    } else {
+                        self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 404, userInfo: ["description": "Can't find Wallet"]))
+                    }
                 }
             }
         }
