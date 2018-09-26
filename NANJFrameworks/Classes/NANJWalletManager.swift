@@ -77,6 +77,11 @@ import TrustCore.EthereumCrypto
     ///
     /// - Parameter rate: Rate YEN/NANJ
     @objc optional func didGetNANJRate(rate: Double)
+    
+    /// Callback rate of currency when get completed.
+    ///
+    /// - Parameter rate: Rate CURRENCY/NANJ
+    @objc optional func didGetNANJCurrencyRate(rate: Double, currency: String)
 }
 
 public class NANJWalletManager: NSObject {
@@ -329,8 +334,11 @@ public class NANJWalletManager: NSObject {
         }
     }
     
-    public func scanAddressFromQRCode() {
-        
+    public func getNANJRateWith(currency: String) {
+        NANJApiManager.shared.getNANJRateWith(currency: currency, completion: {[weak self] rate in
+            guard let `self` = self else {return}
+            self.delegate?.didGetNANJCurrencyRate?(rate: rate ?? 0.0, currency: currency)
+        })
     }
     
     public func isValidAddress(address: String?) -> Bool {

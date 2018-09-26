@@ -39,6 +39,7 @@
 		0C2C0A1920F836D100D73E55 /* NANJAuthorizationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C0A1720F836C700D73E55 /* NANJAuthorizationRequest.swift */; };
 		0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */; };
 		0C39468220C4479100FB1740 /* NANJRelayTxRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */; };
+		0C41D52B215B17B3003B6D97 /* NANJCurrencyRateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41D52A215B17B3003B6D97 /* NANJCurrencyRateRequest.swift */; };
 		0C55CF1721095D6700F1B323 /* NANJRateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */; };
 		0C69C62D210C87900024C249 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C62C210C87900024C249 /* Constants.swift */; };
 		0C69C62F210C89070024C249 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C62E210C89070024C249 /* Currency.swift */; };
@@ -897,6 +898,7 @@
 		0C31ABC2DE08F68D37E5D7DC91A9146A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		0C39467F20C43BAE00FB1740 /* NANJApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NANJApiManager.swift; path = NANJFrameworks/Classes/NANJApiManager.swift; sourceTree = "<group>"; };
 		0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJRelayTxRequest.swift; sourceTree = "<group>"; };
+		0C41D52A215B17B3003B6D97 /* NANJCurrencyRateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJCurrencyRateRequest.swift; sourceTree = "<group>"; };
 		0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NANJRateRequest.swift; sourceTree = "<group>"; };
 		0C69C62C210C87900024C249 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0C69C62E210C89070024C249 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -1825,6 +1827,7 @@
 				0C39468120C4479100FB1740 /* NANJRelayTxRequest.swift */,
 				0C2C0A1720F836C700D73E55 /* NANJAuthorizationRequest.swift */,
 				0C55CF1521095D0B00F1B323 /* NANJRateRequest.swift */,
+				0C41D52A215B17B3003B6D97 /* NANJCurrencyRateRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -3694,6 +3697,7 @@
 				0C55CF1721095D6700F1B323 /* NANJRateRequest.swift in Sources */,
 				1AB5BA0615EB9A1A83AF9AADCFE35D07 /* Config.swift in Sources */,
 				876AA76CF67927D6C1101053064C0ED2 /* CryptoAddressValidator.swift in Sources */,
+				0C41D52B215B17B3003B6D97 /* NANJCurrencyRateRequest.swift in Sources */,
 				0C39468020C43BAE00FB1740 /* NANJApiManager.swift in Sources */,
 				0C2C0A1920F836D100D73E55 /* NANJAuthorizationRequest.swift in Sources */,
 				4BB546D330FA207A9AA596B0235C437A /* CurrencyRate.swift in Sources */,
