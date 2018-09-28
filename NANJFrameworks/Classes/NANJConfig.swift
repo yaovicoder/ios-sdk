@@ -108,7 +108,7 @@ public class ERC20: NSObject {
         if let __address = val["address"] as? String {
             self.address = __address
         }
-        if let __minimumAmount = val["minAmount"] as? Int {
+        if let __minimumAmount = val["minimumTransferAmount"] as? Int {
             self.minAmount = __minimumAmount
         }
         if let __maxFee = val["maxFee"] as? Int {
