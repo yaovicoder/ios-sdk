@@ -26,6 +26,10 @@ public struct NANJConfig {
     static let NANJ_SERVER_STAGING: String = "https://staging.nanjcoin.com/api"
     static let WALLET_OWNER: String = "0x0000000000000000000000000000000000000000"
     static let PAD: String = "0000000000000000000000000000000000000000000000000000000000000000"
+    
+    //Transfer Amount Config
+    static let MIN_AMOUNT: Int = 5000
+    static var MAX_FEE: Int = 5000
 }
 
 public class NANJDataConfig: NSObject {
@@ -91,6 +95,8 @@ public class ERC20: NSObject {
     var ercId: Int = 0
     var name: String = ""
     var address: String = ""
+    var minAmount: Int = NANJConfig.MIN_AMOUNT
+    var maxFee: Int = NANJConfig.MAX_FEE
     
     init(val: NSDictionary) {
         if let __id = val["id"] as? Int {
@@ -101,6 +107,12 @@ public class ERC20: NSObject {
         }
         if let __address = val["address"] as? String {
             self.address = __address
+        }
+        if let __minimumAmount = val["minAmount"] as? Int {
+            self.minAmount = __minimumAmount
+        }
+        if let __maxFee = val["maxFee"] as? Int {
+            self.maxFee = __maxFee
         }
     }
     
@@ -114,5 +126,13 @@ public class ERC20: NSObject {
     
     public func getERC20Address() -> String {
         return self.address
+    }
+    
+    public func getERC20MinimumAmount() -> Int {
+        return self.minAmount
+    }
+    
+    public func getERC20MaxFee() -> Int {
+        return self.maxFee
     }
 }

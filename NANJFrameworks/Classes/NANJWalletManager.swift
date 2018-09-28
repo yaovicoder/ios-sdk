@@ -375,6 +375,16 @@ public class NANJWalletManager: NSObject {
         return erc20?.first
     }
     
+    ///Minimum Amount of a transaction
+    public func getMinimumAmount() -> Int {
+        return self.getCurrentERC20Support()?.getERC20MinimumAmount() ?? NANJConfig.MIN_AMOUNT
+    }
+    
+    ///Maximum fee of a transaction
+    public func getMaxFee() -> Int {
+        return self.getCurrentERC20Support()?.getERC20MaxFee() ?? NANJConfig.MAX_FEE
+    }
+    
     //MARK: - Private function
     private func importedGetOrCreateNANJWallet(address: Address?, privateKey: String?) {
         guard let addressETH = address?.eip55String else {return}
