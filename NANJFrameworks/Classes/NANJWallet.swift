@@ -71,7 +71,7 @@ public class NANJWallet: NSObject {
     public func sendNANJ(toAddress address: String, amount: String, message: String = "") {
         
         //STEP1: Data Tranfer
-        if amount.doubleValue <= Double(NANJWalletManager.shared.getMinimumAmount()) {
+        if amount.doubleValue < Double(NANJWalletManager.shared.getMinimumAmount()) {
             self.delegate?.didSendNANJError?(error: "Amount must be greater than \(NANJWalletManager.shared.getMinimumAmount()).")
             return
         }
