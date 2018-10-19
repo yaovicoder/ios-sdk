@@ -220,10 +220,14 @@ public let tokenSymbol: String?
 ```
 
 ### Get minimum amount, max transaction fee per transfer
+After set current ERC20 token. SDK can get minimum amount and maximum transaction fee. This minimum amount and maximum fee will be for chosen ERC20 token. 
+
 Get minimum amount per transfer
+
 `NANJWalletManager.shared.getMinimumAmount()`
 
 Get maximum fee per transfer
+
 `NANJWalletManager.shared.getMaxFee()`
 
 ### NANJ SDK Support mutiple ERC20/ERC223
