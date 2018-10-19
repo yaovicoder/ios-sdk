@@ -73,4 +73,20 @@ class NANJApiManager: NSObject {
         }
     }
     
+    func getNANJRateWith(currency: String, completion: @escaping(Double?)-> Void) {
+        let request = NANJCurrencyRateRequest(currency: currency)
+        Session.send(request) { result in
+            switch result {
+            case .success(let object):
+                if let nanjRate = object {
+                    completion(nanjRate)
+                } else {
+                    completion(nil)
+                }
+            case .failure(_):
+                completion(nil)
+            }
+        }
+    }
+    
 }

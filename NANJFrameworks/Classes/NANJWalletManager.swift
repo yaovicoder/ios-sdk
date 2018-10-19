@@ -77,6 +77,11 @@ import TrustCore.EthereumCrypto
     ///
     /// - Parameter rate: Rate YEN/NANJ
     @objc optional func didGetNANJRate(rate: Double)
+    
+    /// Callback rate of currency when get completed.
+    ///
+    /// - Parameter rate: Rate CURRENCY/NANJ
+    @objc optional func didGetNANJCurrencyRate(rate: Double, currency: String)
 }
 
 public class NANJWalletManager: NSObject {
@@ -329,8 +334,11 @@ public class NANJWalletManager: NSObject {
         }
     }
     
-    public func scanAddressFromQRCode() {
-        
+    public func getNANJRateWith(currency: String) {
+        NANJApiManager.shared.getNANJRateWith(currency: currency, completion: {[weak self] rate in
+            guard let `self` = self else {return}
+            self.delegate?.didGetNANJCurrencyRate?(rate: rate ?? 0.0, currency: currency)
+        })
     }
     
     public func isValidAddress(address: String?) -> Bool {
@@ -367,9 +375,19 @@ public class NANJWalletManager: NSObject {
         return erc20?.first
     }
     
+    ///Minimum Amount of a transaction
+    public func getMinimumAmount() -> Int {
+        return self.getCurrentERC20Support()?.getERC20MinimumAmount() ?? NANJConfig.MIN_AMOUNT
+    }
+    
+    ///Maximum fee of a transaction
+    public func getMaxFee() -> Int {
+        return self.getCurrentERC20Support()?.getERC20MaxFee() ?? NANJConfig.MAX_FEE
+    }
+    
     //MARK: - Private function
     private func importedGetOrCreateNANJWallet(address: Address?, privateKey: String?) {
-        guard let addressETH = address?.eip55String, let __address = address else {return}
+        guard let addressETH = address?.eip55String else {return}
         NANJApiManager.shared.getNANJAdress(ethAdress: addressETH) {[weak self] nanjAddress in
             guard let `self` = self else {return}
             if nanjAddress == nil || (nanjAddress?.drop0x ?? "") == NANJConfig.PAD {
@@ -381,7 +399,14 @@ public class NANJWalletManager: NSObject {
                     UserDefaults.standard.set(addressNANJ, forKey: addressETH)
                     UserDefaults.standard.synchronize()
                     
-                    self.delegate?.didImportWallet?(wallet: Wallet(type: .address(__address)).toNANJWallet(), error: nil)
+                    let walletList = self.keystore.wallets.filter({ wallet -> Bool in
+                        return wallet.address.eip55String == addressETH
+                    })
+                    if let walletObj = walletList.first {
+                        self.delegate?.didCreateWallet?(wallet: walletObj.toNANJWallet(), error: nil)
+                    } else {
+                        self.delegate?.didImportWallet?(wallet: nil, error: NSError(domain: "com.nanj.error.import", code: 404, userInfo: ["description": "Can't find Wallet"]))
+                    }
                 }
             }
         }

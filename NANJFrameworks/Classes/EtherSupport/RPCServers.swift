@@ -90,7 +90,7 @@ enum RPCServer {
     var rpcEtherScanURL: URL {
         let urlString: String = {
             switch self {
-            case .main: return "https://mainnet.infura.io"
+            case .main: return "https://etherscan.io"
             case .classic: return "https://web3.gastracker.io"
             case .callisto: return "https://rpc.callisto.network"
             case .kovan: return "https://kovan.etherscan.io"

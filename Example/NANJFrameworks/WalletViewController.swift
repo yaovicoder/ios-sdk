@@ -22,6 +22,7 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     
     fileprivate var balance: Double?
     fileprivate var nanjRate: Double?
+    fileprivate var currency: String = "jpy"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         if self.walletManager.getCurrentWallet() != nil {
             self.loadCurrentWallet()
             self.loadBalance()
-            self.walletManager.getNANJRate()
+            self.walletManager.getNANJRateWith(currency: self.currency)
         }
 //        if self.lblAddress.text != "Initializing ..." {
 //            self.loadCurrentWallet()
@@ -74,6 +75,16 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         }
     }
     
+    @IBAction func onClickChangeCurrency(_ sender: Any) {
+        if self.currency == "jpy" {
+            self.currency = "usd"
+        } else {
+            self.currency = "jpy"
+        }
+        self.showLoading()
+        NANJWalletManager.shared.getNANJRateWith(currency: self.currency)
+    }
+    
     //MARK: - Private method
     
     fileprivate func loadCurrentWallet() {
@@ -111,6 +122,19 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
         }
     }
     
+    fileprivate func updateAmountWithCurrency(_ currency: String) {
+        guard let rate = self.nanjRate, let amount = self.balance else {
+            return
+        }
+        let jpy = rate*amount;
+        if jpy > 0 {
+            self.lblCoinETH.text = String(format: "%0.2f (\(currency.uppercased()))", jpy)
+        } else {
+            self.lblCoinETH.text = String(format: "0 (\(currency.uppercased()))", jpy)
+        }
+    }
+
+    
     
     //MARK: - NANJWalletManagerDelegate
     func didCreatingWallet(wallet: NANJWallet?) {
@@ -137,6 +161,15 @@ class WalletViewController: BaseViewController, NANJWalletManagerDelegate, NANJW
     func didGetNANJRate(rate: Double) {
         self.nanjRate = rate
         self.updateYEN()
+    }
+    
+    func didGetNANJCurrencyRate(rate: Double, currency: String) {
+        DispatchQueue.main.async {
+            self.hideLoading()
+            self.nanjRate = rate
+            self.updateAmountWithCurrency(self.currency)
+        }
+        print("NANJCurrencyRate --> \(rate) : \(self.currency)")
     }
     
     //MARK: = NANJWalletDelegate
